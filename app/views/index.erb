@@ -10,3 +10,38 @@ rspec ./spec/features/05_song_form_spec.rb:73 #               Song Forms /songs/
   song.artist = artist
   binding.pry
 end -->
+
+
+<!-- <h1>Edit a song:</h1>
+
+<form method="post" action="/songs/<%= @song.slug %>">
+
+  <input id="hidden" type="hidden" name="_method" value="patch" />
+  <label>Name:</label>
+
+  <br></br>
+
+  <input type="text" name="song[name]" id="song_name" value="<%= @song.name %>" />
+
+  <br></br>
+
+  <label>Choose an artist:</label>
+
+  <input type="text" name="song[artist]" id="Artist Name" />
+
+
+
+  <br></br>
+
+  <% @genres.each do |genre| %>
+    <input type="checkbox" name="song[genre]" id="<%= genre.id %>" value="<%= genre.id %>"
+    <% @song.genres.each do |song_genre| %>
+      <%= 'checked' if song_genre == genre %>></input><span><%= genre.name %></span>
+    <% end %>
+  <% end %>
+
+  <br></br>
+
+  <input type="submit" value="Save" />
+
+</form> -->
