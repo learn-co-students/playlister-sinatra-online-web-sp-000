@@ -18,15 +18,23 @@ class SongsController < ApplicationController
   end
 
   post '/songs/new' do
-    song = Song.create(name: params[:name])
-    if !Artist.all.include?(params[:artist_name])
+    song = Song.create(name: params[:song_name])
+
+    if Artist.find_by_name(params[:artist_name])
+      song.artist = Artist.find_by_name(params[:artist_name])
+    else
       artist = Artist.create(name: params[:artist_name])
       song.artist = artist
-      song.save
-  
     end
 
+    Genre.all.each do |genre|
+      if params[:genres].include?(genre.id.to_s)
+        song.genres << genre
+      end
+    end
 
+    song.save
+    redirect "songs/#{song.slug}"
   end
 
 end
