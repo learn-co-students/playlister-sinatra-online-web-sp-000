@@ -13,14 +13,14 @@
 
   <label>Choose an artist:</label>
 
-  <input type="text" name="song[artist]" id="Artist Name" />
+  <input type="text" name="artist_name" id="Artist Name" value="<%= @artist.name %>" />
 
 
 
   <br></br>
 
   <% @genres.each do |genre| %>
-    <input type="checkbox" name="song[genre]" id="<%= genre.id %>" value="<%= genre.id %>"
+    <input type="checkbox" name="song[genres]" id="<%= genre.name %>" value="<%= genre.name %>"
     <% @song.genres.each do |song_genre| %>
       <%= 'checked' if song_genre == genre %>></input><span><%= genre.name %></span>
     <% end %>
