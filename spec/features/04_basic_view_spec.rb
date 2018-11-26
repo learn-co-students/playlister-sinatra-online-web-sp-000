@@ -23,6 +23,7 @@ describe "Playlister Basics" do
       end
 
       it 'responds with a 200 status code' do
+        # binding.pry
         expect(page.status_code).to eq(200)
       end
 
@@ -79,23 +80,23 @@ describe "Playlister Basics" do
       end
 
       it 'responds with a 200 status code' do
-        expect(page.status_code).to eq(200)
+        expect(page.status_code).to eq(200), page.all('h2').first.text
       end
 
       it "displays the song's artist" do
-        expect(page).to have_content(artist_name)
+        expect(page).to have_content(artist_name), page.all('h2').first.text
       end
 
       it "displays the song's genres" do
-        expect(page).to have_content(genre_name)
+        expect(page).to have_content(genre_name), page.all('h2').first.text
       end
 
       it "contains links to the artist's show page" do
-        expect(page).to have_css("a[href='/artists/#{@artist.slug}']")
+        expect(page).to have_css("a[href='/artists/#{@artist.slug}']"), page.all('h2').first.text
       end
 
       it "contains links to each genre's show page" do
-        expect(page).to have_css("a[href='/genres/#{@genre.slug}']")
+        expect(page).to have_css("a[href='/genres/#{@genre.slug}']"), page.all('h2').first.text
       end
     end
 

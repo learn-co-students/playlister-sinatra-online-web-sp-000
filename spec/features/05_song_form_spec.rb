@@ -98,9 +98,9 @@ describe "Song Forms" do
         fill_in "Artist Name", with: "Some Nobody"
         click_on "Save"
 
-        expect(page).to have_content("Successfully updated song.")
-        expect(page).to have_content(song_name)
-        expect(page).to have_content("Some Nobody")
+        expect(page).to have_content("Successfully updated song."), page.all('h2').first.text
+        expect(page).to have_content(song_name), page.all('h2').first.text
+        expect(page).to have_content("Some Nobody"), page.all('h2').first.text
       end
 
       it "renders to the song show page" do
