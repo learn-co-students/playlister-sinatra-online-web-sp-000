@@ -1,2 +1,10 @@
 # Add seed data here. Seed your database with `rake db:seed`
-
+brand_new = Artist.create(name: "Brand New")
+jude_law = Song.create(name: "Jude Law and a Semester Abroad", artist: brand_new)
+seventy = Song.create(name: "Seventy Times 7", artist: brand_new)
+emo = Genre.create(name: "Emo")
+punk = Genre.create(name: "Punk")
+SongGenre.create(song: seventy, genre: emo)
+SongGenre.create(song: seventy, genre: punk)
+SongGenre.create(song: jude_law, genre: emo)
+SongGenre.create(song: jude_law, genre: punk)
