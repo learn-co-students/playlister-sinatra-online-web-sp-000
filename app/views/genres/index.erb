@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Genres</title>
+</head>
+<body>
+	<h1> Genres</h1>
+	  <% @genres.each do |g_money| %> 
+	    <li> <a href="/genres/<%=g_money.slug%>"><%=g_money.name %></a></li>
+	  <% end %> 
+</body>
+</html>
