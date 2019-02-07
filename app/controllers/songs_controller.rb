@@ -1,5 +1,10 @@
+require 'sinatra/base'
+require 'rack-flash'
+
 class SongsController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
+  enable :sessions
+  use Rack::Flash
 
   get "/songs" do
     @songs = Song.all
@@ -20,8 +25,14 @@ class SongsController < Sinatra::Base
   end
 
   post "/songs" do
-    Artist.create(name: "Balls")
-    redirect to "songs"
+    @genre = Genre.find_by name: params[:genres][0]
+    @artist = Artist.find_by name: params[:"Artist Name"]
+    @artist = Artist.create(name: params[:"Artist Name"]) if @artist == nil
+    @song = Song.create(name: params[:Name])
+    @artist.songs << @song
+    @genre.songs << @song
+    flash[:message] = "Successfully created song."
+    redirect to "songs/#{@song.slug}"
   end
 
 end
