@@ -2,13 +2,13 @@ class ArtistsController < ApplicationController
 
   get '/artists' do
     @artists = Artist.all
-    erb :'/artists/index'
+    # binding.pry
+    erb :'artists/index'
   end
 
   get '/artists/:slug' do
-    @artist = Artist.find {|artist| artist.parameterize == params[:slug]}
-
-
-    erb :'/artists/show'
+    @artist = Artist.find_by_slug(params[:slug])
+    # binding.pry
+    erb :'artists/show'
   end
 end
