@@ -1,0 +1,32 @@
+<!-- Song Object: Show Artist's name and link to Artist's show page-->
+<h2><%=@model.name if @model.respond_to?("name")%></h2>
+<%if @model.respond_to?("artist")%>
+  <h2><a href="/<%=@model.artist.class.to_s.downcase%>s/<%=@model.artist.slug%>"><%=@model.artist.name%><a/></h2>
+<%end%> 
+
+<!-- Artist Object: Show Artist's Songs and link to each Song's show page -->
+<%if @model.respond_to?("songs") && !@model.nil?%>
+  <%@model.songs.each do |song|%>
+  <h2><a href="/<%=song.class.name.downcase%>s/<%=song.slug%>"><%=song.name%></a></h2>
+  <%end%>
+<%end%>  
+
+<!-- Song Object: Show Song's Genres and link to each Genre's show page -->
+<%if @model.respond_to?("genres") && !@model.nil?%>
+  <%@model.genres.each do |genre|%>
+ 
+  <h2><a href="/<%=genre.class.name.downcase%>s/<%=genre.slug%>"><%=genre.name%></a></h2>
+  <%end%>
+<%end%>  
+
+<!-- Genre Object: Show Genre's Artists and link to each Artist's show page -->
+<%if @model.respond_to?("artists") && !@model.nil?%>
+  <%@model.artists.each do |artist|%>
+ 
+  <h2><a href="/<%=artist.class.name.downcase%>s/<%=artist.slug%>"><%=artist.name%></a></h2>
+  <%end%>
+<%end%> 
+
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
