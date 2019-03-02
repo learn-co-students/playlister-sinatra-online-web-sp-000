@@ -1,0 +1,7 @@
+<%@class_model.all.each do |model|%>
+  <ol>
+    <li>
+      <h2><a href="/<%=@class_model.name.downcase%>s/<%=model.slug%>"><%=model.name%></a></h2>
+    </li>
+  </ol>
+<%end%>
