@@ -1,0 +1,15 @@
+<% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+  </div>
+<% end %>
+
+<h2><%=@song.name%> Artist:</h2>
+
+<h3><a href="/artists/<%=@song.artist.slug%>"><%=@song.artist.name%></a></h3>
+
+<h2><%=@song.name%> Genres:</h2>
+
+<%@song.genres.each do |g|%>
+<h3><a href="/genres/<%=g.slug%>"><%=g.name%></a></h3>
+<%end%>
