@@ -37,6 +37,7 @@ class ApplicationController < Sinatra::Base
     
     redirect "/songs/#{song.slug}"
   end 
+  
 
   get '/:model' do
     path = get_path
