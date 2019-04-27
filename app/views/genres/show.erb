@@ -13,7 +13,7 @@
   </ul>
   <h3>Artists:</h3>
   <ul>
-    <% @genre.artists.each do |genre| %>
+    <% @genre.artists.each do |artist| %>
     <li><a href="/artists/<%=artist.slug%>"><%=artist.name%></a></li>
     <% end %>
   </ul>
