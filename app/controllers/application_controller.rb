@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
     else
       @song = Song.find_by_slug(params[:id])
     end
-    
+
     erb :'songs/show'
   end
 
@@ -61,7 +61,7 @@ class ApplicationController < Sinatra::Base
     params[:song][:genre_ids].each do |genre_id|
       song.genres << Genre.find(genre_id)
     end
-    artist = Artist.find_by(:name => params[:song][:artist][:name])
+    artist = Artist.find { |a| a.name == params[:song][:artist][:name] }
     if !artist
       artist = Artist.new(:name => params[:song][:artist][:name])
       artist.save
