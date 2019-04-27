@@ -4,6 +4,14 @@
   <title><%= @song.name %></title>
 </head>
 <body>
+  <% if @new_song_message %>
+    <h1>Successfully created song.</h1>
+    <br />
+  <% end %>
+  <% if @changed_song_message %>
+    <h1>Successfully updated song.</h1>
+    <br />
+  <% end %>
   <h1><%= @song.name %>, by <a href="/artists/<%=@song.artist.slug%>">
     <%= @song.artist.name %></a></h1>
   <h2>Genres</h2>

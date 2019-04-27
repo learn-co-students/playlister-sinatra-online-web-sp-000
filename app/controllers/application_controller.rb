@@ -2,6 +2,7 @@ class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   set :session_secret, "my_application_secret"
   set :views, Proc.new { File.join(root, "../views/") }
+  last_edit = nil
 
   get '/' do
     erb :index
@@ -26,6 +27,14 @@ class ApplicationController < Sinatra::Base
       @song = Song.find_by_slug(params[:id])
     end
 
+    if @song == Song.all.last
+      @new_song_message = true
+    end
+
+    if @song == last_edit
+      @changed_song_message = true
+    end
+    
     erb :'songs/show'
   end
 
@@ -52,7 +61,9 @@ class ApplicationController < Sinatra::Base
       song.save
     end
 
-    redirect :"/songs/#{song.id}"
+    last_edit = song
+
+    redirect :"/songs/#{song.slug}"
   end
 
   post '/songs' do
@@ -61,9 +72,9 @@ class ApplicationController < Sinatra::Base
     params[:song][:genre_ids].each do |genre_id|
       song.genres << Genre.find(genre_id)
     end
-    artist = Artist.find { |a| a.name == params[:song][:artist][:name] }
+    artist = Artist.find { |a| a.name == params[:artist_name] }
     if !artist
-      artist = Artist.new(:name => params[:song][:artist][:name])
+      artist = Artist.new(:name => params[:artist_name])
       artist.save
     end
     song.artist_id = artist.id
@@ -71,6 +82,6 @@ class ApplicationController < Sinatra::Base
       song.save
     end
 
-    redirect :"/songs/#{song.id}"
+    redirect :"/songs/#{song.slug}"
   end
 end
