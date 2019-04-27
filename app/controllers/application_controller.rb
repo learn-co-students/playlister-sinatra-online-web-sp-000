@@ -20,8 +20,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/songs/:id' do
-    @song = Song.find(params[:id]) || @song = Song.find_by_slug(params[:id])
-
+    if Song.find { |song| song.id == params[:id] }
+      @song = Song.find(params[:id])
+    else
+      @song = Song.find_by_slug(params[:id])
+    end
+    
     erb :'songs/show'
   end
 

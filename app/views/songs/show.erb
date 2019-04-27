@@ -4,6 +4,13 @@
   <title><%= @song.name %></title>
 </head>
 <body>
-  <h1><%= @song.name %></h1>
+  <h1><%= @song.name %>, by <a href="/artists/<%=@song.artist.slug%>">
+    <%= @song.artist.name %></a></h1>
+  <h2>Genres</h2>
+  <ul>
+    <% @song.genres.each do |genre| %>
+    <li><a href="/genres/<%=genre.slug%>"><%= genre.name %></a></li>
+    <% end %>
+  </ul>
 </body>
 </html>
