@@ -1,9 +1,13 @@
-class Slugifiable
-
-  def self.slug (input_string)
-    output_string = input_string.downcase.strip
-    output_string = output_string.sub(' ','-')
+module Slugifiable
+  module InstanceMethods
+    def slug
+      name.downcase.strip.sub(' ','-')
+    end
   end
 
-
+  module ClassMethods
+    def find_by_slug (input_slug)
+      all.find { |object| object.slug == input_slug }
+    end
+  end
 end

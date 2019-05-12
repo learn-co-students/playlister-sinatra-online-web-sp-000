@@ -1,12 +1,9 @@
 class Artist < ActiveRecord::Base
+
+  extend Slugifiable::ClassMethods
+  include Slugifiable::InstanceMethods
+
   has_many :songs
   has_many :genres, through: :songs
 
-  def slug
-    Slugifiable.slug name
-  end
-
-  def self.find_by_slug (input_slug)
-    all.find { |artist| artist.slug == input_slug }
-  end
 end
