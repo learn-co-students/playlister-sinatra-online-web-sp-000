@@ -2,7 +2,7 @@
   <input type="hidden" name="_method" value="patch" id="hidden"/>
   Name: <input type="text" name="song[name]" id="Name" value="<%= @song.name %>" required/>
   <br>
-  Artist: <input type="text" name="artist" id="Artist Name" value="<%= @song.artist.name %>" required/>
+  Artist: <input type="text" name="artist[name]" id="Artist Name" value="<%= @song.artist.name %>" required/>
   <br>
   Select one or more genres for this song:
   <br>
