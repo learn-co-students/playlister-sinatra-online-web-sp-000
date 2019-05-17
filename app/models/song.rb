@@ -11,6 +11,6 @@ class Song < ActiveRecord::Base
   def self.find_by_slug(slug)
     name = slug.gsub("-", " ").split.map(&:capitalize).join(" ")
     
-    @song = self.all.find_by_name(name)
+    self.all.find_by_name(name)
   end
 end
