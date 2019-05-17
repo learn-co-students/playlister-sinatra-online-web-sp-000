@@ -3,6 +3,7 @@ ENV['SINATRA_ENV'] ||= "development"
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
+
 def fi_check_migration
   begin
     ActiveRecord::Migration.check_pending!
@@ -19,5 +20,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+require 'rack-flash'
+require_relative '../app/models/concerns/slugifiable'
 require_all 'app'
 require_all 'lib'
