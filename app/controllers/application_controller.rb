@@ -27,4 +27,10 @@ class ApplicationController < Sinatra::Base
     # binding.pry
     erb :'/songs/show'
   end
+
+  get '/artists/:slug' do
+    @artist = Artist.find{|a|a.slug == params[:slug]}
+
+    erb :'/artists/show'
+  end
 end
