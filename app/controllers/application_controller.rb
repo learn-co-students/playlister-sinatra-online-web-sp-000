@@ -23,6 +23,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/songs/:slug' do
-    
+    @song = Song.find{|s|s.slug == params[:slug]}
+    # binding.pry
+    erb :'/songs/show'
   end
 end
