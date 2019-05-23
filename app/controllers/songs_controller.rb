@@ -41,5 +41,16 @@ class SongsController < ApplicationController
     @song = Song.find {|s| s.slug == params[:slug]}
     @song.name = params[:Name]
     @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+
+    @genres = Genre.find(params[:genres])
+    @song.song_genres.clear
+    @genres.each do |g|
+      song_genre = SongGenre.new(:song => @song, :genre => g)
+      song_genre.save
+    end
+
+    @song.save
+    flash[:message] = "Successfully updated song."
+    redirect to ("/songs/#{@song.slug}")
   end
 end
