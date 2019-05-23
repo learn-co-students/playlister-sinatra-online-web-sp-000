@@ -31,4 +31,13 @@ class SongsController < ApplicationController
     # binding.pry
     redirect to ("/songs/#{@song.slug}")
   end
+
+  get '/songs/:slug/edit' do
+    @song = Song.find{|s| s.slug == params[:slug]}
+    erb :'/songs/edit'
+  end
+
+  patch '/songs/:slug' do
+    
+  end
 end
