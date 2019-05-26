@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+
   use Rack::Flash
   
   get '/songs' do 
@@ -10,7 +11,7 @@ class SongsController < ApplicationController
   get '/songs/new' do 
     erb :'songs/new'
   end
-  
+
   get '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
     
@@ -51,4 +52,5 @@ class SongsController < ApplicationController
     flash[:message] = "Successfully updated song."
     redirect "/songs/#{@song.slug}"
   end
+
 end
