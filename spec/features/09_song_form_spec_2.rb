@@ -7,7 +7,7 @@ describe "Song Forms" do
   let(:song_name) { "That One with the Guitar" }
   let!(:genre_1) { Genre.create(name: genre_1_name) }
   let!(:genre_2) { Genre.create(name: genre_2_name) }
-
+=begin
   describe "/songs/new" do
     before do
       visit "/songs/new"
@@ -79,7 +79,8 @@ describe "Song Forms" do
       end
     end
   end
-=begin
+=end
+
   describe "/songs/:slug/edit" do
     before do
       @song = Song.create(name: song_name)
@@ -135,5 +136,5 @@ describe "Song Forms" do
       end
     end
   end
-=end
+
 end
