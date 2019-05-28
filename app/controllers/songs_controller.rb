@@ -21,7 +21,7 @@ class SongsController < ApplicationController
 
 
   post '/songs' do
-    binding.pry
+    # binding.pry
 
   end
 end
