@@ -1,13 +1,16 @@
 class Song < ActiveRecord::Base
   belongs_to :artist
+  has_many :song_genres
   has_many :genres, through: :song_genres
-  attr_accessor :genre_ids
 
-  @genre_ids = []
+  def slug
+    self.name.gsub(" ", "-").downcase
+  end
 
-  def genre_ids
-    self.genres.each do |genre|
-      self.genre_ids << genre.id
+  def self.find_by_slug(slug)
+    self.all.find do |song|
+      song.slug == slug
     end
   end
+
 end
