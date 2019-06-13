@@ -6,17 +6,21 @@
 <!-- Need to get song name and artist -->
 <div>
   <label for='name'>Song name:</label>
-  <input type='text' name='name' id='Name'>
+  <input type='text' name='Name' id='Name'>
 </div>
 <div>
   <label for='Artist Name'>Artist name:</label>
-  <input type='text' name='artist_name' id='Artist Name'>
+  <input type='text' name='Artist Name' id='Artist Name'>
 </div>
 
 <!-- then list checkboxes for genre -->
-<%Genre.all.each do |genre|%>
-  <input type="checkbox" name="genres[]" value="<%=genre.id%>" id="<%=genre.name%>"><%=genre.name%></input>
-<%end%>
+
+  <h4>Genres: <% Genre.all.each do |genre| %></h4>
+    <input type="checkbox" name="genres[]" value="<%= genre.id %>" id="<%= genre.name %>"></input>
+    <% end %>
+
+    <br><br>
+
 
 
 <input type='submit' value="Create">

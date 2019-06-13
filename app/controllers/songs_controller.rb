@@ -22,11 +22,19 @@ class SongsController < ApplicationController
   end
  
    post '/songs' do
-     @song = Song.create({name: params[:name]})
-     @song.artist = Artist.find_or_create_by(name: params[:artist_name])
-     @song.genre_ids = params[:genres]
-     #@song.genres << params[:genres].collect {|g| Genre.find(g)}
-     @song.save   
+    #  @song = Song.create({name: params[:name]})
+    #  @song.artist = Artist.find_or_create_by(name: params[:artist_name])
+    #  @song.genre_ids = params[:genres]
+    #  #@song.genres << params[:genres].collect {|g| Genre.find(g)}
+    #  @song.save   
+    @song = Song.create(:name => params["Name"])
+    @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+    @song.genre_ids = params[:genres]
+    @song.save
+
+    flash[:message] = "Successfully created song."
+
+    redirect("/songs/#{@song.slug}")
 
  
      flash[:message] = "Successfully created song."
@@ -45,7 +53,8 @@ class SongsController < ApplicationController
      @song = Song.find_by_slug(params[:slug])
      @song.update(params[:song])
      @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-     @song.genre_ids = params[:genres]
+     #@song.genre = Genre.find_or_create_by(name: params[:genre][:name])
+     
      @song.save
 
     flash[:message] = "Successfully updated song."
