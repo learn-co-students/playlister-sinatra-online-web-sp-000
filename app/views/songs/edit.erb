@@ -1,8 +1,8 @@
-<h1><%=@song.name%></h1>
+<h1>Edit <%=@song.name%></h1>
 
 <form action='/songs/<%=@song.slug%>' method='post'>
 
-<!-- Need to get song name and artist -->
+
 <div>
   <label for='name'>Song name:</label>
   <input type='text' name='name' id='Name' value='<%=@song.name%>'>
@@ -12,7 +12,7 @@
   <input type='text' name='artist_name' id='Artist Name' value='<%=@song.artist.name%>'>
 </div>
 <hr>
-<!-- then list checkboxes for genre -->
+
 <%Genre.all.each do |genre|%>
   <input type="checkbox" name="genres[]" value="<%=genre.id%>" id="<%=genre.name%>" <%='checked' if @song.genres.include?(genre) %> >
   <%=genre.name%></input>
