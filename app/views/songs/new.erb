@@ -3,7 +3,7 @@
 
 <form action='/songs' method='post'>
 
-<!-- Need to get song name and artist -->
+
 <div>
   <label for='name'>Song name:</label>
   <input type='text' name='Name' id='Name'>
@@ -13,7 +13,7 @@
   <input type='text' name='Artist Name' id='Artist Name'>
 </div>
 
-<!-- then list checkboxes for genre -->
+
 
   <h4>Genres: <% Genre.all.each do |genre| %></h4>
     <input type="checkbox" name="genres[]" value="<%= genre.id %>" id="<%= genre.name %>"></input>
