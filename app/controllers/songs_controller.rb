@@ -1,14 +1,11 @@
 
-# require 'sinatra/flash'
-# enable :sessions
+ require 'sinatra/flash' #this may need to be added here as well before flash works
+ enable :sessions #this may need to be added here as well before flash works
+ 
 
-class SongsController < ApplicationController 
-  
-  
-  
-
-  
-  
+class SongsController < ApplicationController   
+  enable :sessions #this may need to be added here as well before flash works
+  register Sinatra::Flash #this may need to be added here as well before flash works
  
    get '/songs' do
      @songs = Song.all
@@ -29,14 +26,12 @@ class SongsController < ApplicationController
      @song.artist = Artist.find_or_create_by(name: params[:artist_name])
      @song.genre_ids = params[:genres]
      #@song.genres << params[:genres].collect {|g| Genre.find(g)}
-     @song.save
-     binding.pry 
-     
+     @song.save   
 
  
-     #flash[:message] = "Successfully created song."
+     flash[:message] = "Successfully created song."
      redirect to "/songs/#{@song.slug}"
-     erb :"/songs/show", :locals => {:message => "Successfully created song."}
+     erb :"/songs/show"
    end
  
    get '/songs/:slug/edit' do
@@ -53,10 +48,10 @@ class SongsController < ApplicationController
      @song.genre_ids = params[:genres]
      @song.save
 
-    #flash[:message] = "Successfully updated song."
+    flash[:message] = "Successfully updated song."
     redirect to "/songs/#{@song.slug}"
     
-    erb :'songs/show', :locals => {:message => "Successfully updated song."}
+    erb :'songs/show'
    end
    
   
