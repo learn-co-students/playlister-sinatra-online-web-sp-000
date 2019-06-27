@@ -1,4 +1,4 @@
-# Sinatra Playlister
+--fail# Sinatra Playlister
 
 ## Objectives
 

@@ -1,0 +1,14 @@
+<table>
+    
+  <tr>
+    <th>ID</th>
+    <th>Genre Name</th>
+  </tr>
+  
+  <%@genres.each do |genre|%>
+    <tr>
+      <td><%=genre.id%></td>
+      <td><a href='/genres/<%=genre.slug%>'><%=genre.name%></a></td>
+    </tr>
+  <% end %>
+</table>

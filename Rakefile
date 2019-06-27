@@ -8,3 +8,16 @@ require 'sinatra/activerecord/rake'
 task :console do
   Pry.start
 end
+
+task :resetdb do
+  Rake::Task['db:rollback'].invoke
+  Rake::Task['db:rollback'].reenable
+  Rake::Task['db:rollback'].invoke
+  Rake::Task['db:rollback'].reenable
+  Rake::Task['db:rollback'].invoke
+  Rake::Task['db:rollback'].reenable
+  Rake::Task['db:rollback'].invoke
+  Rake::Task['db:rollback'].reenable
+  Rake::Task['db:migrate'].invoke
+  Rake::Task['db:seed'].invoke
+end
