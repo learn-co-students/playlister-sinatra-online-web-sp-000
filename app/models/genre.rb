@@ -15,7 +15,6 @@ class Genre < ActiveRecord::Base
         results = self.where("name LIKE ?", @short_slug)
         results.detect do |result|
         result.slug === @slug
-        binding.pry
       end
 
     end
