@@ -1,4 +1,7 @@
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 <p>Song: <%= @song.name %></p>
 
@@ -13,4 +16,3 @@
     <% end %>
 
   </ul>
-  

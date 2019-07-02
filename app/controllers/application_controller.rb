@@ -1,6 +1,3 @@
-require 'rack-flash'
-require 'sinatra/base'
-
 class ApplicationController < Sinatra::Base
 
   enable :sessions
@@ -10,6 +7,8 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
+
     erb :index
+
   end
 end
