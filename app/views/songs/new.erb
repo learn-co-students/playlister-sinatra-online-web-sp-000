@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playlister</title>
+  </head>
+
+  <body>
+    <h1>New Song Page</h1>
+
+    <form action="/songs" method="POST">
+      <label for="Name">Name</label>
+        <input type="text" id="Name" name="song[name]"><br><br>
+      <p>Genre: </p>
+        <% @genres.each do |genre| %>
+          <input type="checkbox" id="<%= genre.name %>" name="song[genre_ids][]" value="<%= genre.id %>"><%= genre.name %></input><br>
+        <% end %>
+      <p>Choose an exiting artist or create a new one:</p>
+        <% @artists.each do |artist| %>
+          <input type="radio" id="<%= artist.id %>" name="song[artist_id]" value="<%= artist.id %>"><%= artist.name %></input><br>
+        <% end %><br>
+      <p>New Artist</p>
+      <label for="artist_name">Artist Name: </label>
+        <input type="text" id="artist_name" name="artist[name]"><br><br>
+
+      <input type="submit" id="submit" value="Create Song">
+    </form>
+  </body>
+</html>
