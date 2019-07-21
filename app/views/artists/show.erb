@@ -2,9 +2,7 @@
 
 <ul>
   <% @artist.songs.each do |song| %>
-    <% binding.pry %>
-
-  <a href="/artists/<%=song.name.slug%>"><li><h2><%= song.name %></h2></li></a>
+  <a href="/artists/<%=song.slug%>"><li><h2><%= song.name %></h2></li></a>
   <% end %>
 </ul>
 
@@ -13,7 +11,6 @@
 
 <ul>
   <% @artist.genres.each do |genre| %>
-<% binding.pry %>
-  <a href="/artists/<%=genre.name.slug%>"><li><h2><%= genre.name %></h2></li></a>
+  <a href="/artists/<%=genre.slug%>"><li><h2><%= genre.name %></h2></li></a>
   <% end %>
 </ul>
