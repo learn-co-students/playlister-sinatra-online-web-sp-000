@@ -16,13 +16,12 @@ class SongsController < ApplicationController
   end
 
   post '/songs' do
-  @song = Song.create(params[:song])
-  if !params["artist"]["name"].empty?
-    @song.artists << Artist.create(name: params["artist"]["name"])
-    # When using the shovel operator, ActiveRecord instantly fires update SQL
-    # without waiting for the save or update call on the parent object,
-    # unless the parent object is a new record.
-  end
+  @song = Song.create(:name => params["name"])
+  @artist = Artist.find_or_create_by(:name => params["artist_name"])
+
+
+
+
   redirect "/songs/:slug"
   end
 
