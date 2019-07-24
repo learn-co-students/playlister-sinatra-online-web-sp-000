@@ -1,4 +1,4 @@
-lass Genre < ActiveRecord::Base
+class Genre < ActiveRecord::Base
   has_many :song_genres
   has_many :songs, through: :song_genres
   has_many :artists, through: :songs
@@ -10,4 +10,4 @@ lass Genre < ActiveRecord::Base
   def self.find_by_slug(name)
     self.all.find {|g| g.slug == name}
   end
-end 
+end
