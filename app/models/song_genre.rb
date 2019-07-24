@@ -1,3 +1,4 @@
 class Song_genre
-
-end 
+belongs_to :songs
+belongs_to :genres
+end
