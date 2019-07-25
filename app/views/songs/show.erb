@@ -1,0 +1,4 @@
+<h1><%= @song.name %></h1>
+<p>Artist: <a href="/arists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></p>
+
+<p>Genre(s): <%= @song.genres.collect{|genre|"<a href=#{genre.slug}>#{genre.name}</a>"}.join(", ") %></p>
