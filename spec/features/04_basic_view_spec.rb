@@ -53,24 +53,24 @@ describe "Playlister Basics" do
       end
     end
 
-  #   describe "/genres" do
-  #     before do
-  #       visit "/genres"
-  #     end
+    describe "/genres" do
+      before do
+        visit "/genres"
+      end
 
-  #     it 'responds with a 200 status code' do
-  #       expect(page.status_code).to eq(200)
-  #     end
+      it 'responds with a 200 status code' do
+        expect(page.status_code).to eq(200)
+      end
 
-  #     it "displays a list of genres" do
-  #       expect(page).to have_content(genre_name)
-  #     end
+      it "displays a list of genres" do
+        expect(page).to have_content(genre_name)
+      end
 
-  #     it "contains links to each genre's show page" do
-  #       expect(page).to have_css("a[href='/genres/#{@genre.slug}']")
-  #     end
-  #   end
-  # end
+      it "contains links to each genre's show page" do
+        expect(page).to have_css("a[href='/genres/#{@genre.slug}']")
+      end
+    end
+  end
 
   # describe "show pages" do
   #   describe "/songs/:slug" do
@@ -150,5 +150,5 @@ describe "Playlister Basics" do
   #       expect(page).to have_css("a[href='/songs/#{@song.slug}']")
   #     end
   #   end
-  end
+  # end
 end
