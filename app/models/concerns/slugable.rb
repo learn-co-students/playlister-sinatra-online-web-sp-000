@@ -1,11 +1,10 @@
 module Concerns::Slugable
   def slug
-    self.name.gsub(' ', '-').downcase
+    self.name.gsub(' ', '-')
   end
 
   def find_by_slug(slug)
-    slug_name = slug.split('-')
-    name = "#{slug_name[0].capitalize} #{slug_name[1].capitalize}"
-    self.find_by(name: name)
+    self.find_by(name: slug.split('-').join(' '))
   end
+
 end
