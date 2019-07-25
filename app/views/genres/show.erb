@@ -27,17 +27,23 @@ a:hover {
 <body>
   <table>
   <tr>
-    <th><%= @genre.name %>'s Artists</th>
-    <th><%= @genre.name %>'s Songs</th>
+    <th><%= @genre.name.capitalize %>'s Artists</th>
   </tr>
-  <tr>
     <% @genre.artists.each do |artist| %>
-      <td><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></td>
+      <tr>
+        <td><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></td>
+      </tr>
     <% end %>
+    <tr>
+      <th><%= @genre.name.capitalize %>'s Songs</th>
+    </tr>
     <% @genre.songs.each do |song| %>
+      <tr>
         <td><a href="/songs/<%= song.slug %>"><%= song.name %></a></td>
+      </tr>
       <% end %>
-  </tr>
+    
+  
 </table>
 </body>
 </html>
