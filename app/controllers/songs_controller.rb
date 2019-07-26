@@ -1,3 +1,4 @@
+
 class SongsController < ApplicationController
 
   get'/songs/new' do
@@ -15,7 +16,7 @@ class SongsController < ApplicationController
           SongGenre.create(song_id: @song.id, genre_id: genre_id)
         end
     end
-  
+    flash[:message] = "Successfully created song."
     redirect to "/songs/#{@song.slug.downcase}"
   end
 

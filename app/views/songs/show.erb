@@ -25,6 +25,9 @@ a:hover {
   </style>
 </head>
 <body>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
   <table>
   <tr>
     <th>Name of Artist</th>
