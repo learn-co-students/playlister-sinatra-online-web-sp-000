@@ -28,10 +28,12 @@ a:hover {
   <table>
   <tr>
     <th>Name of Artist</th>
+    <th>Song's Name</th>
     <th>Song's Genres</th>
   </tr>
   <tr>
     <td><a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></td>
+    <td><%= @song.name %></td>
       <% @song.genres.each do |genre| %>
         <td><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></td>
       <% end %>

@@ -6,15 +6,17 @@ class SongsController < ApplicationController
   end
 
   post '/songs' do
-    # binding.pry
+
     if Artist.find_by(name: params["Artist Name"]).nil?
       @artist = Artist.create(name: params["Artist Name"])
-      # @song = Song.create(name: params[:song][:name], :artist => artist)
-      #   params[:song][:genre_ids].each do |genre|
-      #     SongGenre.create(song_id: @song.id, genre_id: genre)
-      #   end
+      @song = Song.create(name: params[:Name], :artist => @artist)
+        params[:song][:genre_name].each do |genre|
+          genre_id = Genre.find_by(name: genre).id
+          SongGenre.create(song_id: @song.id, genre_id: genre_id)
+        end
     end
-    redirect to "/songs/#{@song.slug}"
+  
+    redirect to "/songs/#{@song.slug.downcase}"
   end
 
   get '/songs' do
