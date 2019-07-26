@@ -7,8 +7,10 @@ class SongsController < ApplicationController
   end
 
   post '/songs' do
+    
+    @artist = Artist.find_by(name: params["Artist Name"])
     ##if artist doesn't exist
-    if Artist.find_by(name: params["Artist Name"]).nil?
+    if @artist.nil?
       @artist = Artist.create(name: params["Artist Name"])
       @song = Song.create(name: params[:Name], :artist => @artist)
         params[:song][:genre_name].each do |genre|
@@ -16,13 +18,11 @@ class SongsController < ApplicationController
           SongGenre.create(song_id: @song.id, genre_id: genre_id)
         end
       else
-        @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.create(name: params[:Name], :artist => @artist)
         params[:song][:genre_name].each do |genre|
           genre_id = Genre.find_by(name: genre).id
           SongGenre.create(song_id: @song.id, genre_id: genre_id)
         end
-        # binding.pry
     end
 
     flash[:message] = "Successfully created song."
