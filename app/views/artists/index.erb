@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="stylesheets/index.css" type="text/css">
+</head>
+<body>
+  <table>
+  <tr>
+    <th>Artist's Name</th>
+  </tr>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></td>
+    </tr>   
+  <% end %>
+
+</table>
+</body>
+</html>

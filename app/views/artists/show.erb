@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+a:hover {
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+  <table>
+  <tr>
+    <th><%= @artist.name %>'s Songs</th>
+    <th><%= @artist.name %>'s Genres</th>
+  </tr>
+  <tr>
+    <% @artist.songs.each do |song| %>
+      <td><a href="/songs/<%= song.slug %>"><%= song.name %></a></td>
+    <% end %>
+    <% @artist.genres.each do |genre| %>
+        <td><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></td>
+      <% end %>
+  </tr>
+</table>
+</body>
+</html>
