@@ -25,10 +25,11 @@ describe "Song Forms" do
 
       it "creates a new song on submit" do
         fill_in "Name", with: song_name
+        # binding.pry
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
-
+        # binding.pry
         expect(page).to have_content(song_name)
         expect(page).to have_content(artist_name)
         expect(page).to have_content(genre_2_name)
