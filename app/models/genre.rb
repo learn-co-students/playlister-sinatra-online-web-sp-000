@@ -1,3 +1,4 @@
 class Genre < ActiveRecord::Base
-"This is it"
+has_many :songs
+has_many :artists
 end
