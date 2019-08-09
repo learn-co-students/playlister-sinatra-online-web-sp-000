@@ -1,3 +1,3 @@
-class Genre < ActiveRecord::Base 
-
+class Genre < ActiveRecord::Base
+"This is it"
 end
