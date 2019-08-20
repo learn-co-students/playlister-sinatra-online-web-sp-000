@@ -1,4 +1,4 @@
-# Sinatra Playlister
+rspec # Sinatra Playlister
 
 ## Objectives
 
