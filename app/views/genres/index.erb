@@ -1,0 +1,4 @@
+<h1>All Genres</h1>
+<% @genres.each_with_index do |g,i|%>
+<h2><a href="/genres/<%= g.slug %>"><%= "#{i+1}. #{g.name}" %><br></a></h2>
+<% end %>
