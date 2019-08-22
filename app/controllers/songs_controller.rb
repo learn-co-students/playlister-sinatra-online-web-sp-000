@@ -40,8 +40,7 @@ class SongsController < ApplicationController
     #@song.genres = params[:genres][:name]
     @song.update(params[:song])
     @song.save
-    flash[:message] = "Succesfully updated song."
+    flash[:message] = "Successfully updated song."
     erb :'/songs/show'
-    #redirect "/songs/#{@song.slug}"
   end
 end
