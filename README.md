@@ -1,5 +1,5 @@
 # Sinatra Playlister
-
+hi 
 ## Objectives
 
 - Solidify your ActiveRecord understanding
