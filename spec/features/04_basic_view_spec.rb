@@ -7,12 +7,15 @@ describe "Playlister Basics" do
 
   before do
     @song = Song.create(name: song_name)
+    @song.slug
     @genre = Genre.create(name: genre_name)
+    @genre.slug
     @artist = Artist.create(name: artist_name)
+    @artist.slug
 
     @song.song_genres.create(genre: @genre)
     @song.artist = @artist
-  
+
     @song.save
   end
 
