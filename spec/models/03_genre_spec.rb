@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe "Genre" do
-  before do 
-    @artist = Artist.create(:name => "Taylor Swift") 
+  before do
+    @artist = Artist.create(:name => "Taylor Swift")
 
-    blank_space =  Song.create(:name => "Blank Space", :artist => @artist) 
+    blank_space =  Song.create(:name => "Blank Space", :artist => @artist)
 
     @genre = Genre.create(:name => "Pop")
 
     blank_space.genre_ids = @genre.id
-    
+
   end
 
 
@@ -38,6 +38,7 @@ describe "Genre" do
   describe "Class methods" do
     it "given the slug can find a genre" do
       genre = Genre.create(:name => "Alternative Rock")
+      genre.slug
       slug = "alternative-rock"
       expect((Genre.find_by_slug(slug)).name).to eq("Alternative Rock")
     end
