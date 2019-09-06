@@ -1,15 +1,13 @@
 require 'spec_helper'
 
 describe "Genre" do
-  before do 
-    @artist = Artist.create(:name => "Taylor Swift") 
-
-    blank_space =  Song.create(:name => "Blank Space", :artist => @artist) 
-
+  before do
+    @artist = Artist.create(:name => "Taylor Swift")
+    blank_space =  Song.create(:name => "Blank Space", :artist => @artist)
+    blank_space.slug
     @genre = Genre.create(:name => "Pop")
-
     blank_space.genre_ids = @genre.id
-    
+
   end
 
 

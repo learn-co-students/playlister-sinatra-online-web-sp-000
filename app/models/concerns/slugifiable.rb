@@ -1,10 +1,10 @@
 module Concerns
-
   module Slug #=> to be included into all model classes as instance methods for populating the "slug_name" columns.
+
     def slug
       @name = name #=> captures the object's name attribute for running regex on.
+      binding.pry
       self.slug_name = @name.downcase.gsub(/[\s]/, "-").gsub("$", "s").gsub(/[^\w-]/
-      self.save #=> saves the slug to the object/db.
       self.slug_name #=> returns the slug_name for future use in controllers & views.
     end
   end
