@@ -2,7 +2,6 @@ module Concerns
   module Slug #=> to be included into all model classes as instance methods for populating the "slug_name" columns.
 
     def slug  #=> runs a method that returns the slug value for the given object
-
     self.name.downcase.gsub(/[\s]/, "-").gsub("$", "s").gsub(/[^\w-]/, "")
     end
   end
