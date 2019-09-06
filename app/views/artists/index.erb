@@ -1,0 +1,8 @@
+<h1> hello from the artist index page</h1>
+<h2>Please choose from the following list of artists:</h2>
+
+  <ul>
+    <% @artist.each do |artist| %>
+    <li><a href="/artists/<%=artist.slug%>" value = "slug"><%= artist.name %></li>
+      <%end%>
+  </ul>

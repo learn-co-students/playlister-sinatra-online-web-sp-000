@@ -1,17 +1,14 @@
 module Concerns
   module Slug #=> to be included into all model classes as instance methods for populating the "slug_name" columns.
 
-    def slug
-      @name = name #=> captures the object's name attribute for running regex on.
-      binding.pry
-      self.slug_name = @name.downcase.gsub(/[\s]/, "-").gsub("$", "s").gsub(/[^\w-]/
-      self.slug_name #=> returns the slug_name for future use in controllers & views.
+    def slug  #=> runs a method that returns the slug value for the given object
+    name.downcase.gsub(/[\s]/, "-").gsub("$", "s").gsub(/[^\w-]/, "")
     end
   end
 
-  module Find_by_slug #=> to be extended into all model classes as class methods for adding "find_by(slug_name) functionality.
+  module Find_by_slug #=> to be extended into all model classes as class methods for adding similar "find_by(slug) functionality.
     def find_by_slug(slug)
-      self.find_by(slug_name: slug)
+       self.all.find {|object| object.slug == slug} #=> runs through the object array in the given class to return the object that matches the returned 'slug' method value.
     end
   end
 end
