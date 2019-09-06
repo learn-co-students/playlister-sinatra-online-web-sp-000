@@ -1,17 +1,16 @@
-<h1>Welcome to <%= @genre.name%>'s Show Page </h1>
+<h1>Welcome to <%= @genres.name%>'s Show Page </h1>
 
-<h2> Genre Name: <%= @genre.name %> </h2>
+<h2> Genre Name: <%= @genres.name %> </h2>
 <h2> Songs: </h2>
-  <% @genre.songs.each do |genre| %>
   <ul>
 <li>
 
-  <h3> <a href= genres/<%genre.slug %>'><%genre.name %></a></h3>
-  <% genre.songs.each do |song| %>
+  <h3> <a href= genres/<%@genres.slug %>'><%@genres.name %></a></h3>
+  <% @genres.songs.each do |song| %>
 
   <h4>Songs: <a href='/songs/<%= song.slug %>'> <%= song.name %></a></h4>
   <p>by: <a href='/artists/<%= song.artist.slug %>'> <%= song.artist.name %></a></p><br>
 </li>
 </ul>
-   <% end %>
+
   <% end %>
