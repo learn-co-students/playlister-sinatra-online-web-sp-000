@@ -1,0 +1,8 @@
+<h1> hello from the genres index page</h1>
+<h2>Please choose from the following list of genres:</h2>
+
+  <ul>
+    <% @genres.each do |genre| %>
+    <li><a href="/genres/<%=genre.slug%>" value = "slug"><%= genre.name %></li>
+      <%end%>
+  </ul>
