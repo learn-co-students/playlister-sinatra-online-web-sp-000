@@ -2,7 +2,11 @@ module Slugable
   module ClassMethods
     def find_by_slug(slug)
       name = slug.split("-").map{|string| string.capitalize}.join(" ")
-      self.find_by name: "#{name}"
+      self.where(
+        self.arel_table[:name]
+        .lower
+        .matches("%#{name.downcase}%")
+      ).last
     end
   end
   module InstanceMethods

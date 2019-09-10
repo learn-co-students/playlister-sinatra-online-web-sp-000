@@ -1,0 +1,4 @@
+<h1>Genre List</h1>
+<% @genres.each do |g| %>
+  <h2>Genre: <a href="/genres/<%= g.slug %>"><%= g.name%></a></h2>
+<%end%>
