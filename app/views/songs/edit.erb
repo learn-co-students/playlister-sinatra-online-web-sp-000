@@ -4,9 +4,9 @@
  
 <form action="/songs/<%= @song.slug %>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <label>Edit the Song's Name:</label>
+  <label>Song Name:</label>
   <br>
-  <input type="text" name="song[name]" value="<%= @song.name %>">
+  <input type="text" id="song_name" name="song[name]" value="<%= @song.name %>">
  
   <br>
   <p>Select an existing Genre</p>
@@ -21,7 +21,7 @@
   <h3>Artist</h3>
   <label>Name: </label>
   <br>
-  <input type="text" name="artist[name]" id="artist_name"></input>
+  <input type="text" name="artist[name]" id="artist_name" value="<%= @song.artist.name %>"></input>
   <br><br>
  
   <input type="submit" value="Create Song">

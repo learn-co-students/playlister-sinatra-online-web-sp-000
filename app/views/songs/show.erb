@@ -1,8 +1,11 @@
 <h3>Song</h3>
 
 <h4>Name: <%= @song.name %></h4>
-<h5>Artist: <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h5>
-
+<h5>Artist: <% if @song.artist != nil %>
+<a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h5>
+<% else %>
+"No Artist"
+<% end %>
 <br>
 
 <h5>Genres:</h5>
