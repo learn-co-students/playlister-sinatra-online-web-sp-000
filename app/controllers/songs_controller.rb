@@ -1,30 +1,30 @@
 
-#require 'sinatra/base'
-#require 'rack-flash'
+require 'sinatra/base'
+require 'rack-flash'
 
 class SongsController < ApplicationController
-  #enable :sessions
-  #use Rack::Flash  
+  enable :sessions
+  use Rack::Flash
 
-  get "/songs" do 
-    @songs = Song.all 
+  get "/songs" do
+    @songs = Song.all
     erb :'/songs/index'
   end
-  
-  get "/songs/new" do 
-    @genres = Genre.all 
+
+  get "/songs/new" do
+    @genres = Genre.all
     @artists = Artist.all
     erb :'songs/new'
   end
-  
-  post "/songs" do 
-    
+
+  post "/songs" do
+
     if params["song"]["name"] == ""
        redirect to "songs"
      end
-     
+
     @song = Song.create(params[:song])
-    
+
       if !params["artist"]["name"].empty?
         if @artist = Artist.find_by(name: params["artist"]["name"])
         @song.artist = @artist
@@ -32,35 +32,35 @@ class SongsController < ApplicationController
         else
         @song.artist = Artist.create(name: params["artist"]["name"])
         @song.save
-        end 
+        end
       else params["artist"]["name"] == ""
         @song.artist = nil
         @song.save
       end
-    #flash[:message] = "Successfully created song."
+    flash[:message] = "Successfully created song."
     redirect to "songs/#{@song.slug}"
   end
-  
-  get "/songs/:slug" do 
+
+  get "/songs/:slug" do
     @song = Song.find_by_slug(params[:slug])
     erb :'/songs/show'
   end
-  
-  get "/songs/:slug/edit" do 
+
+  get "/songs/:slug/edit" do
     @song = Song.find_by_slug(params[:slug])
-    @genres = Genre.all 
+    @genres = Genre.all
     @artists = Artist.all
     erb :'songs/edit'
   end
-  
-  patch '/songs/:slug' do 
+
+  patch '/songs/:slug' do
 
     if !params[:song].keys.include?("artist_id")
     params[:song]["artist_id"] = []
     end
     @song = Song.find_by_slug(params[:slug])
     @song.update(params["song"])
-   
+
       if !params["artist"]["name"].empty?
         if @artist = Artist.find_by(name: params["artist"]["name"])
         @song.artist = @artist
@@ -68,7 +68,7 @@ class SongsController < ApplicationController
         else
         @song.artist = Artist.create(name: params["artist"]["name"])
         @song.save
-        end 
+        end
       else params["artist"]["name"] == ""
         @song.artist = nil
         @song.save
@@ -82,7 +82,7 @@ class SongsController < ApplicationController
       #elsif  @artist = Artist.find(params["artist"]["name"])
       #  @song.artist = @artist
       #  @song.save
-    
+    flash[:message] = "Successfully updated song."
     redirect to "/songs/#{@song.slug}"
   end
 
