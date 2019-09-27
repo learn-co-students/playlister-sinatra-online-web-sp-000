@@ -21,7 +21,11 @@
   <h3>Artist</h3>
   <label>Name: </label>
   <br>
-  <input type="text" name="artist[name]" id="artist_name" value="<%= @song.artist.name %>"></input>
+  <input type="text" name="artist[name]" id="artist_name" value=
+  <% if @song.artist != nil %>"<%= @song.artist.name %>">
+  <% else %>""
+  <% end %>
+  </input>
   <br><br>
  
   <input type="submit" value="Create Song">

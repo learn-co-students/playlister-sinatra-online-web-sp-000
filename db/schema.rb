@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_09_26_121211) do
-=======
-ActiveRecord::Schema.define(version: 2019_09_26_022226) do
->>>>>>> a62c66f298f1d8afb2ea1fca4293a56503f1e48b
 
   create_table "artists", force: :cascade do |t|
     t.text "name"
@@ -22,11 +18,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_022226) do
 
   create_table "genres", force: :cascade do |t|
     t.text "name"
-<<<<<<< HEAD
     t.integer "song_genre_id"
     t.integer "song_id"
-=======
->>>>>>> a62c66f298f1d8afb2ea1fca4293a56503f1e48b
   end
 
   create_table "song_genres", force: :cascade do |t|
@@ -36,12 +29,9 @@ ActiveRecord::Schema.define(version: 2019_09_26_022226) do
 
   create_table "songs", force: :cascade do |t|
     t.text "name"
-<<<<<<< HEAD
     t.integer "artist_id"
     t.integer "song_genre_id"
     t.integer "genre_id"
-=======
->>>>>>> a62c66f298f1d8afb2ea1fca4293a56503f1e48b
   end
 
 end
