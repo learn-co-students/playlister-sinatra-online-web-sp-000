@@ -38,9 +38,17 @@ genre_array_incomplete.map do |file| a = file.split("].")
 end
 
 i = 0
-artist_array.each do |artist| a = Artist.create(name: artist)
+artist_array.each do |artist|
+  if a = Artist.find_by(name: artist)
+  else
+  a = Artist.create(name: artist)
+  end
   b = Song.create(name: song_array[i])
-  b.genres << Genre.create(name: genre_array[i])
+  if c = Genre.find_by(name: genre_array[i])
+  else
+  c = Genre.create(name: genre_array[i])
+  end
+  b.genres << c
   a.songs << b
   a.save
   i = i + 1
