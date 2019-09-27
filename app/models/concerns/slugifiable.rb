@@ -1,3 +1,4 @@
+
 module Slugifiable
   module InstanceMethods
     def slug
@@ -11,3 +12,4 @@ module Slugifiable
     end
   end
 end
+
