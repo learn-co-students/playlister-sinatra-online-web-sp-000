@@ -9,19 +9,33 @@ class ApplicationController < Sinatra::Base
     
   get '/songs' do  
 	@songs = Song.all
-	erb :songs
+	erb :'song/songs'
   end
 
   get '/artists' do
     @artists = Artist.all
-	erb :artists
+	erb :'artist/artists'
   end
   
   get '/genres' do 
 	@genres = Genre.all 
-	erb :genres
+	erb :'genre/genres'
 	end 
 
+  get '/songs/:slug' do 
+	 @song = Song.find_by_slug(params[:slug])
+    erb :'song/show'
+  end
+
+  get '/artists/:slug' do 
+	 @artist = Artist.find_by_slug(params[:slug])
+    erb :'artist/show'
+  end
+
+  get '/genres/:slug' do 
+	 @genre = Genre.find_by_slug(params[:slug])
+    erb :'genre/show'
+  end
 
 
 end
