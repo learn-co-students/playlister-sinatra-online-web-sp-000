@@ -13,5 +13,6 @@ class Artist < ActiveRecord::Base
         slug.name
       end
     end
+    
 end
 

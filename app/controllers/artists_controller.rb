@@ -1,26 +1,17 @@
 class ArtistsController < ApplicationController
 
-    get '/' do
-
-    erb '/articles/index'
-    end
-
     get '/artists' do
-        @artist = Artist.all    
-    
-        erb :'/articles/index'
+        @artists = Artist.all 
+        erb :'artists/index'
     end
-
-    # get 'artists/new' do
-    #     @song = Song.all
-    
-    #     erb :'/articles/index'
-    # end
 
     post '/artists' do
-        @artist = Artist.create(:artist => params[:name])
-    
-        redirect to "/artists/#{@artist.id}" 
+        erb :'artists/index'
     end
    
+    get '/artists/:slug' do
+        @artist = Artist.find_by_slug(params[:slug])
+        erb :'artists/show'
+    end 
+    
 end
