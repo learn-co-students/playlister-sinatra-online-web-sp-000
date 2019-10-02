@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  get '/artists' 
+  get '/artists' do
     @artists = Artist.all
   end
   

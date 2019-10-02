@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   
-  get '/songs'
+  get '/songs' do
     @songs = Song.all
   end
   

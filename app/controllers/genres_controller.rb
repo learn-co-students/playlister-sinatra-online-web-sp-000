@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   
-  get '/genres' 
+  get '/genres' do
     @genres = Genre.all
   end
   
