@@ -6,11 +6,7 @@ class SongsController < ApplicationController
   end
   
   get '/songs/new' do 
-	erb :'song/form'
-  end
-
-  get '/songs/new' do 
-	  erb :'song/form'
+  	erb :'song/form'
   end
   
   get '/songs/:slug' do 
