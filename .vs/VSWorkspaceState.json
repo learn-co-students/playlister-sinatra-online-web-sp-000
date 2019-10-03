@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\views",
+    "\\app\\views\\artist",
+    "\\app\\views\\genre",
+    "\\app\\views\\song",
+    "\\db",
+    "\\lib",
+    "\\spec",
+    "\\spec\\features"
+  ],
+  "SelectedNode": "\\config.ru",
+  "PreviewInSolutionExplorer": false
+}
