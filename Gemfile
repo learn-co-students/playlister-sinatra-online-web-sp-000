@@ -8,7 +8,6 @@ gem 'sqlite3', git: 'https://github.com/larskanis/sqlite3-ruby', branch: 'add-ge
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
-gem 'puma'
 
 group :test do
   gem 'rspec'
