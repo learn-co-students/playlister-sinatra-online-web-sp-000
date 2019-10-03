@@ -2,9 +2,9 @@
 <form action="/songs/<%= @song.slug %>" method='POST'>
     <input type="hidden" id='hidden' name='_method' value="patch">
     <label for='song_name'>Song name: </label> <input type='text' id='Name' name='name'> <br>
-    <label for='artist_name'>New Artist name (or choose from options below): </label> <input type='text' id='Artist Name' name='song[artist_name]'> <br>
+    <label for='artist_name'>New Artist name (or choose from options below): </label> <input type='text' id='Artist Name' name='song[artist_name][field]'> <br>
     <% @artists.each do |artist| %>
-        <input type="radio" name="song[artist_name]" id="<%= artist.name %>" value="<%= artist.name %>" > <%= artist.name %> </input> <br>
+        <input type="radio" name="song[artist_name][check]" id="<%= artist.name %>" value="<%= artist.name %>" <%='checked' if artist.id == @song.artist.id %>> <%= artist.name %> </input> <br>
     <% end %> <br>
     <label for='genre_name'>Genre name (or choose from options below): </label> <input type='text' id='Genre Name' name='song[genre_name]'> <br>
     <% @genres.each do |genre| %>
