@@ -1,0 +1,10 @@
+<h2>Welcome to Artists Index</h2>
+<br>
+<% @artists.each do |o| %>
+
+<h3><a href="/artists/<%=o.slug%>"><%= o.name %></a></h3>
+<% end %>
+<br>
+
+<h5><a href="/">Back To Index</a></h5>
+
