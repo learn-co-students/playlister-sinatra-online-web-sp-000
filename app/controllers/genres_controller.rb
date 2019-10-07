@@ -1,3 +1,4 @@
+require 'rack-flash'
 class GenresController < ApplicationController
   get '/genres' do
     @genres = Genre.all
