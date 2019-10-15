@@ -1,11 +1,10 @@
 require 'pry'
 class SongsController < ApplicationController 
   
-  get '/' do 
-    # binding.pry 
-    # @song = Song.create(:name => params[:title])
-    # @song.artist = @artist 
-    # erb '/songs/index' 
+  get '/songs' do 
+    params
+      #binding.pry 
+    erb :'/songs/index' 
   end 
   
   
