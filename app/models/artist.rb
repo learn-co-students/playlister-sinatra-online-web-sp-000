@@ -7,4 +7,8 @@ class Artist < ActiveRecord::Base
     @name.split.join("-")
   end 
   
+  def self.find_by_slug(slug)
+    slug(name)
+  end 
+  
 end 
