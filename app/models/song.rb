@@ -4,15 +4,17 @@ class Song < ActiveRecord::Base
   belongs_to :artist 
   
   def slug 
-    @name = name.downcase.split.join("-")
+    if name 
+      @name = name.downcase.split.join("-")
+    end 
   end 
   
   def self.find_by_slug(title)
     @songs = Song.all 
-    new_song = nil 
     
-    @songs.each do |song|
-      song.slug == title ? new_song = song : nil 
+    
+    new_song = @songs.find do |song|
+      song.slug == title 
     end 
     new_song
   end 
