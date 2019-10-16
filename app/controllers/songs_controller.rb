@@ -7,6 +7,10 @@ class SongsController < ApplicationController
   end 
   
   get '/songs/new' do 
+    @song = Song.create(params[:title])
+      if @song.artist == nil
+        @song.artist = Artist.create(params[:name])
+      end 
     erb :'/songs/new'
   end 
   
