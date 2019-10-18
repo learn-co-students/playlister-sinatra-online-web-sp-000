@@ -1,6 +1,7 @@
-require 'pry'
 class SongsController < ApplicationController 
   
+
+
   get '/songs' do 
     @songs = Song.all 
     erb :'/songs/index' 
@@ -22,9 +23,22 @@ class SongsController < ApplicationController
     @song.genre_ids = params["genres"]
     @song.artist = @artist 
     @song.save 
+   
     redirect to "/songs/#{@song.slug}"
   end 
 
+  get '/songs/:slug/edit' do
+    @song = Song.find_by_slug(params[:slug]) 
+    erb :'songs/edit'
+  end 
+  
+  patch '/songs/:slug' do 
+    @song = Song.find_by_slug(params[:slug]) 
+    @song.update(name: params["Name"])
+    @song.artist = Artist.update(params["Artist Name"]) 
+    @song.save 
+    redirect to "/songs/show"
+  end 
 
   
 end 
