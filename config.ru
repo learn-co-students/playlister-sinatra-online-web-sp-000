@@ -1,5 +1,5 @@
 require './config/environment'
-config.i18n.fallbacks = [I18n.default_locale]
+# config.i18n.fallbacks = [I18n.default_locale]
 begin
   fi_check_migration
 
