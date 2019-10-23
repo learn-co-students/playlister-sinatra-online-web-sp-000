@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class SongsController < ApplicationController
+  use Rack::Flash
 
   get '/songs' do
     @songs = Song.all
@@ -16,12 +19,20 @@ class SongsController < ApplicationController
     erb :"songs/show"
   end
 
+  get '/songs/:slug/edit' do
+
+  end
+
   post '/songs' do
-    #create a song with existing artist and existing genre
-    #create a song without existing artist and existing genre
-    #cant leave the radio button blank
-    #cant leave the genre checkbox blank
-    puts params
+    @song = Song.create(name: params[:name])
+    @artist = Artist.find_or_create_by(name: params[:artist_name])
+    @artist.songs << @song
+    params[:genre].each do |id|
+      @song.genres << Genre.find_by_id(id)
+    end
+    @song.save
+    flash[:message] = "Successfully created song."
+    redirect to "/songs/#{@song.slug}"
   end
 
 end

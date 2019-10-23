@@ -2,16 +2,12 @@
   <label for="name">New Song:</label>
   <input type="text" id="Name" name="name">
   <br>
-  <label>Select Artist:</label>
+  <label>Artist:</label>
   <br>
-  <input id="artist_name" type="radio" name="artist[]" id="new_artist">
   <input type="textbox" id="Artist Name" name="artist_name"><br>
 
-  <% Artist.all.each do |artist| %>
-  <input id="<%= artist.name %>" type="radio" name="artist[]" value="<%=artist.id%>"><%=artist.name%><br>
-  <% end %>
 
-  <label>Select Genre:</label>
+<label>Select Genre:</label>
   <br>
   <% Genre.all.each do |genre| %>
   <input id="<%= genre.name %>" type="checkbox" name="genre[]" value="<%=genre.id%>"><%=genre.name%><br>
