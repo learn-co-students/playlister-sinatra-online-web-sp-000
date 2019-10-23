@@ -20,13 +20,15 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug/edit' do
-
+    @song = Song.all.find_by_slug(params[:slug])
+    @artist = @song.artist
+    erb :"songs/edit"
   end
 
   post '/songs' do
     @song = Song.create(name: params[:name])
     @artist = Artist.find_or_create_by(name: params[:artist_name])
-    @artist.songs << @song
+    @artist.songs << @song #need to change because wont work if song changes artist? I think?
     params[:genre].each do |id|
       @song.genres << Genre.find_by_id(id)
     end
@@ -35,4 +37,16 @@ class SongsController < ApplicationController
     redirect to "/songs/#{@song.slug}"
   end
 
+  patch '/songs/:slug' do
+    @song = Song.find_by(name: params[:name])
+    @artist = Artist.find_or_create_by(name: params[:artist_name])
+    @song.artist = @artist
+    @song.genres.clear
+    params[:genre].each do |id|
+      @song.genres << Genre.find_by_id(id)
+    end
+    @song.save
+    flash[:message] = "Successfully updated song."
+    redirect to "/songs/#{@song.slug}"
+  end
 end
