@@ -8,7 +8,7 @@ class Song < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    puts "Slug is #{slug}."
+    #puts "Slug is #{slug}."
 
     song = Song.all.select {|song|
       song.slug == slug

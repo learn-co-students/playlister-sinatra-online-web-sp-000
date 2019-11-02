@@ -7,7 +7,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    puts "Slug is #{slug}."
+    #puts "Slug is #{slug}."
 
     artist = Artist.all.select {|artist|
       artist.slug == slug
