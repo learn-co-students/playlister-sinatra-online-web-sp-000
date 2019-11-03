@@ -1,9 +1,9 @@
 require './config/environment'
-
 begin
   fi_check_migration
 
   use Rack::MethodOverride
+  use Rack::Flash
   use SongsController
   use ArtistsController
   run ApplicationController
