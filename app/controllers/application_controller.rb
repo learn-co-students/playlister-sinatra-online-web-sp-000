@@ -1,10 +1,10 @@
-require 'rack-flash'
+#require 'rack-flash'
 
 
 
 class ApplicationController < Sinatra::Base
   enable :sessions
-  use Rack::Flash
+  #use Rack::Flash#, sweep => true
 
 
   register Sinatra::ActiveRecordExtension
@@ -14,4 +14,7 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+
+
+
 end

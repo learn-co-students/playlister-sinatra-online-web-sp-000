@@ -31,7 +31,7 @@ class SongsController < ApplicationController
     #puts song.name
     #params[:created] = "Exists."
 
-    flash[:message] = "Successfully created song."
+    #flash[:message] = "Successfully created song."
     redirect to "/songs/#{@song.slug}"
   end
 
@@ -65,10 +65,10 @@ class SongsController < ApplicationController
     @song.update(params[:song])
 
     if params[:artist][:name] != ""
-      @song.artist = Artist.create(name: params[:artist][:name])
+      @song.artist = Artist.update(name: params[:artist])
     end
 
-    flash[:message] = "Successfully updated song."
+    #flash[:message] = "Successfully updated song."
     redirect to "/songs/#{ @song.slug }"
   end
 end
