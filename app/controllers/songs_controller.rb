@@ -14,7 +14,7 @@ class SongsController < ApplicationController
   end
 
   post '/songs' do
-    @song = Song.create(name: params[:song][:name])
+    @song = Song.find_or_create_by(name: params[:song][:name])
 
     if !params[:artist][:name].empty?
       @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
@@ -37,14 +37,10 @@ class SongsController < ApplicationController
 
   get '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    @artist = @song.artist
-    #@updated = false #successfully updated song indicator
-    #@created = false #successfully created song indicator
-    #if params[:created]
-    #  @created = true
-    #elsif params[:updated]
-    #  @updated = true
-    #end
+    if @song.artist_id != nil
+      @artist = Artist.find(@song.artist_id)
+    end
+
     erb :'songs/show'
   end
 
