@@ -1,41 +1,42 @@
 class SongsController < ApplicationController
 
-  get '/songs' do
-    @songs = Song.all
-    erb :'/songs/index'
-  end
+ get '/songs' do
+   @songs = Song.all
+   erb :'/songs/index'
+ end
 
-  get '/song/new' do
-    erb :'/song/new'
-  end
+ get '/songs/new' do
+   erb :'/songs/new'
+ end
 
-  get '/song/:slug' do
-    @song = Song.find_by_slug(param[:slug])
-    erb :'song/show'
-  end
+ get '/songs/:slug' do
+   @song = Song.find_by_slug(params[:slug])
+   erb :'songs/show'
+ end
 
-  post '/songs' do
-    @song = Song.create(:name => params["Name"])
-    @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
-    @song.genre_ids = params[:genres]
-    @song.save
+ post '/songs' do
+   @song = Song.create(:name => params["Name"])
+   @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+   @song.genre_ids = params[:genres]
+   @song.save
 
-    erb :'song/show', locals: {message: "Successfully created song."}
-  end
+   erb :'songs/show', locals: {message: "Successfully created song."}
+ end
 
-  get '/songs/:slug/edit' do
-    @song = Song.find_by_slug(params[:slug])
-    erb :'songs/edit'
-  end
+ get '/songs/:slug/edit' do
+   @song = Song.find_by_slug(params[:slug])
 
-  patch '/songs/:slug' do
-    @song = Song.find_by_slug(params[:slug])
+   erb :'songs/edit'
+ end
 
-    @song.update(params[:song])
+ patch '/songs/:slug' do
+   @song = Song.find_by_slug(params[:slug])
 
-    @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-    @song.save
+   @song.update(params[:song])
 
-    erb :'song/show', locals: {message: "Song successfully updated."}
-  end
+   @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
+   @song.save
+
+   erb :'songs/show', locals: {message: "Song successfully updated."}
+ end
 end
