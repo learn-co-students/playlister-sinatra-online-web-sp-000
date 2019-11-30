@@ -2,10 +2,10 @@ module Slugifiable
   module InstanceMethods
     def slug
       artist_name = self.name
-      slug = artist_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      slug = artist_name.gsub(' ', '-').gsub(/[^\w-]/, '').downcase
     end
   end
-  
+
   module ClassMethods
     def find_by_slug(slug)
       @slug = slug
