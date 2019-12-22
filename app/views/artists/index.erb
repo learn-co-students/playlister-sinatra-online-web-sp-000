@@ -1,25 +1,8 @@
-<html>
-  
-  <head></head>
-  <body>
-    
-    
-  <% @artists.each do |a| %>
-    <input type="checkbox" name="artists" id="artists"><%= a.name %></input><br>
-  <% end %>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </body>
-  
-</html>
+<h1>Artists</h1>
+
+
+<% @artists.each do |artist| %>
+
+<a href="/artists/<%= artist.slug %>"><%= artist.name %></a>
+<br>
+<% end %>
