@@ -1,25 +1,40 @@
 <html>
-  
+
   <head></head>
   <body>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+  <h1>Create a new Song</h1>
+
+  <form action="/songs" method="POST">
+  <label>Song Name:</label>  <input type="text" name="name" id="name">
+
+  <br><br>
+
+  <label>Artist Name:</label>  <input type="text" name="artist_name" id="artist_name">
+  <br><br>
+  <%Genre.all.each do |genre|%>
+    <input type="radio" name="genre_name" id="<%= genre.id %>" value="<%=genre.id%>"><%=genre.name%></input><br>
+  <%end%>
+
+ <br><br>
+  <input type="submit" value="Create Song">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
   </body>
-  
+
 </html>
