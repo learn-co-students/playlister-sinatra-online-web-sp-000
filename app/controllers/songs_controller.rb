@@ -14,19 +14,35 @@ class SongsController < ApplicationController
    end
 
    get '/songs/:slug' do
-    # binding.pry
-    @song = Song.find_by_slug(params[:slug])
-    erb :'songs/show'
-   end
+      @song = Song.find_by_slug(params[:slug])
+      erb :'songs/show'
+    end
+
 
    post '/songs' do
-     binding.pry
-       @song = Song.create(params["song"]["name"])
-       @song.artist = Artist.find_or_create_by(name: params["artist"]["name"])
-       @song.genre_ids = params["genre"]["name"]
+     #binding.pry
+       @song = Song.create(:name => params[:song_name])
+       #@song.update(params[:song_name])
+       @song.artist = Artist.find_or_create_by(:name => params[:artist_name])
+       #@song.genre = params[:genre_name]
+       #if !params[:artist_name].empty?
+      #    @song.artist = Artist.create(name: params[:artist_name])
+      #  end
        @song.save
+       flash[:message] = "Successfully created song."
        redirect("/songs/#{@song.slug}")
-     end
+    end
+
+
+
+
+    #get '/songs/:slug/edit' do
+    #  @song = Song.find_by_slug(params[:slug])
+    #  erb :'songs/edit'
+    #end
+
+     #patch '/songs/:slug' do
+
 
 
 

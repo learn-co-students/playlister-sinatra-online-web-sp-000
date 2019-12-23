@@ -2,7 +2,8 @@ module Slugifiable
 
   module SlugMethod
     def slug
-      self.name.gsub(" ","-").downcase
+      #binding.pry
+      self.name.to_s.gsub(" ","-").downcase
     end
   end
 
