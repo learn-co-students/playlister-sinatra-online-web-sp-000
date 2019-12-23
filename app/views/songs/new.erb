@@ -10,6 +10,16 @@
 
 <br><br>
 
+<label for="genre_name">Genre:    </label>
+<br>
+<%Genre.all.each do |genre|%>
+  <input type="radio" name="genre_name" value="<%=genre.id%>"> <%= genre.name %></input>
+
+ <%end%>
+
+<br><br>
+
+
 <input type="submit" value="submit this" id="submit">
 
 </form>
