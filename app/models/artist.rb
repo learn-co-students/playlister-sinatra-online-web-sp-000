@@ -1,4 +1,14 @@
 class Artist < ActiveRecord::Base
     has_many :songs
     has_many :genres, through: :songs
+
+    #these should become helpers, right?
+    def slug
+       self.parameterize
+    end
+
+    def find_by_slug
+
+    end
+
 end
