@@ -1,6 +1,5 @@
 ENV['SINATRA_ENV'] ||= "development"
 require 'bundler/setup'
-require_relative 'gremlins'
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
