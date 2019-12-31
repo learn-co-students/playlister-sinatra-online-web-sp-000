@@ -6,6 +6,7 @@ class SongsController < ApplicationController
     end
 
     get '/songs/:slug' do 
+        @song = Song.find_by_slug(params[:slug])
         erb :'songs/show'
         #song's show page has links to song's artist and genre associated with song
         #Pay attention to order here with order compared to /songs/new--slug must be defined first
