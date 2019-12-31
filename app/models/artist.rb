@@ -4,11 +4,11 @@ class Artist < ActiveRecord::Base
 
     #these should become helpers, right?
     def slug
-       self.parameterize
+       name.parameterize
     end
 
-    def find_by_slug
-
+    def self.find_by_slug(slug)
+        self.all.find{|name| name.slug == slug}
     end
 
 end
