@@ -9,6 +9,7 @@ class LibraryParser
   end
 
   def parse_filename(filename)
+    # binding.pry
     artist_match = filename.match(/^(.*) -/)
     song_match   = filename.match(/- (.*) \[/)
     genre_match  = filename.match(/\[([^\]]*)\]/)
