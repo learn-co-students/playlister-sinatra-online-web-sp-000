@@ -1,4 +1,7 @@
 songs/show.erb
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
 
 <h1><%= @song.name %></h1>
 <h2>Artist: <%= @song.artist.name %> <a href="/artists/<%= @song.artist.slug %>">Click to Visit </a></h2>
