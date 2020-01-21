@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  require 'rack-flash'
+  use Rack::Flash
 
   get '/songs' do
     @songs = Song.all
@@ -7,6 +9,13 @@ class SongsController < ApplicationController
 
   get '/songs/new' do
     erb :'/songs/new'
+  end
+
+  get '/songs/:slug/edit' do
+
+    @song = Song.find_by_slug(params[:slug])
+        binding.pry
+    erb :'/songs/edit'
   end
 
   get '/songs/:slug' do
@@ -19,8 +28,10 @@ class SongsController < ApplicationController
     @song= Song.create(name: params[:song_name])
     if Artist.find_by(name: params[:artist_name])
       @artist = Artist.find_by(name: params[:artist_name])
+      @song.artist = @artist
     else
       @artist = Artist.new(name: params[:artist_name])
+      @song.artist = @artist
     end
 
     if params[:genres]
@@ -30,10 +41,51 @@ class SongsController < ApplicationController
       end
     else
     end
-    @song.genres = @genres
-    @song.artist = @artist
+
+    if @song.genres.empty? && params[:genres]
+      @song.genre_ids = params[:genres]
+    else @song.genres.empty? && params[:genre_name]
+      genre = Genre.create(name: params[:genre_name])
+      @song.genre_ids = genre.id
+    end
+
     @song.save
-    redirect '/songs/#{@song.slug}'
+    flash[:message] = "Successfully created song."
+    redirect "/songs/#{@song.slug}"
   end
+
+  patch '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
+    @song.name = params[:song_name] unless params[:song_name].empty?
+    if params[:artist_name]
+      present_artist = Artist.find_by(name: params[:artist_name])
+      if present_artist
+        @song.artist = present_artist
+        @song.save
+      else
+        if present_artist == nil
+          new_artist = Artist.create(name: params[:artist_name])
+          new_artist.save
+          @song.artist = new_artist
+          @song.save
+        else
+          @song.artist = present_artist
+          @song.save
+        end
+      end
+    end
+
+    if @song.genres.empty? && params[:genres]
+      @song.genre_ids = params[:genres]
+      @song.save
+    else @song.genres.empty? && !params[:genre_name].empty?
+      genre = Genre.create(name: params[:genre_name])
+      @song.genre_ids = genre.id
+      @song.save
+    end
+    flash[:message] = "Successfully updated song."
+    redirect to("/songs/#{@song.slug}")
+  end
+
 
 end
