@@ -13,5 +13,6 @@ song show page
 
 <%@song.genres.each do |genre|%>
   <%genre_slug = genre.slug%>
+  <%=genre.name%>
   <a href="/genres/<%=genre_slug%>"><%= genre.name%></a>
 <%end%>
