@@ -66,6 +66,7 @@ class SongsController < ApplicationController
         @song.artist = present_artist
         @song.save
       else
+        #binding.pry
         if present_artist == nil
           new_artist = Artist.create(name: params[:artist_name])
           new_artist.save
@@ -76,6 +77,7 @@ class SongsController < ApplicationController
           @song.save
         end
       end
+      #binding.pry
     end
 
     if @song.genres.empty? && params[:genres]
