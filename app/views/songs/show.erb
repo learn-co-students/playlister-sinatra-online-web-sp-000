@@ -7,9 +7,10 @@ song show page
 <%artist_slug = @song.artist.slug%>
 
 <%= @song.name%>
+<%= @song.artist.name %>
 
 <a href="/artists/<%=artist_slug%>"><%=@song.artist.name%></a>
-<%= @song.artist.name %>
+
 <%@song.genres.each do |genre|%>
   <%genre_slug = genre.slug%>
   <a href="/genres/<%=genre_slug%>"><%= genre.name%></a>

@@ -3,15 +3,13 @@
   <input type="text" name="song_name" id="Name"><br>
 
 
-
   <label for="artist_name">Artist Name</label>
   <input type="text" name="artist_name" id="Artist Name"><br>
 
 
-
   <% Genre.all.each do |genre| %>
     <genre>
-    <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>">
+    <%= genre.name%><input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>">
   <% end %>
   <label for="genre_name">Genre Name</label>
   <input type="text" name="genre_name" id="Genre Name"><br>
@@ -20,8 +18,3 @@
   <input type="submit" value="Create">
 
 </form>
-
-
-
-
-<!-- <input type="radio" name="gender" id="other" value="other"><br><br> -->
