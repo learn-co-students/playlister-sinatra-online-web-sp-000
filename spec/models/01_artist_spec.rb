@@ -23,7 +23,7 @@ describe "Artist" do
   end
 
   it "can have many genres" do
-    binding.pry
+    
     expect(@artist.genres.count).to eq(1)
   end
 

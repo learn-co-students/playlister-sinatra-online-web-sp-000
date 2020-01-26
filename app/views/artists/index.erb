@@ -1,1 +1,5 @@
-<h1>Artists Inde Page</h1>
+<h1> Artist Index Page </h1>
+<h2> Here are some artists </h2>
+<% @artists.each do |artist| %>
+    <a href="/artists/<%=  artist.slug%>">    <%=artist.name%>   </a>
+<% end %>   
