@@ -1,4 +1,5 @@
 require_relative './concerns/slugifiable.rb'
+require_relative './concerns/findable.rb'
 
 class Artist < ActiveRecord::Base
     has_many :songs
@@ -6,4 +7,6 @@ class Artist < ActiveRecord::Base
 
     include Slugifiable::InstanceMethods
     extend Slugifiable::ClassMethods
+    extend Findable::ClassMethods
+
 end
