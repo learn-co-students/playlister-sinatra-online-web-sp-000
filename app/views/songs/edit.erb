@@ -5,7 +5,7 @@
   <br><br>
   <h4>Choose a Genre:</h4>
   <% @genres.each do |genre| %>
-  <input type="checkbox" name="genres[]" value="<%= genre.name%>" id="<%= genre.name %>"><%= genre.name %>
+  <input type="checkbox" name="genres[]" value="<%= genre.name%>" <%= 'checked' if @song.genres.include?(genre) %>><%= genre.name %>  
   <% end %>
   <br><br>
   <h4>...and/or create a new Genre:</h4>
@@ -13,4 +13,6 @@
   <input type="submit" value="Save">
 </form>
 
+<a href='/songs/new'>New Song</a>
+<br>
 <a href='/songs'>Song Index</a>
