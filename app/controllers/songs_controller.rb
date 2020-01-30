@@ -25,6 +25,7 @@ class SongsController < ApplicationController
 
         if params[:genre][:name] && params[:genre][:name] != ""
             genre = Genre.find_or_create_by_name(name: params[:genre][:name])
+            genres ||= []
             genres << genre unless genres.include?(genre)
         end
         song.artist = artist
