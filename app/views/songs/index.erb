@@ -1,5 +1,14 @@
 <h1> Songs Index Page </h1>
 <h2> Here are some songs </h2>
 <% @songs.each do |song| %>
-    <a href="/songs/<%=  song.slug%>">    <%=song.name%>   </a>
-<% end %>   
+
+      <% if song.artist %>
+       <%    artist_name = song.artist.name %>
+        <% else %>
+       <%     artist_name = "None" %>
+       <% end %>
+            
+    <a href="/songs/<%=  song.slug%>"><%=song.name%></a> - <%= artist_name %>
+    <br>
+
+<% end %>   §

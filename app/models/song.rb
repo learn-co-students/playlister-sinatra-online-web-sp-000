@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
     belongs_to :artist
-    belongs_to :genre
+    # belongs_to :genre - seeing what hapens if i leave this
     has_many :song_genres
     has_many :genres, through: :song_genres
 
