@@ -1,0 +1,10 @@
+<% if !@artists.blank? %>
+<h1>Artists</h1>
+<ol>
+  <% @artists.each do |artist|  %>
+  <li><a href="/artists/<%= artist.id%>"><%= artist.name %></a></li>
+  <% end %>
+</ol>
+<% else %>
+<h2>You have no artists yet.</h2>
+<% end %>
