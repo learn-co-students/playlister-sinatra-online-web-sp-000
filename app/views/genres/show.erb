@@ -12,7 +12,7 @@
 <% if @genre.artists%>
   <ol>
     <% @genre.artists.each do |artist| %>
-      <li><h3><a href="/artists/<%= artist.slug %>"><%=song.name %></a></h3></li>
+      <li><h3><a href="/artists/<%= artist.slug %>"><%=artist.name %></a></h3></li>
     <% end %>
   </ol>
 <% else %>
