@@ -24,3 +24,4 @@ module Slugifiable
     end
   end
 end
+end
