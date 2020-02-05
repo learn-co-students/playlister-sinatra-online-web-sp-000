@@ -2,7 +2,7 @@
 <% if @genre.songs%>
   <ol>
     <% @genre.songs.each do |song| %>
-      <li><h3><a href="/songs/<%= song.slug %>"><%=song.name %></a></h3></li>
+      <li><h3><a href="/songs/<%= song.slug %>" ><%=song.name %></a></h3></li>
     <% end %>
   </ol>
 <% else %>
