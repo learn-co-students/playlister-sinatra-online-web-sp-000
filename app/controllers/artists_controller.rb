@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   get '/artists' do
-    @songs = Artist.all
+    @artists = Artist.all
     erb :'/artists/index'
   end
 
@@ -10,6 +10,6 @@ class ArtistsController < ApplicationController
 
   get '/artists/:slug' do
     @artist = Artist.find_by_slug(params[:slug])
-  erb :show
+  erb :'/artists/show'
 end
 end

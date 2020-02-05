@@ -6,18 +6,18 @@ class SongsController <ApplicationController
   end
 
   get '/songs/new' do
-    erb :new
+    erb :'/songs/new'
   end
 
 
   get '/songs/:slug' do
-    @song = Song.find_by_id(params[:slug])
+    @song = Song.find_by_slug(params[:slug])
     erb :'/songs/show'
   end
 
   get '/songs/:slug/edit' do
     @song = Song.find_by_slug(params[:slug])
-    erb :edit
+    erb :'/songs/edit'
   end
 
   post '/songs' do
