@@ -1,8 +1,9 @@
-<% if !@songs.blank? %>
+<% if @songs %>
 <h1>Songs</h1>
 <ol>
   <% @songs.each do |song|  %>
-  <li><a href="/songs/<%= song.id%>"><%= song.name %></a></li>
+  <li>Title: <a href="/songs/<%= song.id%>"><%= song.name %></a></li>
+  <li>Artist: <a href="/artists/song.artist.id"><%=song.artist.name%></li>
   <% end %>
 </ol>
 <% else %>
