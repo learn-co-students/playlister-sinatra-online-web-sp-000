@@ -1,21 +1,21 @@
 <h1><%=@artist.name%></h1>
 
 <% if @artist.songs%>
-  <ol>
+  <ul>
     <% @artist.songs.each do |song| %>
-      <li><h3><a href="/songs/<%= song.slug %>"><%=song.name %></a></h3></li>
-    <% end %>
-  </ol>
+      <li><a href="/songs/<%= song.slug %>"><%= song.name %> </a></li>
+      <% end %>
+  </ul>
 <% else %>
   No Songs
 <% end %>
 
 <% if @artist.genres %>
-  <ol>
-    <% @artist.genres.each do |genre| %>
-      <li><h3><a href="/genres/<%= genre.slug %>"><%=genre.name %></a></h3></li>
+  <ul>
+  <% @artist.genres.each do |genre| %>
+    <li><a href="/genres/<%= genre.slug %>"><%= genre.name %> </a></li>
     <% end %>
-  </ol>
+  </ul>
   <% else %>
     No Genres
   <% end %>
