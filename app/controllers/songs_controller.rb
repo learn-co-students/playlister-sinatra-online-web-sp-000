@@ -1,4 +1,6 @@
 require 'pry'
+require 'rack-flash'
+
 class SongsController < ApplicationController
   # rake db:migrate ; rake db:migrate SINATRA_ENV=test
   # rspec spec/features/04_basic_view_spec.rb --fail-fast
@@ -9,6 +11,7 @@ class SongsController < ApplicationController
     @new_song.genre_ids = params[:genres]
     @new_song.artist = Artist.find_or_create_by(name: params[:artist][:name])
     @new_song.save
+    flash[:message] = "Successfully created song." 
     redirect "/songs/#{@new_song.slug}"
   end
 
