@@ -2,7 +2,7 @@
   <p>Add a New Song</p>
   <form action="/songs" method="POST">
     <p>Artist Name: <input type="text" name="artist[name]" id="artist_name"></p>
-    <p>Name: <input type="text" name="song[name]" id="name"></p>
+    <p>Name <input type="text" name="song[name]" id="name"></p>
   
     <p> Genres </p>
     <% Genre.all.each do |g| %>
