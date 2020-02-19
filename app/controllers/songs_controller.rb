@@ -3,17 +3,17 @@ class SongsController < ApplicationController
   # rspec spec/features/04_basic_view_spec.rb --fail-fast
   # rspec spec/features/05_song_form_spec.rb --fail-fast
  
-  get '/songs' do
-    @all_songs = Song.all
-    erb :song_index
-  end
-  
-  post '/songs' do
+   post '/songs' do
     @new_song = Song.create(params[:song])
     @new_song.genre_ids = params[:genres]
     @new_song.artist = Artist.find_or_create_by(name: params[:artist][:name])
     @new_song.save 
     redirect "/songs/#{@song.slug}"
+  end
+
+  get '/songs' do
+    @all_songs = Song.all
+    erb :song_index
   end
   
   get '/songs/new' do
