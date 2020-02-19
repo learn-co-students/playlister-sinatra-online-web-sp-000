@@ -3,6 +3,7 @@ require 'rack-flash'
 
 
 class SongsController < ApplicationController
+  enable :sessions
   use Rack::Flash
   # rake db:migrate ; rake db:migrate SINATRA_ENV=test
   # rspec spec/features/04_basic_view_spec.rb --fail-fast
