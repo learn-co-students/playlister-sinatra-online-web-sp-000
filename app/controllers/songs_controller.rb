@@ -9,6 +9,11 @@ class SongsController < ApplicationController
   end
   
   post '/songs' do
+    @new_song = Song.create(params[:song])
+    @new_song.genre_ids = params[:genres]
+    @new_song.artist = Artist.find_or_create_by(name: params[:artist][:name])
+    @new_song.save 
+    redirect "/songs/#{@song.slug}"
   end
   
   get '/songs/new' do
@@ -28,6 +33,12 @@ class SongsController < ApplicationController
   end
   
   patch '/songs/:slug' do
+    @update = Song.find_by_slug(params[:slug])
+    @update.update(params[:song])
+    @update.genre_ids = params[:genres]
+    @update.artist = Artist.find_or_create_by(name: params[:artist][:name])
+    @update.save
+    redirect "/songs/#{@song.slug}"
   end
   
 end
