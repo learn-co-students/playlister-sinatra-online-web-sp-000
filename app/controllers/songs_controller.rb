@@ -1,14 +1,15 @@
+require 'pry'
 class SongsController < ApplicationController
   # rake db:migrate ; rake db:migrate SINATRA_ENV=test
   # rspec spec/features/04_basic_view_spec.rb --fail-fast
   # rspec spec/features/05_song_form_spec.rb --fail-fast
  
-   post '/songs' do
+  post '/songs' do
     @new_song = Song.create(params[:song])
     @new_song.genre_ids = params[:genres]
     @new_song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-    @new_song.save 
-    redirect "/songs/#{@song.slug}"
+    @new_song.save
+    redirect "/songs/#{@new_song.slug}"
   end
 
   get '/songs' do
@@ -38,7 +39,7 @@ class SongsController < ApplicationController
     @update.genre_ids = params[:genres]
     @update.artist = Artist.find_or_create_by(name: params[:artist][:name])
     @update.save
-    redirect "/songs/#{@song.slug}"
+    redirect "/songs/#{@u0pdate.slug}"
   end
   
 end
