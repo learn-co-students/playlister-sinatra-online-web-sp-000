@@ -1,3 +1,11 @@
+<aside>
+  <% if flash.has?(:notice) %>
+  <%= flash[:notice] %>
+<% end %>
+  
+</aside>
+
+
 <p> <%= @slug_song.name %> </p>
 
 <a href="/artists/<%= @slug_song.artist.slug %>"> <%= @slug_song.artist.name %> </a>
