@@ -1,0 +1,9 @@
+<h3> List of the artists on the Playlister App</h3>
+
+<ol>
+<% @artists.each do |artist| %>
+    <li>
+    <a href="/artists/<%= artist.slug %>"><%= artist.name%> </a> 
+    </li>
+<% end %>
+</ol>
