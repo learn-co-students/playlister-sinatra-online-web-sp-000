@@ -1,0 +1,9 @@
+<h3> List of the genres on the Playlister App</h3>
+
+<ol>
+<% @genres.each do |genre| %>
+    <li>
+    <a href="/genres/<%= genre.slug %>"><%= genre.name%> </a> 
+    </li>
+<% end %>
+</ol>
