@@ -1,0 +1,3 @@
+<%@songs.each { |song| %>
+    <p><%=song.name%> - <%=song.artist.name%> - <%=song.genres.first.name%></p>
+<%}%>
