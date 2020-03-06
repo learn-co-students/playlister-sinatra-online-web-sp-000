@@ -1,1 +1,3 @@
-show.erb
+<%@artists.each { |artist| %>
+    <p><a href='/artists/<%=artist.slug%>'><%=artist.name%></a></p>
+<%}%>

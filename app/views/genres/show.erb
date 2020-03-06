@@ -1,1 +1,4 @@
-show.erb
+<p><%=@genre.name%></p>
+<%@genre.songs.each { |song| %>
+    <p><a href='/songs/<%=song.slug%>'><%=song.name%></a> - <a href='/artists/<%=song.artist.slug%>'><%=song.artist.name%></a> - <a href='/genres/<%=@genre.slug%>'><%=@genre.name%></a></p>
+<%}%>
