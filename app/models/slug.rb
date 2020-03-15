@@ -7,7 +7,14 @@ module Slug
 
   module ClassMethods
     def find_by_slug(slug)
-      find_by(name: slug.split("-").collect { |w| w.capitalize }.join(" "))
+      no_cap = ["with", "the", "a", "is"]
+      find_by(name: slug.split("-").collect { |w|
+        if no_cap.include?(w)
+          w
+        else
+          w.capitalize
+        end
+      }.join(" "))
     end
   end
 end
