@@ -4,4 +4,9 @@ class ArtistsController < ApplicationController
       # presents the user with a list of all artists 
       # as clickable links to that song's show page 
    end 
+
+   get '/artists/:slug' do 
+      # artist's show page should have links to each 
+      # of his or her songs and genres.
+   end 
 end

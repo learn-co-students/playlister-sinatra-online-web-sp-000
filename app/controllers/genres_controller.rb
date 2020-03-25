@@ -5,4 +5,9 @@ class GenresController < ApplicationController
       # as clickable links to that genre's show page
    end 
 
+   get '/genres/:slug' do 
+      # genre's show page should have links to each of 
+      # its artists and songs.
+   end 
+
 end 
