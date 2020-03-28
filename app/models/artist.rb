@@ -7,8 +7,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    de_slug = slug.split("-").map {|n| n.capitalize}.join(" ")
-    self.find_by_name(de_slug)
-    #returns an object
+    name = slug.split("-").map {|n| n.capitalize}.join(" ")
+    self.find_by_name(name)
   end
 end
