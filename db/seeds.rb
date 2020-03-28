@@ -7,3 +7,4 @@
 @mobb_deep = Artist.new(name: "Mobb Deep")
 @infamous = Song.new(name: "Infamous", artist: @mobb_deep)
 @rap = Genre.new(name: "Rap")
+
