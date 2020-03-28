@@ -6,8 +6,9 @@ module Slugifiable
    end 
 
    module ClassMethods 
-      def find_by_slug(slug)
-         Artist.all.find_by {|artist| artist.name == slug}
+      def find_by_slug(name)
+         #binding.pry 
+         Artist.all.detect{|artist| artist.name == name}
       end 
    end 
 end 

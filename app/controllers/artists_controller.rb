@@ -5,11 +5,12 @@ class ArtistsController < ApplicationController
       # as clickable links to that song's show page
       #binding.pry
       @artists = Artist.all 
-      erb :'/artists/index'
+      erb :"/artists/index"
    end 
 
    get '/artists/:slug' do 
       # artist's show page should have links to each 
       # of his or her songs and genres.
+      erb "/artists/#{params[:slug]}"
    end 
 end

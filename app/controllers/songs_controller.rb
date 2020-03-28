@@ -2,7 +2,9 @@ class SongsController < ApplicationController
 
    get '/songs' do 
       # presents the user with list of all songs
+      @songs = Song.all 
       # as clickable links to that song's show page
+      erb :'/songs/index'
    end 
    ## Pay attention to the order of /songs/new and /songs/:slug. 
    ## The route /songs/new could interpret new as a slug if that 
