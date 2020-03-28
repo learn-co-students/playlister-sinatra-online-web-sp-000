@@ -11,6 +11,10 @@ class ArtistsController < ApplicationController
    get '/artists/:slug' do 
       # artist's show page should have links to each 
       # of his or her songs and genres.
-      erb "/artists/#{params[:slug]}"
+      erb :"/artists/#{params[:slug]}"
+   end 
+
+   post '/artists/' do 
+      @artist = Artist.new(name: params[:name])
    end 
 end
