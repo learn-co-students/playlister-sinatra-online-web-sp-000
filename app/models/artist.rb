@@ -1,13 +1,9 @@
 class Artist < ActiveRecord::Base
+
+  extend Slugify::ClassMethods
+  include Slugify::InstanceMethods
+  
   has_many :songs
   has_many :genres, through: :songs
 
-  def slug
-    self.name.downcase.split(" ").join("-")
-  end
-
-  def self.find_by_slug(slug)
-    name = slug.split("-").map {|n| n.capitalize}.join(" ")
-    self.find_by_name(name)
-  end
 end
