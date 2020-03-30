@@ -10,33 +10,27 @@ class SongsController < ApplicationController
    ## The route /songs/new could interpret new as a slug if that 
    ## controller action isn't defined first.
    get '/songs/new' do 
-      @songs = Song.all
+      #@songs = Song.all
       erb :'/songs/new'
+   end 
+
+   post '/songs' do 
+      #binding.pry
+      @song = Song.create(name: params["song"]["name"])
+      if !params["artist"].empty?
+         @song.artists << Artist.create_or_find_by(name: params["artist"])
+      end 
+
+      redirect :"/songs/#{@song.slug}"
    end 
 
    get '/songs/:slug' do 
       # song's show page should have links to that 
       # song's artist and the each genre associated 
       # with the song.
-     # binding.pry 
-      #raise params.inspect
       @song = Song.find_by_slug(params[:slug])
       erb :'/songs/show'
    end
-
-   # post '/songs' do 
-   #    #raise params.inspect
-   #    @song = Song.new(name: params[:name])
-   #    @artist = Artist.create(name: params[:artist])
-   #    @artist.songs << @song 
-   #    #binding.pry
-   #    params[:genres].each do |genre_id|
-   #       @song.genres << Genre.find_by_id(genre_id)
-   #    end 
-   #    @song.save 
-
-   #    redirect to "/songs/#{@song.slug}"
-   # end 
 
 
 end 
