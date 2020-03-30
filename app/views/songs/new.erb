@@ -9,6 +9,9 @@
 
 <h4>Add a Genre:</h4>
 <% Genre.all.each do |genre| %>
-<input id="<%= genre.id %>" type="checkbox" name="song[genre_id]" value="<%= genre.id %>%" <%= 'checked' if "#{genre}".exists?%>><%= genre.name %>
+<% raise params.inspect%>
+<input id="<%= genre.id %>" type="checkbox" name="song[genre_id]" value="<%= genre.id %>"><%= genre.name %>
 <% end %>
 <br>
+<br>
+<input type="submit" value="Create Song">
