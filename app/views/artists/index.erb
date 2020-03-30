@@ -1,4 +1,4 @@
 <h2>Playlister Artists List:</h2>
 <% @artists.each_with_index do |artist, index| %>
-  <p> <a href="/artists/<%= "#{artist.slug}"%>"><%= index+1 %>.<%= artist.name %></a></p>
+  <p> <a href="/artists/<%= artist.slug %>"><%= index+1 %>.<%= artist.name %></a></p>
 <% end %>
