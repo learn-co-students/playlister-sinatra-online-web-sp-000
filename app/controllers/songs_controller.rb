@@ -30,6 +30,12 @@ class SongsController < ApplicationController
       redirect to :"/songs/#{@song.slug}"
    end 
 
+   get '/songs/:slug/edit' do 
+      @song = Song.find_by_slug(params[:slug])
+      @songs = Song.all 
+      erb :'/songs/edit'
+   end 
+
    get '/songs/:slug' do 
       # song's show page should have links to that 
       # song's artist and the each genre associated 
@@ -38,5 +44,17 @@ class SongsController < ApplicationController
       erb :'/songs/show'
    end
 
+   patch '/songs/:slug' do 
+      #binding.pry 
+      @song = Song.find_by(params[:slug])
+      @song.update(name: params["song_name"])
+      @song.artist.update(name: params["artist_name"])
+      @song.genres.update(name: params[:genre_ids])
+      @song.save
+
+      flash[:message] = "Successfully updated song."
+
+      redirect to :"/songs/#{@song.slug}"
+   end 
 
 end 

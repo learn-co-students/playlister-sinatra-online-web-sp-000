@@ -5,7 +5,7 @@ require_relative './config/environment'
 # end
 
 use Rack::MethodOverride
-
+#use Rack::Flash
 use SongsController
 use GenresController
 use ArtistsController
