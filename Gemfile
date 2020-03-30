@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'pry'
 #gem 'tux'
 gem 'tux', '~> 0.3.0'
+gem 'rack-flash3'
 
 group :test do
   gem 'launchy'
