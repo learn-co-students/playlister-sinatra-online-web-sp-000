@@ -32,11 +32,12 @@ class SongsController < ApplicationController
 
    get '/songs/:slug/edit' do 
       @song = Song.find_by_slug(params[:slug])
-      @songs = Song.all 
+     
       erb :'/songs/edit'
    end 
 
    get '/songs/:slug' do 
+      #binding.pry 
       # song's show page should have links to that 
       # song's artist and the each genre associated 
       # with the song.
@@ -46,10 +47,13 @@ class SongsController < ApplicationController
 
    patch '/songs/:slug' do 
       #binding.pry 
-      @song = Song.find_by(params[:slug])
-      @song.update(name: params["song_name"])
-      @song.artist.update(name: params["artist_name"])
-      @song.genres.update(name: params[:genre_ids])
+      @song = Song.find_by_slug(params[:slug])
+      @song.update(params["song"])
+      @song.artist = Artist.find_or_create_by(params["artist"])
+      params[:genres].each do |genre_id|
+         @song.genres << Genre.find_by_id(genre_id) if !genre_id.empty?
+      end 
+      #@song.genre_ids = params[:genres]
       @song.save
 
       flash[:message] = "Successfully updated song."
