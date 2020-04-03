@@ -2,6 +2,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
   def up
     create_table :songs do |t|
       t.string :name
+      t.string :artist
       t.integer :artist_id
       t.integer :genre_ids
     end
