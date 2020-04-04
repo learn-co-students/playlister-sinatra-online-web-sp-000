@@ -1,13 +1,13 @@
 class CreateGenres < ActiveRecord::Migration[5.2]
-  def up
+  def change
     create_table :genres do |t|
       t.string :name
-      t.integer :song_id
-      t.integer :artist_id
+      # t.integer :song_id
+      # t.integer :artist_id
     end
   end
 
-  def down
-    drop_table :genres
-  end
+  # def down
+  #   drop_table :genres
+  # end
 end
