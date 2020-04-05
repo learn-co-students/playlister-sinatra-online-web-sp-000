@@ -7,23 +7,34 @@ class SongsController < ApplicationController
   end
 
   get '/songs/new' do
+
     @artists = Artist.all
+    @genres = Genre.all
+
     erb :'/songs/new'
+
   end
 
   post '/songs' do
 
-    binding.pry
+    existing_artist = Artist.exists?(name: params["artist"]["name"])
+    existing_genre = Genre.exists?(name: params["genre"]["name"])
 
-    @song = Song.create(params["song"])
+    if !params["artist"]["name"].empty? && !existing_artist
+      artist = Artist.create(params["artist"])
+      @song = Song.create(name: params["song"]["name"], artist: artist)
+    else
+      @song = Song.create(name: params["song"]["name"])
+    end
 
-    # if !params["artist"]["name"].empty?
-    #   @song.artist = Artist.create(name: params["artist"]["name"])
-    # end
-    #
-    # @song.save
+    if !params["genre"]["name"].empty? && !existing_artist
+      genre = Genre.create(params["genre"])
+      @song.genres << genre
+    end
 
-    redirect "songs/#{@song.slug}"
+    @song.save
+
+    redirect to "/songs/#{@song.slug}"
 
   end
 
