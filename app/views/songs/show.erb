@@ -1,16 +1,17 @@
-<h1><%=@song.artist.name%></h1>
+<% if !!flash[:message] %>
+<%= flash[:message] %>
+<% end %>
 
-<h4>Genres:</h4>
-<ul>
-  <%@song.genres.each do |genre|%>
-  <li><%=genre.name%></li>
-  <%end%>
-</ul>
+<% if !!flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
 
-<a href="/artists/<%= @song.artist.slug %>"</a>
 
-<ul>
-  <%@song.genres.each do |genre|%>
-  <li><a href="/genres/<%= genre.slug %>"</a></li>
-  <%end%>
-</ul>
+<h1>Song: <%=@song.name%></h1>
+
+<h2>Artist: <a href ="/artists/<%= @artist.slug %>"><%= @artist.name%></a></h2>
+
+<h2>Genres:</h2>
+<%@genres.each do |genre|%>
+  <a href ="/genres/<%=genre.slug%>"><%= genre.name%></a>
+<% end%>

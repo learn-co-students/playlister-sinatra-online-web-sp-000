@@ -1,6 +1,6 @@
 <h1>New Songs</h1>
 <form action="/songs" method="post">
-  <label for="name"> Song Name:</label>
+  <label for="name"> Name:</label>
   <input type="text" id="Name" name="song[name]">
   <br></br>
 
@@ -16,7 +16,7 @@
 
   Existing Artist:
   <%@artists.each do |artist|%>
-    <br><input type="checkbox" id="<%=artist.name%>" name="song[artist_id]" value="<%=artist.id>to_i%>"><%=artist.name%>
+    <br><input type="checkbox" id="<%=artist.name%>" name="song[artist_id]" value="<%=artist.id.to_i%>"><%=artist.name%>
   <%end%>
   <br></br>
 
@@ -24,5 +24,5 @@
   <br>Name: <input type="text" id="Artist Name" name="artist[name]">
   <br></br>
 
-  <input type="submit" value="Create New Song">
+  <input type="submit" value="Create">
 </form>
