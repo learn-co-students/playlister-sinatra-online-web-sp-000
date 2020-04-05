@@ -1,0 +1,4 @@
+<h3>Playlister Song List:</h3>
+<% @songs.each_with_index do |song, index| %>
+<a href="/songs/<%= song.slug %>"><br><%= index + 1 %>.<%= song.name %></a>
+<% end %>
