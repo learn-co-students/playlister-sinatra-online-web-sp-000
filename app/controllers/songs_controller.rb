@@ -17,22 +17,32 @@ class SongsController < ApplicationController
 
   post '/songs' do
 
-    existing_artist = Artist.exists?(name: params["artist"]["name"])
-    existing_genre = Genre.exists?(name: params["genre"]["name"])
+    @song = Song.create(params["song"])
 
-    if !params["artist"]["name"].empty? && !existing_artist
-      artist = Artist.create(params["artist"])
-      @song = Song.create(name: params["song"]["name"], artist: artist)
-    else
-      @song = Song.create(name: params["song"]["name"])
+    if !params["artist"]["name"].empty?
+      @song.artist = Artist.find_or_create_by(params["artist"])
     end
-
-    if !params["genre"]["name"].empty? && !existing_artist
-      genre = Genre.create(params["genre"])
-      @song.genres << genre
+    if !params["genre"]["name"].empty?
+      @song.genres << Genre.find_or_create_by(params["genre"])
     end
-
     @song.save
+
+    # existing_artist = Artist.exists?(name: params["artist"]["name"])
+    # existing_genre = Genre.exists?(name: params["genre"]["name"])
+    #
+    # if !params["artist"]["name"].empty? && !existing_artist
+    #   artist = Artist.create(params["artist"])
+    #   @song = Song.create(name: params["song"]["name"], artist: artist)
+    # else
+    #   @song = Song.create(name: params["song"]["name"])
+    # end
+    #
+    # if !params["genre"]["name"].empty? && !existing_artist
+    #   genre = Genre.create(params["genre"])
+    #   @song.genres << genre
+    # end
+    #
+    # @song.save
 
     redirect to "/songs/#{@song.slug}"
 
