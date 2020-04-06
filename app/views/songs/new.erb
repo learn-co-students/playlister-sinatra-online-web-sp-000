@@ -5,7 +5,7 @@
   <br></br>
 
   Existing Genre:
-  <%@genres.each do |genre|%>
+  <%Genre.all.each do |genre|%>
     <br><input type="checkbox" id="<%=genre.name%>" name="song[genre_ids][]" value="<%=genre.id.to_i%>"><%=genre.name%>
   <%end%>
   <br></br>
@@ -15,7 +15,7 @@
   <br></br>
 
   Existing Artist:
-  <%@artists.each do |artist|%>
+  <%Artist.all.each do |artist|%>
     <br><input type="checkbox" id="<%=artist.name%>" name="song[artist_id]" value="<%=artist.id.to_i%>"><%=artist.name%>
   <%end%>
   <br></br>
