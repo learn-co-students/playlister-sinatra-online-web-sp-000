@@ -1,1 +1,38 @@
-<p>new.erb</p>
+<h1>Create a New Song</h1>
+<br>
+<form action="/songs/new" method="post">
+
+<p>Song Name: <input type="text" name="song[name]" id="song_name"></p>
+
+<br>
+<h5>Select an Existing Genre or Create a New One</h5>
+
+<p>Existing Genres</p> 
+    <% Genre.all.each do |genre| %> 
+        <input type="checkbox" name="genres[]" id=<%= genre.name %>" value="<%= genre.id %>"> 
+        <%= genre.name %> 
+        </input>
+    <% end %>
+
+<p>New Genre</p>
+    <input type="text" name="genre[name]" id="Genre">
+    <br>
+
+<h3>Select or Create Artist</h3> 
+<br>
+<p>Existing Artists</p>
+
+    <% @artists.each do |artist| %> 
+        <input type="checkbox" name="artist[id]" id="<%= artist.id %>" value="<%= artist.id %>">
+        <%= artist.name %>
+        </input>
+        <br>
+    <% end %>
+
+<br>
+<p>New Artist</p>
+    <p>Artist Name: <input type="text" name="song[artist][name]" id="Name"></p>
+    
+    <input type="submit" id="submit" value="Create Song">
+
+</form>

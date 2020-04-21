@@ -1,6 +1,8 @@
-require "./config/environment"
+require_relative './concerns/slugifiable'
 class Genre < ActiveRecord::Base
+    include Slugifiable::Slug 
+    extend Slugifiable::FindBySlug
     has_many :song_genres
     has_many :songs, through: :song_genres
-    has_many :artists
+    has_many :artists, through: :songs
 end
