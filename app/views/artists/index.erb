@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Artist List</title>
+    </head>
+    <h1>Artist List:</h1>
+
+    <div class="artists_container">
+        <ul>
+            <%Artist.all.each do |artist|%>
+                <li>
+                    <%=artist.name%>
+                    <br>
+                    <a href="/artists/<%=artist.slug%>">Artist Page</a>
+                </li>
+            <%end%>
+        </ul>
+    </div>
+</html>

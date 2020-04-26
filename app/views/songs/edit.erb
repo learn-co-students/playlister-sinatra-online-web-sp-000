@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Song</title>
+        <style>
+            .card {
+                background-color: #ccc;
+                text-align: center;
+                width: 70%;
+                margin: 7% auto;
+                padding: 10px;
+                border: 1px solid #555;
+                box-shadow: -1px 1px #444, -2px 2px #333, -3px 3px 5px #222;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1>Edit Song Form:</h1>
+            <form action="/songs/<%=@song.slug%>" method="post">
+                <input type="hidden" name="_method" id="hidden" value="patch">
+                <h2>Song Name: <%=@song.name%></h2>
+                <input type="text" name="Artist Name" placeholder="Change Artist Name">
+                <br>
+                <%Genre.all.each do |genre|%>
+                    <input type="checkbox" name="genres[]" id="<%=genre.name%>" value="<%=genre.id%>" <%="checked" if @song.genres.include?(genre)%>>
+                    <label for="<%=genre.name%>"><%=genre.name%></label>
+                <%end%>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </body>
+</html>
