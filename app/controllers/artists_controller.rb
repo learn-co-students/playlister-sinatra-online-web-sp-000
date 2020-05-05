@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   # Each artist should be a clickable link to that particular artist's show page
   get '/artists' do
     @artists = Artist.all
-    erb :'/artists/index'
+    erb :'artists/index'
   end
 
   # get '/artists/new' do
@@ -14,7 +14,7 @@ class ArtistsController < ApplicationController
   get '/artists/:slug' do
     slug = params[:slug]
     @artist = Artist.find_by_slug(slug)
-    erb :'/artists/show'
+    erb :'artists/show'
   end
 
 end

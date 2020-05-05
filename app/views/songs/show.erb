@@ -2,7 +2,7 @@ Show.erb
 
 <!-- Any given song's show page should have links to that song's artist and each genre associated with the song. -->
 
-Artist:<a href="/artists/<%= @songs.artist.slug %>"><%= @songs.artist.name%></a>
+<a href="/artists/<%= @songs.artist.slug %>"><%= @songs.artist.name%></a>
 
 <ul>
   <% @songs.genres.each do |genre|%>

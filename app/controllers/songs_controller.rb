@@ -15,14 +15,15 @@ class SongsController < ApplicationController
   # Any given song's show page should have links to that
   # song's artist and each genre associated with the song.
   get '/songs/:slug' do
-    slug = params[:slug]
-    @songs = Song.find_by_slug(slug)
-    erb :'/songs/show'
+    @songs = Song.find_by_slug(params[:slug])
+    erb :'songs/show'
   end
 
   post '/songs' do
-    @song = Song.create(:name => params["Name"])
-    @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+    # binding.pry
+    @song = Song.create(params[:song])
+    @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
+
     @song.genre_ids = params[:genres]
     @song.save
 
