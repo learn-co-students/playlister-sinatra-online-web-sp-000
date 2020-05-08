@@ -1,0 +1,13 @@
+<!-- Any given song's show page should have links to that song's artist and each genre associated with the song. -->
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+  <%end%>
+
+<h1><%=@songs.name%></h1>
+<a href="/artists/<%= @songs.artist.slug %>"><%= @songs.artist.name%></a>
+
+<ul>
+  <% @songs.genres.each do |genre|%>
+  <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
+  <%end%>
+</ul>
