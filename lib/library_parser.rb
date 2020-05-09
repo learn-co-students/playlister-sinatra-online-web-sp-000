@@ -1,7 +1,10 @@
+require 'pry'
+
 class LibraryParser
   def files
     data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
     Dir.entries(data_path)[2..-1]
+    # binding.pry
   end
 
   def self.parse
@@ -16,13 +19,14 @@ class LibraryParser
     artist = artist_match && artist_match[1]
     song   = song_match   && song_match[1]
     genre  = genre_match  && genre_match[1]
-
+    
     [artist, song, genre]
   end
 
   def call
     files.each do |filename|
       parts = parse_filename(filename)
+      # binding.pry
       build_objects(*parts)
     end
   end
@@ -38,3 +42,6 @@ class LibraryParser
     song.save
   end
 end
+
+# LibraryParser.new.files
+# LibraryParser.new.call
