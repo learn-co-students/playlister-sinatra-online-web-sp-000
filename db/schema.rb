@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 3) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre"
+    t.string "artist"
     t.string "song"
   end
 

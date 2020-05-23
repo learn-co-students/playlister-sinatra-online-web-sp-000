@@ -2,7 +2,7 @@ class CreateGenresTable < ActiveRecord::Migration[4.2]
 
     def change
         create_table :genres do |g|
-            g.string :genre
+            g.string :artist
             g.string :song
         end
     end
