@@ -8,9 +8,9 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  get '/songs' do
-    @songs = Song.all
-    erb :songs
-  end
+  # get '/songs' do
+  #   @songs = Song.all
+  #   erb :'songs/show'
+  # end
 
 end
