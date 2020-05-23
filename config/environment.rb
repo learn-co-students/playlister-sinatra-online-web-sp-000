@@ -19,5 +19,32 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+module Slugger
+	module Instance
+		def slug
+	    name.downcase.gsub(" ","-")
+	  end
+	end
+
+
+	module Class
+
+	  def find_by_slug(slug)
+	  	# binding.pry
+	    self.all.find { |obj| obj.slug == slug }
+	  end
+		# def find_by_slug(slug)
+		# 	name_ = unslug(slug)
+		# 	find_by(name: name_)
+		# end
+
+		# def unslug(slug)
+		# 	slug.gsub('-', ' ')
+		# end
+	end
+end
+
+require 'rack-flash'
+
 require_all 'app'
 require_all 'lib'

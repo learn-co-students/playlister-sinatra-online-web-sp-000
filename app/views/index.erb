@@ -1,0 +1,6 @@
+<h1><%= @items.first.class.to_s.capitalize %>s:</h1>
+<% @items.each do |item| %>
+	<a href='<%= "/#{item.class.to_s.downcase}s/#{item.slug}" %>'>
+	<%= item.name %>
+	</a>
+<% end %>
