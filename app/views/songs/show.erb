@@ -1,0 +1,19 @@
+<h1><%= @song.name %></h1>
+
+<%= flash[:message] if flash.has?(:message) %><br>
+
+<form method="get" action="/songs/<%= @song.slug %>/edit">    
+    <input type="submit" value="Edit">
+</form>
+<br>
+
+<h3>Artist</h3>
+<p><a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></p>
+<br>
+
+<h3>Genres</h3>
+<% @song.genres.uniq.each do |g| %>    
+    <p><a href="/genres/<%= g.slug %>"><%= g.name %></a></p>
+<% end %>
+<br>
+

@@ -1,0 +1,7 @@
+<h2>Artists Page</h2>
+<br>
+<% @artists.each do |obj| %>
+    <h3><%= obj.name %></h3>    
+    <p><a href="/artists/<%= obj.slug %>">See More</a></p>
+    <br>
+<% end %>
