@@ -1,0 +1,10 @@
+<h2>Songs Page</h2>
+<form method="get" action="/songs/new">
+    <input type="submit" value="Add New Song">
+</form>
+<br>
+<% @songs.each do |obj| %>    
+    <h3><%= obj.name %></h3>    
+    <p><a href="/songs/<%= obj.slug %>">See More</a></p>
+    <br>
+<% end %>

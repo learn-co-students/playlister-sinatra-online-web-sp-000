@@ -8,3 +8,7 @@ require 'sinatra/activerecord/rake'
 task :console do
   Pry.start
 end
+
+def reload!
+  load_all './app'
+end
