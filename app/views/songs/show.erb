@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SONG SHOW</title>
+    </head>
+    <body>
+        <h1><%=@song.name%></h1><br>
+        <ul>
+            <h2>Artist</h2>
+
+            <li><a href="/artists/<%=@song.artist.slug%>"><%=@song.artist.name%></a></li>
+            <br>
+            
+            <h2>Genres</h2>
+            <%@song.genres.each do |genre|%>
+            <li><a href="/genres/<%=genre.slug%>"><%=genre.name%></a></li>
+            <%end%><br>  
+        </ul>
+    </body>
+</html>
