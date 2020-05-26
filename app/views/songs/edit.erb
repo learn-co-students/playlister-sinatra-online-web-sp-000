@@ -4,15 +4,15 @@
         <title>SONG EDIT</title>
     </head>
     <body>
-        <h1>Make Something New</h1>
-        <form action='/songs/:slug' method="post">
-        <input type='hidden' name='_method' id='hidden' value='patch'>
+        <form action='/songs' method="post">
         <label>Song Name</label>
-        <input type='text' name='name' id=song[name]>
-        <label>Genre</label>
-        <input type='text' name='name' id=genre[name]>
+        <input type='text' name="Name" value ="<%=@song.name%>">
         <label>Artist Name</label>
-        <input type='text' name='name' id=artist[name]>
-        <input type='submit' value='submit'>
+        <input type='text' name="Artist Name" value="<%=@song.artist%>">
+        
+         <%Genre.all.each do |genre|%>
+        <input type="checkbox" name="pet[genre_id]" value="<%=genre.id%>" id="<%=genre.id%>"><%=genre.name%></input>
+        <%end%>
+        <input type='submit' value="Create" id="Create">
     </body>
 </html>
