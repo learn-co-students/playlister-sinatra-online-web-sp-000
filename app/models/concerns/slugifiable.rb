@@ -1,4 +1,4 @@
-class Slugify
+module Slugify
   module InstanceMethods 
     
     def slug 
@@ -8,7 +8,7 @@ class Slugify
     
   module ClassMethods
     
-    def find_by_slug 
+    def find_by_slug(slug)
       self.all.find {|x| x.slug == slug}
     end 
   end 
