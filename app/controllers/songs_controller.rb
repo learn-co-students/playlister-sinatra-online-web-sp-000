@@ -25,13 +25,13 @@ class SongsController < Sinatra::Base
     end
 
     get '/songs/:slug/edit' do
-      @song = Song.find {|song| song.slug == "#{params[:slug]}"}
+      @song = Song.find_by_slug(params[:slug])
 
       erb :edit
     end
 
     get '/songs/:slug' do
-      @song = Song.find {|song| song.slug == "#{params[:slug]}"}
+      @song = Song.find_by_slug(params[:slug])
       @success_message = session[:success_message]
       session[:success_message] = nil
       erb :show

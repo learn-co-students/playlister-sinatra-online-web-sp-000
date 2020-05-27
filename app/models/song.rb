@@ -1,7 +1,7 @@
 require_relative './concerns/slugifiable.rb'
 
 class Song < ActiveRecord::Base
-    extend Slugifiable
+    extend Slugifiable::ClassMethods
     include Slugifiable::InstanceMethods
     
     belongs_to :artist
