@@ -1,4 +1,5 @@
 class SongsController < Sinatra::Base
+  enable :sessions
   configure do
     set :views, 'app/views/songs'
   end
@@ -13,6 +14,8 @@ class SongsController < Sinatra::Base
       @song.genre_ids = params[:genres]
       @song.save
 
+      session[:success_message] = "Successfully created song."
+
       redirect "/songs/#{@song.slug}", locals: {message: "Successfully created song."}
     end
 
@@ -23,11 +26,24 @@ class SongsController < Sinatra::Base
 
     get '/songs/:slug/edit' do
       @song = Song.find {|song| song.slug == "#{params[:slug]}"}
+
       erb :edit
     end
 
     get '/songs/:slug' do
       @song = Song.find {|song| song.slug == "#{params[:slug]}"}
+      @success_message = session[:success_message]
+      session[:success_message] = nil
       erb :show
+    end
+
+    patch '/songs/:slug' do
+
+      @song = Song.find_or_create_by(:name => params["Name"])
+      @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+      @song.genre_ids = params[:genres]
+      @song.save
+      session[:success_message] = "Successfully updated song."
+      redirect "/songs/#{@song.slug}"
     end
 end

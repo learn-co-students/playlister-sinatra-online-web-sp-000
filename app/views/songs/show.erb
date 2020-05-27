@@ -17,4 +17,11 @@
             <%end%><br>  
         </ul>
     </body>
+    <footer>
+        <% if @success_message %>
+        <div id="success" style="border: 22px solid black;">
+        <%= @success_message %>
+        </div>
+        <% end %>
+        </footer>
 </html>
