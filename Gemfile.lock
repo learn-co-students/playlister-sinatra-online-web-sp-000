@@ -107,7 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 5.2.3)
+  activerecord
   capybara
   database_cleaner
   launchy
