@@ -46,6 +46,8 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (4.0.1)
     rack (2.0.7)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -105,11 +107,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 5.2.3)
+  activerecord
   capybara
   database_cleaner
   launchy
   pry
+  rack-flash3
   rack-test
   rake
   require_all
