@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class SongsController < ApplicationController 
+    use Rack::Flash
 
     get '/songs' do 
         @songs = Song.all 
@@ -33,6 +36,7 @@ class SongsController < ApplicationController
 
         @song.save 
 
+        flash[:message] = "Successfully created song."
         redirect "/songs/#{@song.slug}"
     end 
 
@@ -50,6 +54,9 @@ class SongsController < ApplicationController
             end 
         end 
 
+        @song.save
+
+        flash[:message] = "Successfully updated song."
         redirect "/songs/#{@song.slug}"
 
     end 
