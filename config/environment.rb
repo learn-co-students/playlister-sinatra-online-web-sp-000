@@ -21,3 +21,7 @@ ActiveRecord::Base.establish_connection(
 
 require_all 'app'
 require_all 'lib'
+
+if Song.all.length == 0 
+  LibraryParser.new.call 
+end 
