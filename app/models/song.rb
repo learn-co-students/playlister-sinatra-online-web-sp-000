@@ -6,12 +6,13 @@ class Song < ActiveRecord::Base
     def slug
         slugify = self.name.downcase 
         slugify.gsub(" ", "-")
+        #self.name.gsub(" ", "-")
     end
 
     def self.find_by_slug(slug)
         unslug = slug.gsub("-", " ")
-        unslug = unslug.titleize
-        self.all.find { |song| song.name == unslug }
+        #unslug = unslug.titleize
+        self.all.find { |song| song.name.downcase == unslug }
     end    
 end
 
