@@ -5,7 +5,7 @@ class Artist < ActiveRecord::Base
     def slug
         slugify = self.name.downcase 
         slugify.gsub(" ", "-")
-    end
+    end   
 
     def self.find_by_slug(slug)
         unslug = slug.gsub("-", " ")
