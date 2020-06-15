@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    List of Artists!
-    </head>
-    <body>
-        <% binding.pry %>
+<h1>All Artists</h1>
 
-
-
-    </body>
-</html>
+<% @artists.each do |s| %>
+    <a href="/artists/<%= s.slug %>"><%= s.name %></a>
+<% end %>
