@@ -7,7 +7,7 @@ module Slugifiable
   
   module ClassMethods  
     def find_by_slug(slug)
-      all.detect {|e| e.name = slug.gsub('-',' ').split.collect {|e| e.capitalize}.join(" ")}
+      all.detect {|e| e.slug == slug}
     end
   end
 end
