@@ -5,13 +5,13 @@ class Song < ActiveRecord::Base
 
   def slug
     #it strips out special characters, and replaces all spaces with -
-    self.name = self.name.split.join("-").downcase
+    name.split.join("-").downcase
   end
 
   def self.find_by_slug(slug)
     slug = slug.split("-").join(" ").titlecase
-    artist = Song.find_by! name: slug
-    artist
+    song = Song.find_by(name: slug)
+    song
   end
 
 end

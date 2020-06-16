@@ -1,12 +1,11 @@
 class Artist < ActiveRecord::Base
   has_many :songs
-  has_many :genres, through: :songs
+  has_many :genres, :through => :songs
 
-
-  #create module for both of these methods
+  #seems like slug and find_by_slug methods could be broken into a module?
   def slug
     #it strips out special characters, and replaces all spaces with -
-    self.name = self.name.split.join("-").downcase
+    name.split.join("-").downcase
   end
 
   def self.find_by_slug(slug)
