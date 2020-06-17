@@ -1,3 +1,5 @@
+require 'pry'
+
 class SongsController < ApplicationController
   
   get '/songs' do
@@ -11,14 +13,12 @@ class SongsController < ApplicationController
   end
 
   get '/songs/new' do
-    @songs = Song.all
     erb :'/songs/new'
   end
 
   post '/songs' do
+    binding.pry
     @song = Song.create(params[:song])
-    @song = Song.create(name: params[:song_name])
-
     @song.artist = Artist.find_or_create_by(params[:artist])
     @song.genre_ids = params[:genres]
     @song.save
