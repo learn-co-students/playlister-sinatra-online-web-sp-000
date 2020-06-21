@@ -12,4 +12,14 @@ class SongsController < ApplicationController
     erb :'/songs/show'
   end 
 
+  get '/songs/new' do
+    erb :'/songs/new'
+  end
+
+  post '/songs' do
+    @song = Song.create(:name => params["Name"])
+    @song.artist = Artist.create(:name => params["Artist Name"])
+    redirect "/songs/#{@song.slug}"
+  end
+
 end
