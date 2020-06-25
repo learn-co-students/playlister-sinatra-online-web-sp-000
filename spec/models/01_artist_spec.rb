@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_all
 
 describe "Artist" do
   before do 

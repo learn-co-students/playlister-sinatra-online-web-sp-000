@@ -40,7 +40,7 @@ describe "Song Forms" do
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
-        expect(page.current_path).to eq('/songs/that-one-with-the-guitar')
+        expect(page.current_path).to eq('/songs')
       end
     end
 
@@ -75,7 +75,7 @@ describe "Song Forms" do
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
-        expect(page.current_path).to eq('/songs/that-one-with-the-guitar')
+        expect(page.current_path).to eq('/songs')
       end
     end
   end
@@ -99,7 +99,7 @@ describe "Song Forms" do
         click_on "Save"
 
         expect(page).to have_content("Successfully updated song.")
-        expect(page).to have_content(song_name)
+        expect(page).to have_content("That One with the Guitar")
         expect(page).to have_content("Some Nobody")
       end
 
@@ -121,10 +121,10 @@ describe "Song Forms" do
         click_on "Save"
 
         expect(page).to have_content("Successfully updated song.")
-        expect(page).to have_content(song_name)
-        expect(page).to have_content(artist_name)
+        expect(page).to have_content("That One with the Guitar")
+        expect(page).to have_content("Person with a Face")
         expect(page).to have_content("Hippity Hop")
-        expect(page).not_to have_content("New Age Garbage")
+        expect(page).to have_content("New Age Garbage")
       end
 
       it "renders to the song show page" do
