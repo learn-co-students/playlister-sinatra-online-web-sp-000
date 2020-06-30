@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_180756) do
   end
 
   create_table "song_genres", force: :cascade do |t|
+    t.string "name"
     t.integer "song_id"
     t.integer "genre_id"
   end
