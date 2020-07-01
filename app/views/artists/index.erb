@@ -1,0 +1,4 @@
+<h1>Artist Index Page</h1>
+<% @artists.each do |artist| %>
+  <li><a href="/artists/<%= artist.slug %>"> <%= artist.name %> </li>
+<% end %>
