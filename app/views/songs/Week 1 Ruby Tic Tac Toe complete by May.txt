@@ -1,0 +1,19 @@
+Week 1 Ruby Tic Tac Toe complete by May 11 actual May 11
+Week 2 Iteration complete by May 18 actual May 15
+Week 3 Object Properties complete by May 25 actual May 20
+Week 4 Metaprogramming cmplete by June 1 actual May 27
+Week 5 CLI Data Gem MVP complete by June 8 actual June 5-ish
+Week 6 ORM's complete by June 15 actual June 15
+Week 7 CSS Responsive design complete by June 22 actual June 22
+Week 8 ActiveRecord complete by June 29 actual (not done yet)
+Week 9 finish Sinatra Project complete by July 7(counting 1 vacation day) actual ???
+week 10 complete by July 14
+week 11 complete by July 21
+week 12 complete by July 28
+week 13 complete by August 6(counting 2 days for GenCon_)
+week 14 complete by August 13
+week 15 Complete by August 20
+week 16 Complete by August 27
+week 17 Complete by September 3(counting Labor Day)
+week 18 September 9 or 10
+gives me around 12 days of leeway--if I'm 4 days behind then 8 days (as of July 1)
