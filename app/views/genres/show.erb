@@ -1,0 +1,11 @@
+<h1><%=@genre.name%></h1>
+
+<h2>Artists</h2>
+<% @genre.artist_ids.each do |i| %>
+  <p><a href="/artists/<%= Artist.find(i).slug %>"><%= Artist.find(i).name %></a></p>
+<% end %>
+
+<h2>Songs</h2>
+<% @genre.song_ids.each do |i| %>
+  <p><a href="/songs/<%= Song.find(i).slug %>"><%= Song.find(i).name %></a></p>
+<% end %> 
