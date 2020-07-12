@@ -10,6 +10,8 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'tux'
+gem 'slugify', '~> 1.0', '>= 1.0.7'
+gem 'rack-flash3'
 
 group :test do
   gem 'launchy'
