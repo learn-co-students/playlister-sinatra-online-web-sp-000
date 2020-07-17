@@ -1,4 +1,4 @@
-
+require './app/models/concerns/slugifiable.rb'
 
 class Artist < ActiveRecord::Base
    extend Slugifiable::ClassMethods
