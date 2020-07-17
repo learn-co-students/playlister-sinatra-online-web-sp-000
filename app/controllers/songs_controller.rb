@@ -1,6 +1,7 @@
 #understand which controller actions render/load  which views- erb files-(what the user sees)
 require 'sinatra/base'
 require 'rack-flash'
+require 'pry'
 
 class SongsController < Sinatra::Base
   enable :sessions
@@ -40,7 +41,8 @@ class SongsController < Sinatra::Base
       artist = Artist.create(:name => artist_entry)
     end
     @song.artist = artist
-    genre_selections = params[:song][:genres]
+    genre_selections = params[:genres]
+    #binding.pry
     genre_selections.each do |genre|
       @song.genres << Genre.find(genre)
     end
@@ -77,6 +79,7 @@ class SongsController < Sinatra::Base
       song.genres.clear
     end
     genres = params[:song][:genres]
+    #binding.pry
     genres.each do |genre|
       song.genres << Genre.find(genre)
     end
