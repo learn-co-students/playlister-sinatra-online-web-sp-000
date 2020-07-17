@@ -31,6 +31,7 @@ class SongsController < Sinatra::Base
 #songs/:slug/edit.erb
 #SLUG= replace a name that is not acceptable as a URL ex: /songs/hotline-bling
   post '/songs' do
+    #raise params.inspect
     @song = Song.create(:name => params[:song][:name])
     artist_entry = params[:song][:artist]
     if Artist.find_by(:name => artist_entry)

@@ -3,7 +3,7 @@
 <ul>
 
   <% @genre.songs.each do |s| %>
-    <li><a href="/songs/<%= song.slug %>"><%= song.name %></a></li>
+    <li><a href="/songs/<%= s.slug %>"><%= s.name %></a></li>
   <% end %>
 </ul>
 
@@ -11,6 +11,6 @@
 <ul>
 
   <% @genre.artists.each do |a| %>
-    <li><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></li>
+    <li><a href="/artists/<%= a.slug %>"><%= a.name %></a></li>
   <% end %>
 </ul>
