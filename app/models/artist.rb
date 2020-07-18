@@ -5,7 +5,6 @@ class Artist < ActiveRecord::Base
    include Slugifiable::InstanceMethods
     has_many :songs
     has_many :genres, through: :songs
-    def slug
-        super
-    end
+    
+    scope :ci_find, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
 end
