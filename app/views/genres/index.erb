@@ -4,7 +4,7 @@
         <h1>Playlist</h1>
             <h2>Songs</h2>
             <ul>
-                <%= @genres.each do |genre| %>
+                <% @genres.each do |genre| %>
                     <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
                 <% end %>
             </ul>

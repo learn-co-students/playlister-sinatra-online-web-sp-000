@@ -4,7 +4,7 @@
         <h1>Playlist</h1>
             <h2>Artists</h2>
             <ul>
-                <%= @artists.each do |artist| %>
+                <% @artists.each do |artist| %>
                     <li><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></li>
                 <% end %>
             </ul>
