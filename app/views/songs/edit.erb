@@ -3,6 +3,8 @@
 
 <h2>Edit <%= @song.name %>:</h2>
 
+<label for="song name">Song Name:</label>
+<input type="text" name="song name" id="song name" value="<%= @song.name %>">
 
 <% @genres.each do |genre| %>
   <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>" <%= 'checked' if @song.genres.include?(genre) %>>
@@ -10,7 +12,7 @@
 <% end %>
 
 <label for="Artist Name">Artist Name:</label>
-<input type="text" name="artist_name" id="Artist Name">
+<input type="text" name="artist_name" id="Artist Name" value="<%= @song.artist.name %>">
 
 <input type="submit" id="Save">
 
