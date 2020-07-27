@@ -1,6 +1,9 @@
-<% Song.all.map do |song| %>
-    <a href="/artists/<%= song.artist.slug %>"><%= song.artist.name %></a>
+<% if flash.has?(:message) %>
+   <%=  flash[:message] %>
 <% end %>
+
+<h1><%= @song.name %></h1>
+<a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a>
 
 <% SongGenre.all.map do |sg| %>
     <a href="/genres/<%= sg.genre.slug %>"><%= sg.genre.name %></a>
