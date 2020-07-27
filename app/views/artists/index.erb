@@ -1,0 +1,8 @@
+<form action="/artists" method="POST">
+    <h1>artists</h2>
+        <ul>
+           <% Artist.all.map do |artist| %>
+            <a href="/artists/<%= artist.slug %>"> <%= artist.name %><br>
+           <%  end %> 
+        </ul>
+</form>

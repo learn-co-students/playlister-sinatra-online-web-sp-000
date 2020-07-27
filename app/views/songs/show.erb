@@ -1,0 +1,8 @@
+<% Song.all.map do |song| %>
+    <a href="/artists/<%= song.artist.slug %>"><%= song.artist.name %></a>
+<% end %>
+
+<% SongGenre.all.map do |sg| %>
+    <a href="/genres/<%= sg.genre.slug %>"><%= sg.genre.name %></a>
+<% end %>
+

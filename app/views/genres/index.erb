@@ -1,0 +1,8 @@
+<form action="/genres" method="POST">
+    <h1>genres</h2>
+        <ul>
+           <% Genre.all.map do |genre| %>
+           <a href="/genres/<%= genre.slug %>"> <%= genre.name %><br>
+           <%  end %> 
+        </ul>
+</form>
