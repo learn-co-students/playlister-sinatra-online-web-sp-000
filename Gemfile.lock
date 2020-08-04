@@ -113,7 +113,7 @@ DEPENDENCIES
   rack-test
   rake
   require_all
-  rspec
+  rspec (~> 3.9.0)
   shotgun
   sinatra
   sinatra-activerecord
@@ -122,4 +122,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
