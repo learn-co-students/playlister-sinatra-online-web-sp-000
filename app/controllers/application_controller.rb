@@ -26,9 +26,8 @@ class ApplicationController < Sinatra::Base
 
   get '/songs/:slug' do
     slug = params[:slug]
-    show = Song.find_by_slug(slug)
-    # binding.pry
-    redirect '/songs/show'
+    @songs = Song.find_by_slug(slug)
+    erb :songs/"#{@songs}"
   end
 
 end

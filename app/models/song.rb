@@ -2,8 +2,12 @@ class Song < ActiveRecord::Base
     belongs_to :artist
     has_many :song_genres
     has_many :genres, through: :song_genres
-    include Helper
-    extend Helper::ClassMethods
+    
+
+    def slug
+        @slug = self.name.gsub(/ /, '-').downcase
+        @slug
+    end
 
     def self.find_by_slug(slug)
         # deslug = slug.gsub(/-/, ' ').split
@@ -23,10 +27,16 @@ class Song < ActiveRecord::Base
         # name = self.find_by(name: deslug)
         # name
         # binding.pry
-        deslug = slug.gsub(/-/, ' ').split
-        deslug = deslug.map(&:capitalize)
-        deslug = deslug.join(" ")
-        name = self.find_by(name: deslug)
-        name
+        # deslug = slug.gsub(/-/, ' ').split
+        # deslug = deslug.map(&:capitalize)
+        # deslug = deslug.join(" ")
+       
+        Song.all.each do |song|
+        slugged = song.slug
+        if slugged == slug
+        return song
+        end
+    end
+        
     end
 end
