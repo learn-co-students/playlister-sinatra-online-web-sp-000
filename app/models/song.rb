@@ -31,7 +31,7 @@ class Song < ActiveRecord::Base
         # deslug = deslug.map(&:capitalize)
         # deslug = deslug.join(" ")
        
-        Song.all.each do |song|
+        self.all.each do |song|
         slugged = song.slug
         if slugged == slug
         return song

@@ -1,6 +1,8 @@
 class SongGenresController < ApplicationController
 
     get '/song_genres' do
-      erb :songgenres
+      erb :"/songgenres/index"
     end
+  
+    
   end
