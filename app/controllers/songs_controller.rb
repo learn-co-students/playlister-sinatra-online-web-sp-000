@@ -38,22 +38,21 @@ get '/songs' do
   end
 
   get '/songs/:slug/edit' do
-    slug = params[:slug]
-    @artist = Artist.find_by_slug(slug).first
+    @song = Song.find_by_slug(params[:slug])
+
     erb :'songs/edit'
   end
 
   patch '/songs/:slug' do
-    binding.pry
-    @artists = params[:artist][:name]
-    artist = params[:artist]
-    artist.name = @artists
-    artist.save
+    @song = Song.find_by_slug(params[:slug])
     
-    binding.pry
-    @artists.slug = @artists
-    # binding.pry
-    redirect "songs/#{@artists}"
+
+    @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
+    @song.genre_ids = params[:song][:genre_ids]
+    @song.save
+   
+    flash[:message] = "Successfully updated song."
+    redirect "/songs/#{@song.slug}"
   end
   
 
