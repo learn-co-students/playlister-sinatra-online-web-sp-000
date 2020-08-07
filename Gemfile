@@ -10,10 +10,11 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'tux'
+gem 'rack-flash3'
 
 group :test do
   gem 'launchy'
-  gem 'rspec'
+  gem 'rspec', '~> 3.9.0'
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner'
