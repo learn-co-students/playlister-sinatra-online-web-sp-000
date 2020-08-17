@@ -1,5 +1,5 @@
 class Song < ActiveRecord::Base
-    before_create :slug
+   before_create :slug
     # multiple genres
     has_many :song_genres
     has_many :genres, :through => :song_genres

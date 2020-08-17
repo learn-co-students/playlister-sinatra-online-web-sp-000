@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/songs/new" method="post">
+        <label for="songname">name:</label>
+        <input type="text" name="name" id="name" >
+
+        <h2>Existing Genres:</h2>
+        <% @genres.each do |genre| %>
+            <label for="genres[]"><%= genre.name %></label>
+            <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.id %>">
+        <% end %>
+
+        <label for="Artist Name">Artist Name:</label>
+        <input type="text" name="Artist Name" id="Artist Name">
+
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

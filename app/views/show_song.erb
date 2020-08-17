@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1><%= @song.name %></h1>
+    <%# displays the song's artist (FAILED - 2) %>
+    <h3><%= @song.artist.name %></h3>
+    <%# displays the song's genres (FAILED - 3) %>
+    <% @song.genres.each do |gen|%>
+        <%# contains links to each genre's show page (FAILED - 5) %>
+        <h4><%= gen.name %></h4>
+        <a href="/genres/<%= gen.slug %>">View</a>
+    <% end %>
+    <%# contains links to the artist's show page (FAILED - 4) %>
+    <a href="/artists/<%= @song.artist.slug %>">View</a>
+
+</body>
+</html>
