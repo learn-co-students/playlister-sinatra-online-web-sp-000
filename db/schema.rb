@@ -14,10 +14,18 @@ ActiveRecord::Schema.define(version: 2020_08_16_212857) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_artists_on_genre_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.integer "artist_id"
+    t.integer "song_id"
+    t.index ["artist_id"], name: "index_genres_on_artist_id"
+    t.index ["song_id"], name: "index_genres_on_song_id"
   end
 
   create_table "genres_songs", id: false, force: :cascade do |t|
@@ -34,8 +42,11 @@ ActiveRecord::Schema.define(version: 2020_08_16_212857) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.integer "artist_id"
+    t.integer "genre_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
+    t.index ["genre_id"], name: "index_songs_on_genre_id"
   end
 
 end

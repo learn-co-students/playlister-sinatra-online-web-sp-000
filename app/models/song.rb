@@ -1,6 +1,12 @@
 class Song < ActiveRecord::Base
+    before_create :slug
+    # multiple genres
+    has_many :song_genres
+    has_many :genres, :through => :song_genres
     # can belong to ONE artist
     belongs_to :artist
-    # multiple genres
-    has_and_belongs_to_many :genres
+
+    def slug
+        self.slug = self.name.downcase.split(" ").join("-")
+    end
 end
