@@ -1,0 +1,21 @@
+#displays song's artists and genres and contains links to artist's show page and genre's show page
+
+<h3>Song Name:</h3><h4> <%= @song.name %> </h4>
+<br><br>
+
+<h3>Song's Artist Name: </h3>
+<a href="/artists/<%= @song.artist.slug %>">
+  <%= @song.artist.name %>
+</a>
+<br><br><br>
+
+<h3>Song's Genres:</h3>
+<ul>
+  <% @song.genres.each do |genre| %>
+    <li>
+      <a href="/genres/<%= genre.slug %>">
+        <%= genre.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
