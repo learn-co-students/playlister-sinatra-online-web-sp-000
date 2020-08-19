@@ -1,7 +1,11 @@
-<ul>
-  <li>
-    <% @genres.each do |genre|%>
-    <a href=""><%= genre%>
-    </a>
-  </li>
-</ul>
+<% @genres.each do |genre|%>
+  <ul>
+    <li>
+      <a href="/genres/<%= genre.slug %>">
+      <%= genre.name %>
+      </a>
+    </li>
+  </ul>
+<% end %>
+
+
