@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <% if request.referer.split('/')[3,4].join('-') == 'song-new'%>
+        <p>"Successfully created song."</p>
+    <% end %>
 
     <h1><%= @song.name %></h1>
     <%# displays the song's artist (FAILED - 2) %>

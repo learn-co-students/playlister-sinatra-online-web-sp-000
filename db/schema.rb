@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2020_08_16_212857) do
     t.index ["song_id"], name: "index_genres_on_song_id"
   end
 
+  create_table "genres_songs", id: false, force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "song_id"
+  end
+
   create_table "song_genres", id: false, force: :cascade do |t|
     t.integer "song_id"
     t.integer "genre_id"
