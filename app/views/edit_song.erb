@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/songs/<%= @song.slug%>/edit" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= @song.name %>">
+        <label for="Artist Name">Artist Name</label>
+        <input type="text" name="Artist Name" placeholder="<%= @song.artist.name %>">
+        
+        <h1>Artists</h1>
+        <% Artist.all.each do |artist| %>
+            <label for="<%= artist.name %>"><%= artist.name %></label>
+            <input type="checkbox" name="<%= artist.name %>" id="<%= artist.name %>" value="<%= artist.name %>">
+        <% end %>
+        
+        <h1>Genres</h1>
+        <div name="genres[]">
+            <% Genre.all.each do |genre| %>
+                <% if @song.genres.include? genre %>
+                    <label for="<%= genre.name %>"><%= genre.name %></label>
+                    <input type="checkbox" name="<%= genre.name %>" id="<%= genre.id %>" value="<%= genre.name %>">
+
+                <% else %>
+                    <label for="<%= genre.name %>"><%= genre.name %></label>
+                    <input type="checkbox" name="<%= genre.name %>" id="<%= genre.id %>" value="<%= genre.name %>">
+                <% end %>
+            <% end %>
+        </div>
+        
+        
+        <button type="submit" id="Save" >Save</button>
+    </form>
+
+</body>
+</html>

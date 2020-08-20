@@ -6,8 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <% if request.referer.split('/')[3,4].join('-') == 'song-new'%>
+    <% if request.referer.split('/')[4] == "new" %>
         <p>"Successfully created song."</p>
+    <% elsif request.referer.split('/')[4] == "edit" %>
+        <p>Successfully updated song.</p>
     <% end %>
 
     <h1><%= @song.name %></h1>
