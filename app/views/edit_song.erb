@@ -10,7 +10,7 @@
         <label for="name">Name</label>
         <input type="text" name="name" value="<%= @song.name %>">
         <label for="Artist Name">Artist Name</label>
-        <input type="text" name="Artist Name" placeholder="<%= @song.artist.name %>">
+        <input type="text" name="Artist Name" id="Artist Name" value="<%= @song.artist.name %>">
         
         <h1>Artists</h1>
         <% Artist.all.each do |artist| %>
@@ -19,18 +19,14 @@
         <% end %>
         
         <h1>Genres</h1>
-        <div name="genres[]">
             <% Genre.all.each do |genre| %>
+                <label for="genres[]"><%= genre.name %></label>
                 <% if @song.genres.include? genre %>
-                    <label for="<%= genre.name %>"><%= genre.name %></label>
-                    <input type="checkbox" name="<%= genre.name %>" id="<%= genre.id %>" value="<%= genre.name %>">
-
+                    <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.name %>" checked>
                 <% else %>
-                    <label for="<%= genre.name %>"><%= genre.name %></label>
-                    <input type="checkbox" name="<%= genre.name %>" id="<%= genre.id %>" value="<%= genre.name %>">
+                    <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.name %>">
                 <% end %>
             <% end %>
-        </div>
         
         
         <button type="submit" id="Save" >Save</button>

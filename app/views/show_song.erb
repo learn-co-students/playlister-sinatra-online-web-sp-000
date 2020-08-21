@@ -6,15 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <% if request.referer.split('/')[4] == "new" %>
-        <p>"Successfully created song."</p>
-    <% elsif request.referer.split('/')[4] == "edit" %>
-        <p>Successfully updated song.</p>
+    <% if request.referrer %>
+        <% if request.referer.split('/').last == "new" %>
+            <p>"Successfully created song."</p>
+        <% elsif request.referer.split('/').last == "edit" %>
+            <p>Successfully updated song.</p>
+        <% end %>
     <% end %>
 
-    <h1><%= @song.name %></h1>
+    <h1 id="song_name"><%= @song.name %></h1>
     <%# displays the song's artist (FAILED - 2) %>
-    <h3><%= @song.artist.name %></h3>
+    <p><%= @song.artist.name %></p>
     <%# displays the song's genres (FAILED - 3) %>
     <% @song.genres.each do |gen|%>
         <%# contains links to each genre's show page (FAILED - 5) %>
