@@ -8,10 +8,10 @@ class Genre < ActiveRecord::Base
     end
 
     def self.find_by_slug(slug)
-        string=slug.split("-").map do |n|
-            n.capitalize
-        end.join(" ")
+        # string=slug.split("-").map do |n|
+        #     n.capitalize
+        # end.join(" ")
 
-        find_by(name: string)
+        all.find {|genre| genre.slug==slug}
     end
 end
