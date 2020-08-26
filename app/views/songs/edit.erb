@@ -2,7 +2,7 @@
 
 <form action="/songs/<%=@song.slug%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
-<p><label for="song_name">Name: </label>
+<p><label for="song_name">Name </label>
 <input type="text" name="song[name]" id="song_name" value="<%=@song.name%>" /></p>
 
 
@@ -10,7 +10,7 @@
   <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>" <%='checked' if @song.genres.include?(genre) %>><%=genre.name%>
 <% end %>
 
-<p><label for="artist_name">Artist Name: </label>
+<p><label for="artist_name">Artist Name </label>
 <input type="text" name="artist[name]" id="artist_name" value="<%=@song.artist.name%>" /></p>
 
 <input type="submit" value="Save">
