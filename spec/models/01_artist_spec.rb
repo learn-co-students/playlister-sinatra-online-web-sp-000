@@ -12,7 +12,6 @@ describe "Artist" do
     
   end
 
-  binding.pry
   it "can be initialized" do
     expect(@artist).to be_an_instance_of(Artist)
   end

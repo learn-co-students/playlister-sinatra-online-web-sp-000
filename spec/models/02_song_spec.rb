@@ -32,7 +32,6 @@ describe "Song" do
 
     expect(@song.slug).to eq("blank-space")
   end
-
   describe "Class methods" do
     it "given the slug can find a song" do
       slug = "blank-space"
