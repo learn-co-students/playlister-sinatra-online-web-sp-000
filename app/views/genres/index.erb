@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+<h1>Here are the Genres you have in your playlist!</h1>
+<ul>
+<% @genres.each do |genre|%>
+    <li><a href='/genres/<%=genre.slug%>'%><%= genre.name %> </a></li>
+<% end %>
+</ul>
+</body>
+
+</html>
