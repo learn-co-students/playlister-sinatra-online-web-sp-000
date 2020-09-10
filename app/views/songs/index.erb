@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+<h1>Here are the songs you have in your playlist!</h1>
+<ul>
+<% @songs.each do |song|%>
+    <li><a href='/songs/<%=song.slug%>'%><%= song.name %> </a></li>
+<% end %>
+</ul>
+</body>
+
+</html>
