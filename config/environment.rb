@@ -19,5 +19,11 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+require './app/models/concerns/slugifiable'
 require_all 'app'
 require_all 'lib'
+
+
+require './app/controllers/artists_controller'
+require './app/controllers/songs_controller'
+require './app/controllers/genres_controller'
