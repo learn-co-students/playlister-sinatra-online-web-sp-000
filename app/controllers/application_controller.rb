@@ -4,6 +4,11 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-    erb :index
+    if Song.all.length > 0
+      redirect to "songs/index"
+    else
+      redirect to "songs/new"
+    end 
+    # erb :index
   end
 end
