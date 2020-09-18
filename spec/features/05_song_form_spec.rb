@@ -24,11 +24,11 @@ describe "Song Forms" do
       end
 
       it "creates a new song on submit" do
+        # binding.pry
         fill_in "Name", with: song_name
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
-
         expect(page).to have_content(song_name)
         expect(page).to have_content(artist_name)
         expect(page).to have_content(genre_2_name)
@@ -95,6 +95,7 @@ describe "Song Forms" do
 
     context "changing a song's artist" do
       it "updates the song's artist" do
+        # binding.pry
         fill_in "Artist Name", with: "Some Nobody"
         click_on "Save"
 
@@ -119,7 +120,7 @@ describe "Song Forms" do
         uncheck "New Age Garbage"
         check "Hippity Hop"
         click_on "Save"
-
+        # binding.pry
         expect(page).to have_content("Successfully updated song.")
         expect(page).to have_content(song_name)
         expect(page).to have_content(artist_name)
@@ -131,6 +132,7 @@ describe "Song Forms" do
         uncheck "Hippity Hop"
         check "New Age Garbage"
         click_on "Save"
+        # binding.pry
         expect(page.current_path).to eq("/songs/that-one-with-the-guitar")
       end
     end
