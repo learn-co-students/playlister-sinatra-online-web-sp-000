@@ -1,14 +1,26 @@
 <form action="/songs" method="post">
-    <label for="song">Name:</label>
-    <input type="text" name="song" id="name">
 
-    <label for="genres[]">New Age Garbage:</label>
+    <%# <label for="name">Name:</label> %>
+    Name: <input type="text" name="song[name]" id="Name">
+
+    <label for="genres[]">Existing Genres:</label>
     <% @genres.each do |genre| %>
         <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>"><%=genre.name%>
     <% end %>
 
-    <label for="artist[name]">Artist Name:</label>
-    <input type="text" name="artist[name]" id="artist[name]">
+    <p>Artists: </p>
+    <% @artists.each do |artist| %>
+        <input id="<%= artist.id %>" type="radio" name="song[artist_id]" value="<%= artist.id %>"><%=artist.name%>
+    <% end %>
+
+    <label for="artist_name">Artist Name:</label>
+    <input type="text" name="artist[name]" id="artist_name">
 
     <input type="submit" value="Create">
 </form>
+<%if @genres.length > 0 %>
+    <%=@genres[0].name%>
+<%else%> 
+    <h1>Error</h1>
+<%end%>
+<%=@artists.count%>
