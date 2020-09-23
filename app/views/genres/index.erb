@@ -1,0 +1,8 @@
+<h1>Genres</h1>
+<br>
+<ul>
+<% @alphabetical = @genres.sort_by{|k, v| k.name} %>
+<% @alphabetical.each do |genre| %>
+    <a href="/genres/<%= genre.slug %>"><li><%= genre.name %></li></a>
+<% end %>
+</ul>
