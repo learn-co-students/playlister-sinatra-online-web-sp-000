@@ -1,0 +1,8 @@
+<h1>Songs</h1>
+<br>
+<ol>
+<% @alphabetical = @songs.sort_by{|k, v| k.name} %>
+<% @alphabetical.each do |song| %>
+    <a href="/songs/<%= song.slug %>"><li><%= song.name %></li></a>
+<% end %>
+</ol>
