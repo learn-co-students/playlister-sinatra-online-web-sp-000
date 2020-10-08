@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /mnt/c/Users/milos/development/flatiron/labs/playlister-sinatra-online-web-sp-000/app/controllers/songs_controller.rb:33 self.GET /songs/:slug/edit:
+
+    [1;34m28[0m:         @song.save
+    [1;34m29[0m:         
+    [1;34m30[0m:         redirect [31m[1;31m"[0m[31m/songs/#{@song.slug}[0m[31m[1;31m"[0m[31m[0m
+    [1;34m31[0m:     [32mend[0m
+    [1;34m32[0m:     get [31m[1;31m'[0m[31m/songs/:slug/edit[1;31m'[0m[31m[0m [32mdo[0m
+ => [1;34m33[0m:         binding.pry
+    [1;34m34[0m:         @song = [1;34;4mSong[0m.find {|instance| instance.slug == params[[33m:slug[0m]}
+    [1;34m35[0m:         erb [33m:[1;33m'[0m[33m/songs/edit[1;33m'[0m[33m[0m
+    [1;34m36[0m: 
+    [1;34m37[0m:     [32mend[0m
+    [1;34m38[0m:     patch [31m[1;31m'[0m[31msongs/:slug[1;31m'[0m[31m[0m [32mdo[0m
+
