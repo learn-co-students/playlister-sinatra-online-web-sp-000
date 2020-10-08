@@ -19,6 +19,7 @@ class SongsController < ApplicationController
         #to find one that has a slug property that is the exact same 
         #as our slug from the route, in this case "Milos-Popovic"
         @song = Song.find {|instance| instance.slug == params[:slug]}
+        #or find_by(params[:slug])
         erb :'/songs/show'
     end
     post '/songs' do #create
