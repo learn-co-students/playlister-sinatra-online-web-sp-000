@@ -1,5 +1,7 @@
 class LibraryParser
   def files
+    #returns an array like this
+    #["Tiger & Woods - Gin Nation [hip-hop].mp3", "Iceage - You're Blessed [rap].mp3",
     data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
     Dir.entries(data_path)[2..-1]
   end
@@ -9,6 +11,8 @@ class LibraryParser
   end
 
   def parse_filename(filename)
+    #ex:  inst.parse_filename( "Action Bronson - Larry Csonka [indie].mp3")
+    # returns  ["Action Bronson", "Larry Csonka", "indie"]
     artist_match = filename.match(/^(.*) -/)
     song_match   = filename.match(/- (.*) \[/)
     genre_match  = filename.match(/\[([^\]]*)\]/)
@@ -21,6 +25,7 @@ class LibraryParser
   end
 
   def call
+    #this is the main method that does everyting
     files.each do |filename|
       parts = parse_filename(filename)
       build_objects(*parts)
