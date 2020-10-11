@@ -1,4 +1,4 @@
-class Song
+class Song < ActiveRecord::Base 
     
 end 
 
