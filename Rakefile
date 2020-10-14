@@ -8,3 +8,7 @@ require 'sinatra/activerecord/rake'
 task :console do
   Pry.start
 end
+
+task :library_parser do
+	LibraryParser.new.import
+end
