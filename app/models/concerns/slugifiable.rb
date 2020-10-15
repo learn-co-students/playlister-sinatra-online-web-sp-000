@@ -1,4 +1,4 @@
-module Slugify
+module Slugifiable
 
     module InstanceMethod
         def slug
