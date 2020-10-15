@@ -1,6 +1,12 @@
 require './config/environment'
 
 begin
+  #Added
+  use GenresController
+  use ArtistsController
+  use ApplicationController
+  use SongsController
+  #-----
   fi_check_migration
 
   use Rack::MethodOverride
