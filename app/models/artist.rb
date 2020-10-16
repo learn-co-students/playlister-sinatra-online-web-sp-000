@@ -1,6 +1,6 @@
 class Artist < ActiveRecord::Base
 
-    require_relative 'app/models/concerns'
+    require_relative './concerns/slugifiable.rb'
     
     include Slugifiable::InstanceMethod
     extend Slugifiable::ClassMethod

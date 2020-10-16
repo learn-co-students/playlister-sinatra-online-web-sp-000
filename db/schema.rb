@@ -16,10 +16,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_035416) do
     t.string "name"
   end
 
-  create_table "genre", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "name"
   end
