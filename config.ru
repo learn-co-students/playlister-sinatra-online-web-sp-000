@@ -1,7 +1,10 @@
 require './config/environment'
 
 begin
-  #Added
+  #Added  
+  use Rack::MethodOverride 
+  #Form was never reaching action PATCH because this was at the bottom. 
+  #The form first looks as a POST then sees the hidden fields, and the PATCH verb and updates it. If this is at the bottom it will not work.
   use GenresController
   use ArtistsController
   use ApplicationController
@@ -9,7 +12,7 @@ begin
   #-----
   fi_check_migration
 
-  use Rack::MethodOverride
+
   run ApplicationController
 rescue ActiveRecord::PendingMigrationError => err
   STDERR.puts err
