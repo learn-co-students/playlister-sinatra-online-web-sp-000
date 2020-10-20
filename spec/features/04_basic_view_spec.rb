@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Playlister Basics" do
   let(:artist_name) { "Person with a Face" }
@@ -12,7 +12,7 @@ describe "Playlister Basics" do
 
     @song.song_genres.create(genre: @genre)
     @song.artist = @artist
-  
+
     @song.save
   end
 
@@ -22,7 +22,7 @@ describe "Playlister Basics" do
         visit "/songs"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
@@ -40,7 +40,7 @@ describe "Playlister Basics" do
         visit "/artists"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
@@ -58,7 +58,7 @@ describe "Playlister Basics" do
         visit "/genres"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
@@ -78,7 +78,7 @@ describe "Playlister Basics" do
         visit "/songs/#{@song.slug}"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
@@ -104,7 +104,7 @@ describe "Playlister Basics" do
         visit "/artists/#{@artist.slug}"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
@@ -130,7 +130,7 @@ describe "Playlister Basics" do
         visit "/genres/#{@genre.slug}"
       end
 
-      it 'responds with a 200 status code' do
+      it "responds with a 200 status code" do
         expect(page.status_code).to eq(200)
       end
 
