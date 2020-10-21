@@ -20,33 +20,14 @@ class SongsController < ApplicationController
         erb :'songs/new'
       end
 
-      # it "redirects to '/songs/:slug' after creation" do
-      #   fill_in "Name", with: song_name
-      #   check "New Age Garbage"
-      #   fill_in "Artist Name", with: artist_name
-      #   click_on "Create"
-      #   expect(page.current_path).to eq('/songs/that-one-with-the-guitar')
-      # end
-
-
       post '/songs' do
         #create song
-        
         @song = Song.create(name: params[:song][:name])
-        
         #assign artist
         @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-          
-        # artist.save Not necessary
-        #add genres
-        # params[:genre_ids].each do |genre_id|
-        #   @song.genre_ids << Genre.find_by_id(genre_id)
-        #   end
-        
         @song.genre_ids = params[:genres]
-        
+        # binding.pry
         @song.save
-
         flash[:message] = "Successfully created song."
 
         redirect "songs/#{@song.slug}"
@@ -61,7 +42,7 @@ class SongsController < ApplicationController
         erb :'songs/show'
       end
 
-      #######
+      ####### UPDATE
       get '/songs/:slug/edit' do
         
         @song = Song.find_by_slug(params[:slug])
@@ -71,21 +52,21 @@ class SongsController < ApplicationController
         erb :'songs/edit'
       end
 
-      #######
       patch '/songs/:slug' do 
         # binding.pry
         @song = Song.find_by_slug(params[:slug])
         
         @song.update(params[:song])
         @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-        @song.genres.clear
-
-        params[:genres].each do |genre_id|
-            genre = Genre.find_by(id: genre_id)
-            @song.genres << genre
-
-        end
+        @song.genres = params[:genre_ids]
+        # binding.pry
+        # params[:genre_ids].each do |genre_id|
+        #     @genres = Genre.find_by(id: genre_id)
+        #     @song.genres << genre
+        # end
+        @song.save
         flash[:message] = "Successfully updated song."
+        
         redirect "/songs/#{@song.slug}"
       end
 

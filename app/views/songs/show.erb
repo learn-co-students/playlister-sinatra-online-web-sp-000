@@ -8,7 +8,6 @@
 <a href='/artists/<%= @song.artist.slug %>'><%= @song.artist.name %></a>
 
 <h2>Genres: </h2>
-<%#=binding.pry%>
 <% @song.genres.each do |genre|%>
 <a href="/genres/<%= genre.slug %>"><%= genre.name %></a>
 <% end %>
