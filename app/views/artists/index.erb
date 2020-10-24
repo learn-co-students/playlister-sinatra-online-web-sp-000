@@ -1,5 +1,9 @@
-<h1>All songs</h1>
+<body>
+<h1>All artists</h1>
 
-<% @songs.each do song end %>
-<%= song %>
+<ul>
+<% @artists.map do |artist| %>
+<li><a href="/artists/<%= artist.slug %>"><%= artist.name %></li></a>
 <% end %>
+</ul>
+</body>
