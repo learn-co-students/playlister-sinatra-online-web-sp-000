@@ -2,7 +2,10 @@
 
 
 <body>
-<h2>Successfully created song.</h2>
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
+
 <br>
 <%= @song.name %>
 <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a>
