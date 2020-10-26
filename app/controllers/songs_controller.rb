@@ -43,13 +43,22 @@ class SongsController < ApplicationController
 
   patch "/songs/:slug" do
     @song = Song.find_by_slug(params[:slug])
-    @artist_id = Artist.find_by(params[:id]).id
-    @song.update(artist_id: @artist_id)
 
-    if !params["song"]["artist"].empty?
-      @song.artist = Artist.find_or_create_by(name: params["song"]["artist"])
+    @artist = Artist.find_by(name: params[:song][:artist])
 
-      @song.save
+    @song.artist = @artist
+
+    @song.save
+
+    @genre = Genre.find_by_id(params[:genres])
+
+    @song.genre_ids[0] = @genre.id
+    @song.save
+
+    if @artist != nil
+      @song.artist = Artist.find_or_create_by(id: @artist_id)
+
+      @song.save #find song then update it, then find the artist and then update song with the artist, find genre, update with genre. then pry through every line and look at params and see what you're getting.
     end
 
     flash[:message] = "Successfully updated song."
