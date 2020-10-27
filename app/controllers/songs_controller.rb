@@ -1,6 +1,7 @@
 require 'rack-flash'
 
 class SongsController < ApplicationController
+    
   enable :sessions
   use Rack::Flash
 
@@ -10,12 +11,13 @@ class SongsController < ApplicationController
   end
 
   get '/songs/new' do
+    @genres = Genre.all
     erb :'/songs/new'
   end
 
   get '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    erb :'songs/show'
+    erb :'/songs/show'
   end
 
   post '/songs' do
@@ -23,7 +25,6 @@ class SongsController < ApplicationController
     @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
     @song.genre_ids = params[:genres]
     @song.save
-    # binding.pry
 
     flash[:message] = "Successfully created song."
     redirect to "/songs/#{@song.slug}"
@@ -31,7 +32,7 @@ class SongsController < ApplicationController
 
   get '/songs/:slug/edit' do
     @song = Song.find_by_slug(params[:slug])
-    erb :'songs/edit'
+    erb :'/songs/edit'
   end
 
   patch '/songs/:slug' do
