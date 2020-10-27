@@ -43,25 +43,14 @@ class SongsController < ApplicationController
 
   patch "/songs/:slug" do
     @song = Song.find_by_slug(params[:slug])
+    @song.update(name: params[:song][:artist])
 
-    @artist = Artist.find_by(name: params[:song][:artist])
+    @song.artist = Artist.find_or_create_by(name: params[:song][:artist])
 
-    @song.artist = @artist
+    @song.genre_ids = params[:genres]
 
-    @song.save
-
-    @genre = Genre.find_by_id(params[:genres])
-
-    @song.genre_ids[0] = @genre.id
-    @song.save
-
-    if @artist != nil
-      @song.artist = Artist.find_or_create_by(id: @artist_id)
-
-      @song.save #find song then update it, then find the artist and then update song with the artist, find genre, update with genre. then pry through every line and look at params and see what you're getting.
-    end
-
-    flash[:message] = "Successfully updated song."
+    @song.save #find song then update it, then find the artist and then update song with the artist, find genre, update with genre. then pry through every line and look at params and see what you're getting.
+    flash[:message] = "Successfully updated song." #really close with this code here. look in shotgun and see what happens when you update a song.
 
     redirect to "songs/#{@song.slug}"
   end
