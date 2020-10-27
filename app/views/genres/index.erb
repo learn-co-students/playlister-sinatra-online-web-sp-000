@@ -1,0 +1,9 @@
+<body>
+<h1>All genres</h1>
+
+<ul>
+<% @genres.map do |genre| %>
+<li><a href="/genres/<%= genre.slug %>"><%= genre.name %></li></a>
+<% end %>
+</ul>
+</body>
