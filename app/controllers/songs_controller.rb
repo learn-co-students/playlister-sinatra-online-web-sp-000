@@ -40,23 +40,26 @@ class SongsController < ApplicationController
       get '/songs/:slug' do
         @song = Song.find_by_slug(params[:slug])
         flash[:message] = "Successfully created song."
-        # binding.pry
+        # # binding.pry
         erb :'songs/show'
       end
 
       ####### UPDATE
       get '/songs/:slug/edit' do
         @song = Song.find_by_slug(params[:slug])
-        # @artist = @song.artist 
+        @artist = @song.artist 
         @genres = Genre.all 
         erb :'songs/edit'
       end
 
       patch '/songs/:slug' do 
+        
         @song = Song.find_by_slug(params[:slug])
-        @song.update(params[:song])
-        @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
         # binding.pry
+        @song.update(params[:song])
+        
+        @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
+        
         @song.genres_id = params[:genre_ids]
         # @song.genres = Genre.find_or_create_by(genre_ids: params[:genre_ids])
       #  binding.pry
@@ -70,5 +73,4 @@ class SongsController < ApplicationController
         
         redirect "/songs/#{@song.slug}"
       end
-
 end
