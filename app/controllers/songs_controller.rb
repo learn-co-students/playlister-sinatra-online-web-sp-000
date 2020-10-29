@@ -1,38 +1,12 @@
 require 'sinatra/base'
 require 'rack-flash'
 
-class ApplicationController < Sinatra::Base
+class SongsController < Sinatra::Base
   enable :sessions
   use Rack::Flash
   register Sinatra::ActiveRecordExtension
   set :session_secret, "my_application_secret"
   set :views, Proc.new { File.join(root, "../views/") }
-
-  get '/' do
-    erb :index
-  end
-
-  get '/artists' do
-    @artists = Artist.all
-    erb :"artists/index"
-  end
-
-  get '/artists/:slug' do
-    slug = params[:slug]
-    @artist = Artist.find_by_slug(slug)
-    erb :"artists/show"
-  end
-
-  get '/genres' do
-    @genres = Genre.all
-    erb :"genres/index"
-  end
-
-  get '/genres/:slug' do
-    slug = params[:slug]
-    @genre = Genre.find_by_slug(slug)
-    erb :"genres/show"
-  end
 
   get '/songs' do
     @songs = Song.all
