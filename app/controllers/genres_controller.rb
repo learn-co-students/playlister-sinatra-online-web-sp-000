@@ -1,6 +1,4 @@
 class GenresController < ApplicationController
-    # extend Slugifiable::ClassMethods
-    # include Slugifiable::InstanceMethods
 
     get '/genres' do
         @genres = Genre.all

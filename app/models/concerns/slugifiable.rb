@@ -1,4 +1,4 @@
-class Slugifiable
+module Slugifiable
     module InstanceMethods
         def slug
             self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
@@ -11,5 +11,4 @@ class Slugifiable
             result = self.where("name = ?", @slug)
         end
     end
-
 end
