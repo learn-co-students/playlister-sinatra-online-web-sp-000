@@ -7,8 +7,8 @@ module Slugifiable
 
     module ClassMethods
         def find_by_slug(slug)
-            @slug = slug
-            result = self.where("name = ?", @slug)
+            search_slug = slug.gsub('-', ' ')
+            self.where("name LIKE ?", "%#{search_slug}%").first
         end
     end
 end
