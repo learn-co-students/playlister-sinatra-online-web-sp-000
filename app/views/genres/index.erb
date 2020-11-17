@@ -1,0 +1,13 @@
+<h1>A bunch of genres to choose from</h1>
+
+<h3><ul><% @genres.each do |genre| %>
+    <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
+<% end %>
+</ul>
+
+
+
+<a href="/songs">Songs</a><br>
+<a href="/artists">Artists</a><br>
+<a href="/">Home</a><br>
+</h3>
