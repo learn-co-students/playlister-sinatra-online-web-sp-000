@@ -1,0 +1,15 @@
+<% if flash.has?(:message) %>
+    <%= flash[:message] %>
+<% end %>
+
+<h1><%= @song.name %></h1>
+
+<h3>Artist: <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h3>
+
+<h3>Genre(s):
+<ul><% @song.genres.each do |genre| %>
+    <li><a href="/genres/<%=genre.slug%>"><%= genre.name %></a></li>
+    <!-- make sure to include the = in the Ruby part to make the slug show up in the URL -->
+<% end %>
+</ul>
+</h3>
