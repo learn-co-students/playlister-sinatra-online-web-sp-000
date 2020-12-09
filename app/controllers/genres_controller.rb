@@ -1,3 +1,3 @@
-class GenresController < ApplicationController
+class GenresController < Sinatra::Base
 
 end

@@ -1,3 +1,3 @@
-class SongsController < ApplicationController
+class SongsController < Sinatra::Base
 
 end
