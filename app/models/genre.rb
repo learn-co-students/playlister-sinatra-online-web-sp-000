@@ -1,7 +1,9 @@
 class Genre < ActiveRecord::Base
-    has_many :artists
-    has_many :songgenre
-    has_many :songs, through: :songgenre
+    has_many :song_genres
+    has_many :songs, through: :song_genres
+    has_many :artists, through: :songs
+    #Initial error: Cannot have a has_many :through association 'Genre#artists' which goes through 'Genre#songs' before the through association is defined.
+    #Means: Put the has_many: artists, through: :songs AFTER the song-genre and songs code
 
     def slug
         self.name.downcase.gsub(" ", "-")

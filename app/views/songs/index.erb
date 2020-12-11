@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Playlister La - Songs</title>
+    <style>
+    body {background-color: black;}
+    h1 {color: silver; font-family: verdana;}
+    p {color: silver; font-family: verdana;}
+    a {text-decoration: none; color: powderblue;}
+    </style>
+  </head>
+
+  <body>
+    <h1>This is a page for Playlister Songs</h1>
+    <% @songs.each do |song| %>
+        <p><a href="/songs/<%= song.slug %>"><%= song.name %></a></p>
+    <% end %>
+  </body>
+</html>
