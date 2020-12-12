@@ -21,7 +21,7 @@ ActiveRecord::Base.establish_connection(
 
 module Slugifiable end;
 	
-require_all 'app/models/concerns/slugifiable.rb'
+require_all 'app/models/concerns'
 
 require_all 'app'
 require_all 'lib'
