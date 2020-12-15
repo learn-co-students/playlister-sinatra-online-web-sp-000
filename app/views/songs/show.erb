@@ -11,6 +11,7 @@
   </head>
 
   <body>
-   <h1>This is a Show Page</h1>
+  <h1><%= @song.name %> by <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h1>
+  
   </body>
 </html>

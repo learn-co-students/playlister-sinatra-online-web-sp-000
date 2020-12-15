@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Playlister Lab - Songs</title>
+    <style>
+    body {background-color: black;}
+    h1 {color: silver; font-family: verdana;}
+    p {color: silver; font-family: verdana;}
+    a {text-decoration: none; color: powderblue;}
+    </style>
+  </head>
+
+  <body>
+    <h1>This is a page to create Playlister Songs</h1>
+    <form method=POST action="/songs">
+
+    <p><strong>Song:</strong> <input type="text" name="Name" id="Name"></p>
+
+    <p><strong>Genres:</strong> 
+    <% @genres.each do |genre| %>
+        <input type="checkbox" name="<%= genre.name %>" id="<%= genre.name %>" value="<%= genre.id %>"> <%= genre.name %> 
+    <% end %>
+    </p>
+
+    <% if @artists.empty? %>
+    <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name"> </p>
+    <% else %>
+        <% @artists.each do |artist| %>
+            <p><input type="checkbox" name="<%= artist.name %>" id="<%= artist.name %>" value="<%= artist.id %>"> <%= artist.name %></p>
+        <% end %>
+        <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name"> </p>
+    <% end %>
+    
+    <input type="submit" name="submit" value="Create">
+    </form>
+  </body>
+</html>

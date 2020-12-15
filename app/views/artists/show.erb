@@ -12,6 +12,15 @@
 
   <body>
    <h1><%= @artist.name %></h1>
-   
+   <% @artist.songs.each do |song| %>
+        <p><a href="/songs/<%= song.slug %>"><%= song.name %></a></p>
+   <% end %>
+   <p>This should be a list of songs attached to this artist, each one a link to that song page.</p>
+
+   <% @artist.genres.each do |genre| %>
+       <p><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></p>
+   <% end %>
+   <p>This should be a list of genres attached to this artist, each one a link to that genre page.</p>
+    
   </body>
 </html>

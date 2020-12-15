@@ -11,20 +11,27 @@ class Genre < ActiveRecord::Base
     end 
 
     def self.find_by_slug(slug)
-        sodium = slug.gsub("-", " ").split
+        #sodium = slug.gsub("-", " ").split
         #Split the slug into its component parts
-        chloride = []
+        #chloride = []
         #Create empty array
-        sodium.each do |name|
-            chloride << name.capitalize
-        end 
+        #sodium.each do |name|
+         #   chloride << name.capitalize
+        #end 
         #Capitalize each part of the array
-        salt = chloride.join(" ")
+        #salt = chloride.join(" ")
         #Join into a single string
         #Hahaha unslugging = salt, get it?
-        genre = Genre.find_by(name: "#{salt}")
+        #genre = Genre.find_by(name: "#{salt}")
         #Find by name we just created
-        genre
+        #genre
         #Don't forget to return the object
+        
+        Genre.all.find do |genre|
+            genre.slug == slug
+        end 
+        #OR THIS IS SO MUCH SIMPLER
+        #And then you don't run into problems where you have mismatched cases 
+        #because you capitalized everything
     end 
 end 

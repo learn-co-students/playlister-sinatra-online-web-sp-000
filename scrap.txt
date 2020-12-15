@@ -1,0 +1,27 @@
+    if params["Artist Name"] != ""
+      @song = Song.create(name: params["Name"])
+      artist = Artist.create(name: "#{params["Artist Name"]}")
+      @song.artist = artist
+      #If the Artist Name params isn't empty, create the artist
+    else 
+      @song = Song.create(name: params["Name"], artist: params.key("2"))
+      #But if it is, pick the artist from the array and set it to the song thing.
+    end 
+
+
+<h1><%= @song.name %> by <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></h1>
+  <% @song.genres.each do |genre| %>
+      <p><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></p>
+  <% end %>
+  <p>This should be a list of artists attached to this genre, each one a link to that artist page.</p>
+
+DISCARD -- DISCARD -- DISCARD -- DISCARD -- DISCARD
+<label>Artist:</label>
+    <% if !Artist.all.empty? %>
+    <% @artists.each do |artist| %>
+    <input type="checkbox" name="artist" id="artist" <%= 'checked' if @song.artist = artist %> > <%= artist.name %>
+    <% end %>
+    <% end %>
+    <br>
+    <label>New Artist:</labeL> <input type="text" name="artist" id="artist"> 
+
