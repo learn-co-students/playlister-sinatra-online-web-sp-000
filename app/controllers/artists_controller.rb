@@ -1,2 +1,21 @@
-class ArtistsController < ApplicationController
+require 'sinatra/base'
+require 'rack-flash'
+
+class ArtistsController < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+  set :session_secret, "my_application_secret"
+  set :views, Proc.new { File.join(root, "../views/") }
+    get '/artists' do
+        #present the user with a list of all artists in library
+        #each artist should be clickable link to that particular artist's show page
+        @artists = Artist.all
+        erb :'artists/index'
+    end
+
+    get '/artists/:slug' do
+      slug = params[:slug]
+      @artist = Artist.find_by_slug(slug)
+      erb :'/artists/show'
+    end
+
 end
