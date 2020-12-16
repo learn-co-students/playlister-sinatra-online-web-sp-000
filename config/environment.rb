@@ -19,5 +19,10 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
+module Slugifiable end;
+	
+require_all 'app/models/concerns'
+
 require_all 'app'
 require_all 'lib'
+
