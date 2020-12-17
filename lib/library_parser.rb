@@ -1,3 +1,6 @@
+# To get the data into your database, you will want to figure out 
+# how to use your LibraryParser class in the db/seeds.rb file.
+
 class LibraryParser
   def files
     data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
