@@ -1,5 +1,9 @@
 class Slugifiable
     def self.call(text)
-        text.gsub!(/[^0-9A-Za-z ]/, '').split(" ").join("-").downcase
+        if text.gsub!(/[^0-9A-Za-z ]/, '')
+            text.split(" ").join("-").downcase
+        else
+            text.split(" ").join("-").downcase
+        end
     end
 end
