@@ -6,8 +6,9 @@ class ActiveRecord::Base
     def self.find_by_slug(slug)
         self.all.each do |item|
             if item.slug == slug
-                item
+                return item
             end
         end
+        # item
     end
 end
