@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Playlister La - Songs</title>
+    <style>
+    body {background-color: black;}
+    h1 {color: silver; font-family: verdana;}
+    p {color: silver; font-family: verdana;}
+    a {text-decoration: none; color: powderblue;}
+    </style>
+  </head>
+
+  <body>
+    <h1>This is a page to edit Playlister Songs</h1>
+    <form method=POST action="/songs/<%= @song.slug %>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+    <p><strong>Song:</strong> <input type="text" name="Name" id="Name" value="<%= @song.name %>"></p>
+
+    <p><strong>Genres:</strong> 
+    <% @genres.each do |genre| %>
+        <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.id %>"> <%= genre.name %> 
+    <% end %>
+    </p>
+
+    <% @artists.each do |artist| %>
+        <p><input type="checkbox" name="Artist Name" id="<%= artist.id %>" value="<%= artist.name %>" <%='checked' if @song.artist.name == artist.name %> > <%= artist.name %></p>
+    <% end %>
+        <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name" value="<%= @song.artist.name %>"> </p>
+  
+    <input type="submit" name="submit" value="Save">
+    </form>
+  </body>
+</html>

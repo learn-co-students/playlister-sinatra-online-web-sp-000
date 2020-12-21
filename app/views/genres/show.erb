@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Playlister Lab - Genres</title>
+    <style>
+    body {background-color: black;}
+    h1 {color: silver; font-family: verdana;}
+    p {color: silver; font-family: verdana;}
+    a {text-decoration: none; color: powderblue;}
+    </style>
+  </head>
+
+  <body>
+   <h1><%= @genre.name %></h1>
+   <% @genre.songs.each do |song| %>
+        <p><a href="/songs/<%= song.slug %>"><%= song.name %></a></p>
+   <% end %>
+   <p>This should be a list of songs attached to this genre, each one a link to that song page.</p>
+
+   <% @genre.artists.each do |artist| %>
+       <p><a href="/artists/<%= artist.slug %>"><%= artist.name %></a></p>
+   <% end %>
+   <p>This should be a list of artists attached to this genre, each one a link to that artist page.</p>
+  </body>
+</html>
