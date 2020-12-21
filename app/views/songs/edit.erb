@@ -12,27 +12,23 @@
 
   <body>
     <h1>This is a page to edit Playlister Songs</h1>
-    <form method=POST action="/songs/">
-    <input id="hidden" type="hidden" name="_method" value="patch">
+    <form method=POST action="/songs/<%= @song.slug %>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-    <p><strong>Song:</strong> <input type="text" name="Name" id="Name"></p>
+    <p><strong>Song:</strong> <input type="text" name="Name" id="Name" value="<%= @song.name %>"></p>
 
     <p><strong>Genres:</strong> 
     <% @genres.each do |genre| %>
-        <input type="checkbox" name="<%= genre.name %>" id="<%= genre.name %>" value="<%= genre.id %>"> <%= genre.name %> 
+        <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.id %>"> <%= genre.name %> 
     <% end %>
     </p>
 
-    <% if @artists.empty? %>
-    <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name"> </p>
-    <% else %>
-        <% @artists.each do |artist| %>
-            <p><input type="checkbox" name="<%= artist.name %>" id="<%= artist.name %>" value="<%= artist.id %>"> <%= artist.name %></p>
-        <% end %>
-        <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name"> </p>
+    <% @artists.each do |artist| %>
+        <p><input type="checkbox" name="Artist Name" id="<%= artist.id %>" value="<%= artist.name %>" <%='checked' if @song.artist.name == artist.name %> > <%= artist.name %></p>
     <% end %>
-    
-    <input type="submit" name="submit" value="Create">
+        <p><strong>New Artist:</strong> <input type="text" name="Artist Name" id="Artist Name" value="<%= @song.artist.name %>"> </p>
+  
+    <input type="submit" name="submit" value="Save">
     </form>
   </body>
 </html>
