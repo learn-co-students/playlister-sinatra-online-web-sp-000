@@ -8,6 +8,6 @@ class Genre < ActiveRecord::Base
    end
 
    def self.find_by_slug(slug)
-      Genre.find_by(name: slug.titleize)
+      Genre.where("LOWER(name) = ?", slug.gsub("-", " ")).first
    end
 end

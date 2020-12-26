@@ -7,6 +7,6 @@ class Artist < ActiveRecord::Base
    end
 
    def self.find_by_slug(slug)
-      Artist.find_by(name: slug.titleize)
+      Artist.where("LOWER(name) = ?", slug.gsub("-", " ")).first
    end
 end

@@ -8,6 +8,6 @@ class Song < ActiveRecord::Base
    end
 
    def self.find_by_slug(slug)
-      Song.find_by(name: slug.titleize)
+      Song.where("LOWER(name) = ?", slug.gsub("-", " ")).first
    end
 end
