@@ -5,5 +5,3 @@ class CreateSongsTable < ActiveRecord::Migration[5.2]
     end
   end
 end
-
-#drop/add to table
