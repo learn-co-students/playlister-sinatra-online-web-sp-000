@@ -8,9 +8,8 @@
 <% end %>
 
 <h2>Genre(s):</h2>
-<% @artist.genres.each do |genre| %>
+<% @artist.genres.uniq.each do |genre| %>
   <ul>
-    <!-- add code so genre doesn't repeat -->
     <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a></li>
   </ul>
 <% end %>
