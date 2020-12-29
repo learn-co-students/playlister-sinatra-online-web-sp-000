@@ -13,3 +13,5 @@ cry_me_a_river.genre_ids = pop.id
 waterfalls =  Song.create(:name => "Waterfalls", :artist => @artist)
 rnb = Genre.create(:name => "RnB")
 waterfalls.genre_ids = rnb.id
+
+#use Library Parser in seeds
