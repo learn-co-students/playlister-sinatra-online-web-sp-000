@@ -6,4 +6,3 @@ class CreateSongs < ActiveRecord::Migration[5.1]
     end
   end
 end
-© 2021 GitHub, Inc.
