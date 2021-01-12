@@ -1,0 +1,15 @@
+<h1>
+    <%= @song.name %>
+</h1>
+<h2>
+    By <a href = "/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a>.
+</h2>
+<h3>Genres:</h3>
+<% @song.genres.each do | sel | %>
+    <p>
+        <a href = "/genres/<%= sel.slug %>"><%= sel.name %></a>.
+    </p>
+<% end %>
+
+<p>Successfully created song.</p>
+<p>Successfully updated song.</p>
