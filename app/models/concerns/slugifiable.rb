@@ -1,4 +1,5 @@
 module Slugifiable
+  WORD_LIST= %w(a of and the with)
 
   module InstanceMethods
     def slug
@@ -9,7 +10,7 @@ module Slugifiable
         new_word = word.gsub("&", "%26")
         next_word = new_word.gsub("(", "%28")
         final_word = next_word.gsub(")", "%29")
-        subbed_array << final_word
+        subbed_array << final_word.downcase
       end
 
       subbed_array.join("-")
@@ -21,11 +22,16 @@ module Slugifiable
       lowercase_array = slug.split("-")
       reset_array = []
 
-      lowercase_array.each do |word|
+      lowercase_array.each_with_index do |word, index|
         new_word = word.gsub("%26", "&")
         next_word = new_word.gsub("%28", "(")
         final_word = next_word.gsub("%29", ")")
-        reset_array << final_word
+
+        if index == 0 || !WORD_LIST.include?(final_word)
+          reset_array << final_word.capitalize
+        else
+          reset_array << final_word
+        end
       end
 
       name = reset_array.join(" ")
