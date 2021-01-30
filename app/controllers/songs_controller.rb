@@ -41,13 +41,16 @@ class SongsController < ApplicationController
 
   patch '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
+    @song.genres = []
 
-    if params[:song].keys.include?("genres")
-      params[:song]["genres"] = []
-    end
+    # if params[:song].keys.include?("genres")
+    #   params[:song]["genres"] = []
+    # end
 
     # binding.pry
     @song.update(name: params[:song][:name])
+
+
     params[:song][:genres].each do |genre_id|
       this_genre = Genre.find(genre_id)
       @song.genres << this_genre
@@ -84,3 +87,7 @@ end
 # #   <p><input id="<%= genre.name %>" type="checkbox" name="genres[]" value=if checked "<%= @song.genres.name %>">
 # #   <label><%= genre.name %></label></p>
 # #   <% end %>
+
+# <% @genres.each do |genre| %>
+#   <input type="checkbox" name="song[genres][]" id="<%= genre.id %>" value="<%= genre.id %>" <%='checked' if @song.genres.include?(genre) %>><%= genre.name %></input><br>
+# <% end %>
