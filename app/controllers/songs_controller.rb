@@ -28,27 +28,21 @@ class SongsController < ApplicationController
 
     if !!saved_value
       flash[:message] = "Successfully created song."
-      session[:session_message] = flash[:message]
+
       redirect "/songs/#{song.slug}"
     end
   end
 
   get '/songs/:slug/edit' do
     @song = Song.find_by_slug(params[:slug])
-    # @genres = Genre.all
+
     erb :'/songs/edit'
   end
 
   patch '/songs/:slug' do
-    # binding.pry
     @song = Song.find_by_slug(params[:slug])
     @song.genres = []
 
-    # if params[:song].keys.include?("genres")
-    #   params[:song]["genres"] = []
-    # end
-
-    # binding.pry
     @song.update(name: params[:song][:name])
 
 
@@ -62,10 +56,9 @@ class SongsController < ApplicationController
 
     saved_value = @song.save
 
-    if !!saved_value
-      flash[:message] = "Successfully created song."
-      session[:session_message] = flash[:message]
-      redirect "/songs/#{song.slug}"
+    if saved_value
+      flash[:message] = "Successfully updated song."
+      redirect "/songs/#{@song.slug}"
     end
 
   end
@@ -79,16 +72,3 @@ class SongsController < ApplicationController
     erb :'songs/show'
   end
 end
-
-# <% @pets.each do |pet| %>
-#   <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>" <%='checked' if @owner.pets.include?(pet) %>><%= pet.name %></input><br>
-# <% end %>
-
-# # <% Genre.all.each do |genre| %>
-# #   <p><input id="<%= genre.name %>" type="checkbox" name="genres[]" value=if checked "<%= @song.genres.name %>">
-# #   <label><%= genre.name %></label></p>
-# #   <% end %>
-
-# <% @genres.each do |genre| %>
-#   <input type="checkbox" name="song[genres][]" id="<%= genre.id %>" value="<%= genre.id %>" <%='checked' if @song.genres.include?(genre) %>><%= genre.name %></input><br>
-# <% end %>
