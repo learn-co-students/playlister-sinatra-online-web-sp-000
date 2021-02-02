@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Playlister Artists</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <h1>List of Genres on Playlist: </h1>
+        <% @genres.each do |genre| %> 
+            <li><a href="/genres/<%= genre.slug %>"><%= genre.name %></a>
+        <% end %> 
+    </body>
+</html>
