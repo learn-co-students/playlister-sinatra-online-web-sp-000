@@ -1,39 +1,33 @@
 <form method="post" action="/songs">
+  
   <section>
-    <label>Song Name:
-      <input type="text" id="song_name" name="song[name]">
+    <label for="Name">Song Name:
+      <input type="text" id="Name" name="song[name]">
     </label>
   </section>
+  
   <br>
+  
   <section>
-    Add multiple genres
-    <br>
-    <label>Genres<br>
-      <% @genres.each do |g| %>
-        <input type="checkbox" name="song[genre_ids][]" id="<%= g.id %>" value="<%= g.id %>"><%= g.name %>
-        <br>
-      <% end %>
-    </label>
-    <br>
-    <label>Create a Genre
-      <input type="text" name="new_genre">
-    </label>
-  </section>
-  <br>
-  <section>
-    <label>Existing Artists<br>
-      <% @artists.each do |a|  %>
-        <input type="radio" name="artist[id]" id="<%= a.id %>" value="<%= a.id %>"><%= a.name %>
-      <br>
-      <% end %>
-    </label>
-    <br>
-    <label>Create An Artist
-      <input type="text" name="artist[name]">
+    <label>Artist Name:
+      <input type="text" name="artist[name]" id="Artist">
     </label>
   </section>
 
+  <br>
+
   <section>
-    <input type="submit" value="Create Song">
+    <label>Genres<br>
+      <% @genres.each do |g| %>
+        <input type="checkbox"  name="genres[]" id="<%= g.name %>" value="<%= g.id %>"><%= g.name %>
+        <br>
+      <% end %>
+    </label>
+  </section>
+  
+  <br>
+
+  <section>
+    <input type="submit" value="Create">
   </section>
 </form>
