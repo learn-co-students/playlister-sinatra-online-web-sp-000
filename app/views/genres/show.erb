@@ -1,0 +1,11 @@
+<h2>Genre: <%= @genre.name %></h2>
+
+<h3>Songs:</h3>
+
+<% @genre.songs.each do |s| %>
+  <section>
+    <h4><a href="/songs/<%= s.slug %>"><%= s.name %></a></h4>
+    <p>By <a href="/artists/<%= s.artist.slug %>"><%= s.artist.name %></a></p>
+  </section>
+<% end %>
+</table>
