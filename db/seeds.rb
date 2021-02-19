@@ -1,2 +1,4 @@
-# Add seed data here. Seed your database with `rake db:seed`
 
+
+lib_parse = LibraryParser.new
+lib_parse.call

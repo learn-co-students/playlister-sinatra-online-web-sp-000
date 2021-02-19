@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+  <span><h1><%= @song.name %></h1></span>
+  <h2>Artist:</h2>
+  <ol>
+    <li><a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></a></li>    
+  </ol>
+  <h2>Genres:</h2>
+  <ol>
+    <% @song.genres.each do |genre| %>
+      <li><a href="/genres/<%= genre.slug %>"><%= genre.name%></a></li>
+    <% end %>
+  </ol>   
+</body>
+</html>

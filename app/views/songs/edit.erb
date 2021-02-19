@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Song Edit</h1>
+    <form action="/songs/<%= @song.slug %>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="PUT">
+        <h3><%= @song.name %></h3>
+        <label for="song_artist">Artist Name</label>
+        <input type="text" name="artist[name]" id="song_artist" placeholder="<%= @song.artist.name %>" value="<%= @song.artist.name %>"><br><br>
+        <% @genres.each do |genre| %>
+            <span><input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.id %>" <%= 'checked' if @song.genres.include?(genre) %>><%= genre.name %></span>
+        <% end %><br><br>
+        <input type="submit" id="Save" value="Save">        
+    </form>
+</body>
+</html>
