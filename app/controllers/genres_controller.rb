@@ -1,7 +1,7 @@
 require 'rack-flash'
 class GenresController < ApplicationController
   get '/genres' do
-    # @genres = Genre.all
+    @genres = Genre.all
     erb :'genres/index'
   end
 
