@@ -1,6 +1,8 @@
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
+require_relative '../concerns/slugifiable'
+
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
 def fi_check_migration
@@ -21,3 +23,4 @@ ActiveRecord::Base.establish_connection(
 
 require_all 'app'
 require_all 'lib'
+
