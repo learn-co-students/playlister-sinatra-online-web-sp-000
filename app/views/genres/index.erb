@@ -1,0 +1,5 @@
+<h1>Select a Genre to view below:</h1>
+<% @genres.each do |genre| %>
+<h2><%= genre.name %></h2>
+<a href="/genres/<%= genre.slug %>">Show Genre</a>
+<% end %>

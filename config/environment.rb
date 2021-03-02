@@ -1,7 +1,7 @@
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
-require_relative '../concerns/slugifiable'
+require_relative '../app/models/concerns/slugifiable'
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
@@ -23,4 +23,5 @@ ActiveRecord::Base.establish_connection(
 
 require_all 'app'
 require_all 'lib'
+
 
