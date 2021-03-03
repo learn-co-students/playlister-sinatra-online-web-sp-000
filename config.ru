@@ -1,4 +1,5 @@
 require './config/environment'
+require 'bundler/setup'
 
 begin
   fi_check_migration
