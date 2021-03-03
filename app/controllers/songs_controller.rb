@@ -15,8 +15,10 @@ class SongsController < ApplicationController
         @song = Song.create(params[:song])
 
             @song.artist = Artist.find_or_create_by(name: params["artist"]["name"])
+            params[:genre].each do |genre|
+               @song.genres << Genre.find_or_create_by(name: genre) # value for input matches with value in the controller
+            end
             @song.save 
-
          redirect to "songs/#{@song.slug}"
     end
 
