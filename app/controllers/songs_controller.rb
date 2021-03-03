@@ -1,6 +1,6 @@
-require 'rack-flash'
+require 'rack-flash' # as long as we are requiring certain gem within the file
 class SongsController < ApplicationController
-    # use Rack::Flash
+    use Rack::Flash # gem coming from our Gemfile, telling the controller that we will have flash messages coming in.
     get '/songs' do
         @songs = Song.all 
         erb :'/songs/index'
@@ -16,13 +16,10 @@ class SongsController < ApplicationController
         #binding.pry
         @song = Song.create(params[:song])
             @song.artist = Artist.find_or_create_by(name: params["artist"]["name"])
-            params[:genre].each do |genre|
-               @song.genres << Genre.find_or_create_by(name: genre) # value for input matches with value in the controller
-            end
+            @song.genre_ids = params["genre_ids"]
         @song.save
         flash[:message] = "Successfully created song."
-        redirect to "songs/#{@song.slug}"
-        redirect to("/songs/#{@song.slug}") 
+        redirect to "songs/#{@song.slug}" 
     end
 
     get '/songs/:slug' do 
@@ -38,13 +35,12 @@ class SongsController < ApplicationController
 
     patch '/songs/:slug' do
         @song = Song.find_by_slug(params[:slug])
+        @song.update(params[:song])
         #binding.pry
-        # @song.update(params["song"])
         @song.artist = Artist.find_or_create_by(name: params["artist"]["name"])
-        params[:genre].each do |genre|
-            @song.genres << Genre.find_or_create_by(name: genre)
-        end
+        @song.genre_ids = params["genre_ids"]
         @song.save
+        flash[:message] = "Successfully updated song."
         redirect to "songs/#{@song.slug}"
     end
 end
