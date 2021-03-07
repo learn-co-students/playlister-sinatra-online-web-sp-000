@@ -1,7 +1,7 @@
 module Slugifiable
     module InstanceMethods
         def slug
-            self.name.paramaterize
+            self.name.parameterize
         end
     end
 
