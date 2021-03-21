@@ -1,0 +1,13 @@
+<h1>Hello there, find your genres below:</h1>
+
+<% @genres.each do |genre| %>
+    <ul>
+        <li>
+            <a href="/genres/<%= genre.slug %>"><%= genre.name %></a><br>
+        </li>
+    </ul>
+<% end %>
+
+
+
+
