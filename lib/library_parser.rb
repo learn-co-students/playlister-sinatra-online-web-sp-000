@@ -1,11 +1,16 @@
 class LibraryParser
+  
+  def initialize(path)
+    @path = path
+  end
+  
   def files
     data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
     Dir.entries(data_path)[2..-1]
   end
 
   def self.parse
-    self.new.call
+    self.new(@path).call
   end
 
   def parse_filename(filename)
@@ -16,8 +21,12 @@ class LibraryParser
     artist = artist_match && artist_match[1]
     song   = song_match   && song_match[1]
     genre  = genre_match  && genre_match[1]
+    
+    new_song = song.split.collect do |word|
+      word.capitalize
+    end.join(" ")
 
-    [artist, song, genre]
+    [artist, new_song, genre]
   end
 
   def call
