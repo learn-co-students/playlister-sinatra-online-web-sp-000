@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Songs</title>
+  </head>
+
+  <body>
+    <h2> Create a Song </h2>
+
+    <form action="/songs" method="POST">
+      <label>Song Name: </label><input id="Name" type="text" name="song[name]"><br><br>
+      <label>Artist Name: </label><input id="Artist Name" type="text" name="artist[name]">
+      <br><br>
+      <label>Select a Genre:</label><br>
+      <input type="checkbox" id="Pop" name="genre[name]" value="Pop">Pop</input><br>
+      <input type="checkbox" id="Country" name="genre[name]" value="Country">Country</input><br>
+      <input type="checkbox" id="Hippity Hop" name="genre[name]" value="Hippity Hop">Hippity Hop</input><br>
+      <input type="checkbox" id="New Age Garbage" name="genre[name]" value="New Age Garbage">New Age Garbage</input><br>
+      <br>
+      <input id="Create" type="submit" value="Create">
+    </form>
+  </body>
+</html>
