@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artists</title>
+  </head>
+
+  <body>
+    <h2>Artist Information </h2>
+    <h3>Artist Name: <%= @artist.name %></h3>
+    <p>Song Name: <a href="/songs/<%= @artist.songs.first.slug %>"><%= @artist.songs.first.name %></a> </p>
+    <p>Genre: <a href="/genres/<%= @artist.genres.first.slug %>"><%= @artist.genres.first.name %></a> </p>
+  </body>
+</html>
