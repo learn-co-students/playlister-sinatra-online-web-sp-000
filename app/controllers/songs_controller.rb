@@ -16,11 +16,7 @@ class SongsController < ApplicationController
     
     @artist = Artist.find(@song.artist_id)
    
-    song_genres = SongGenre.where("song_id = ?", @song.id)
-    
-    @genres = song_genres.collect do |g|
-      Genre.find(g.genre_id)
-    end
+    @genres = @song.genres
     
     erb :'/songs/show' 
   end
