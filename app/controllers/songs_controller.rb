@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class SongsController < ApplicationController
+  enable :sessions
+  use Rack::Flash
   
   get '/songs' do
     @songs = Song.all
@@ -34,7 +38,7 @@ class SongsController < ApplicationController
     params[:genres].each do |genre|
       SongGenre.create(song_id: @song.id, genre_id: genre)
     end
-    
+    flash[:message] = "Successfully created song."
     redirect to "songs/#{@song.slug}"
   end
   
@@ -59,7 +63,7 @@ class SongsController < ApplicationController
     # update song
     song.update(name: params[:song][:name], artist: artist, song_genres: song_genres)
     song.save
-    
+    flash[:message] = "Successfully updated song."
     redirect to "songs/#{song.slug}"
   end
   
