@@ -21,6 +21,7 @@ class LibraryParser
   end
 
   def call
+    binding.pry
     files.each do |filename|
       parts = parse_filename(filename)
       build_objects(*parts)
