@@ -1,0 +1,23 @@
+<h1>Create a new song:</h1>
+
+<form action="/songs" method="POST">
+<label for="song_name">Name</label>
+<input type="text" id="song_name" name="song[name]">
+<br/>
+<br/>
+<label for="artist_name">Artist Name</label>
+<input type="text" id="artist_name" name="song[artist]">
+
+<p>Select the song genre:</p>
+<% @genres.each do |g|%>
+    <input type="checkbox" id="<%= g.name %>" name="song[genres][]" value="<%= g.id %>">
+    <label ><%= g.name %></label><br/>
+<% end %>
+<br/>
+<input type="submit" value="Create">
+</form>
+
+
+<!-- creates new song, creates new artist on submit, redirect to '/songs/:slug'
+- DOES NOT CREATE NEW ARTIST if exists, but associates song with existing artist
+ -->
