@@ -1,0 +1,21 @@
+current directory: /Users/firooz/Flatiron/code/playlister-sinatra-online-web-sp-000/path/ruby/2.6.0/gems/thin-1.8.0/ext/thin_parser
+/Users/firooz/.rbenv/versions/2.6.1/bin/ruby -I /Users/firooz/.rbenv/versions/2.6.1/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210507-3920-1ma6hg9.rb extconf.rb
+checking for main() in -lc... yes
+creating Makefile
+
+current directory: /Users/firooz/Flatiron/code/playlister-sinatra-online-web-sp-000/path/ruby/2.6.0/gems/thin-1.8.0/ext/thin_parser
+make DESTDIR\= clean
+
+current directory: /Users/firooz/Flatiron/code/playlister-sinatra-online-web-sp-000/path/ruby/2.6.0/gems/thin-1.8.0/ext/thin_parser
+make DESTDIR\=
+compiling parser.c
+parser.c:31:18: warning: unused variable 'http_parser_en_main' [-Wunused-const-variable]
+static const int http_parser_en_main = 1;
+                 ^
+1 warning generated.
+compiling thin.c
+linking shared-object thin_parser.bundle
+
+current directory: /Users/firooz/Flatiron/code/playlister-sinatra-online-web-sp-000/path/ruby/2.6.0/gems/thin-1.8.0/ext/thin_parser
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 thin_parser.bundle ./.gem.20210507-3920-5pz0o2
