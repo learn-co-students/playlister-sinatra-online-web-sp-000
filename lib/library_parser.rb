@@ -1,7 +1,7 @@
 class LibraryParser
   def files
     
-    data_path = File.join(File.dirname(__FILE__), '..', 'db', 'smalldata')
+    data_path = File.join(File.dirname(__FILE__), '..', 'db', 'data')
     arr = Dir.entries(data_path)
     arr.delete(".")
     arr.delete("..")
