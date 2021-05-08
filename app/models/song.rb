@@ -6,5 +6,14 @@ class Song < ActiveRecord::Base
     has_many :genres, through: :song_genres
 
     #extend Slugifiable::ClassMethods
-   # include Slugifiable::InstanceMethods
-end 
+    #include Slugifiable::InstanceMethods
+
+    def slug
+    name.downcase.gsub(" ","-")
+    end
+
+    def self.find_by_slug(slug)
+       Artist.all.find{|artist| artist.slug == slug}
+    end
+    
+   end
