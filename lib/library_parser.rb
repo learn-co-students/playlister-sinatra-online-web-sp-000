@@ -37,4 +37,18 @@ class LibraryParser
     
     song.save
   end
+
+  def self.build_new_objects(song_name, artist_name, genres)
+    song = Song.create(song_name)
+    artist = Artist.find_or_create_by(artist_name)
+    song.artist = artist
+    genres.map do |genre|
+       genre_to_i = genre.to_i
+       genre = Genre.find(genre_to_i)
+       song.song_genres.build(genre: genre)
+       song.save
+     end 
+  end
+
 end
+
