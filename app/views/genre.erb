@@ -1,0 +1,13 @@
+<h1><%= @sel.name %><h1>
+<h2>Discography:</h2>
+<% @sel.songs.each do | sel | %>
+    <h5>
+        <a href= "/songs/<%= sel.slug %>"><%= sel.name %>.</a>
+    </h5>
+<% end %>
+<h2>Artists:</h2>
+<% @sel.artists.each do | sel | %>
+    <h5>
+        <a href= "/artists/<%= sel.slug %>"><%= sel.name %>.</a>
+    </h5>
+<% end %>

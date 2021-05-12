@@ -1,0 +1,6 @@
+<% @genres.each do | sel | %>
+
+    <h3>
+        <a href="/genres/<%= sel.slug %>"><%= sel.name %></a>
+    </h3>
+<% end %>
