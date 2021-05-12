@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Genre List</title>
+    </head>
+    <h1>Genre List:</h1>
+
+    <div class="genres_container">
+        <ul>
+            <%Genre.all.each do |genre|%>
+                <li>
+                    <%=genre.name%>
+                    <br>
+                    <a href="/genres/<%=genre.slug%>">Genre Page</a>
+                </li>
+            <%end%>
+        </ul>
+    </div>
+</html>

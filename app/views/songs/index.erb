@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Song List</title>
+    </head>
+    <h1>Song List:</h1>
+
+    <div class="songs_container">
+        <ul>
+            <%Song.all.each do |song|%>
+                <li>
+                    <%=song.name%>
+                    <br>
+                    <a href="/songs/<%=song.slug%>">Song Page</a>
+                </li>
+            <%end%>
+        </ul>
+    </div>
+</html>
+

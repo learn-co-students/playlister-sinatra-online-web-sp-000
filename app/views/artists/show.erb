@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Artist Page</title>
+        <style>
+            .card {
+                background-color: #ccc;
+                text-align: center;
+                width: 70%;
+                margin: 7% auto;
+                padding: 10px;
+                border: 1px solid #555;
+                box-shadow: -1px 1px #444, -2px 2px #333, -3px 3px 5px #222;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1>Artist Name: <%=@artist.name%></h1>
+            <div>
+                <h2>Songs:</h2>
+                <%@songs.each do |song|%>
+                    <h4><%=song.name%></h4>
+                    <a href="/songs/<%=song.slug%>">Song Page</a>
+                <%end%>
+            </div>
+            <div>
+                <h2>Genre:</h2>
+                <%@genres.each do |genre_object|%>
+                    <h4><%=genre_object.name%></h4>
+                    <a href="/genres/<%=genre_object.slug%>">Genre Page</a>
+                <%end%>
+            </div>
+        </div>
+    </body>
+</html>
