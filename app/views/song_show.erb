@@ -1,0 +1,15 @@
+<%=@song.artist.name%>
+<%=@song.name%>
+<%
+#puts @song.genre_id
+%>
+<%if @song.genre_id != nil%>
+<%=Genre.find(@song.genre_id).name%>
+<%end%>
+
+<%@song.genres.each do |a|%>
+    <%=a.name%><a href='/genres/<%=a.slug%>'>Link</a>
+    <%end%>
+    <a href='/artists/<%=@song.artist.slug%>'>Link</a>
+    Successfully created song.
+    Successfully updated song.
