@@ -36,7 +36,7 @@ describe "Song Forms" do
       end
 
       it "redirects to '/songs/:slug' after creation" do
-        fill_in "Name", with: song_name
+        fill_in 'Name', with: song_name
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
