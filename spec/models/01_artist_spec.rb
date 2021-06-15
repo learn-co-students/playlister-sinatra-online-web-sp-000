@@ -29,7 +29,7 @@ describe "Artist" do
 
   it "can slugify its name" do
 
-    expect(@artist.slug).to eq("taylor-swift")
+     expect(@artist.slug).to eq("taylor-swift")
   end
 
   describe "Class methods" do
