@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artist Index</title>
+  </head>
+
+  <body>
+    <h1>Artist Index:</h1>
+    <ol>
+      <% @artists.each do |artist| %>
+        <li><a href="/artists/<%=artist.slug%>"><%=artist.name%><a></li>
+      <% end %>
+    </ol>
+    <br>
+    <br>
+    ToDo: New Artist Button Eventually
+  </body>
+</html>
