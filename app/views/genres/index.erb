@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Genres Index</title>
+  </head>
+
+  <body>
+    <h1>Genres Index:</h1>
+    <ol>
+      <% @genres.each do |genre| %>
+        <li><a href="/genres/<%=genre.slug%>"><%=genre.name%><a></li>
+      <% end %>
+    </ol>
+    <br>
+    <br>
+    ToDo: New Genre Button Eventually
+  </body>
+</html>
